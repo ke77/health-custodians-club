@@ -1,0 +1,123 @@
+@import 'tailwindcss';
+
+/* daisyUI as a thin themed layer over our tokens (custom theme only, no built-ins). */
+@plugin 'daisyui' {
+  themes: hcc --default;
+}
+
+/*
+  design tokens (docs/03-design-system.md). this file is the single source of truth:
+  a change to a colour, font or spacing value is made here and nowhere else.
+  the site is light-only by design; dark sections are ink-background bands, not os dark mode.
+*/
+@theme {
+  /* colours */
+  --color-paper: #ffffff;
+  --color-ink: #17191a;
+  --color-muted: #5b5e5c;
+  --color-teal: #1f5a57;
+  --color-sand: #f3efe6;
+  /* hairline dividers: ink at ~12% opacity */
+  --color-rule: color-mix(in srgb, #17191a 12%, transparent);
+
+  /* radius: small and consistent. sm for fields and cards, md for buttons (docs/03) */
+  --radius-sm: 3px;
+  --radius-md: 6px;
+
+  /*
+    fluid type scale (clamp). PROVISIONAL values, flagged for review:
+    tune the min/max once the section screenshots arrive. tokenised, so a change is one line here.
+    body is at least 16px on phones (docs/03).
+  */
+  --text-display: clamp(2.5rem, 1.75rem + 3.4vw, 4.5rem);
+  --text-display--line-height: 1.04;
+  --text-h1: clamp(2rem, 1.55rem + 2vw, 3.25rem);
+  --text-h1--line-height: 1.08;
+  --text-h2: clamp(1.5rem, 1.25rem + 1.1vw, 2.25rem);
+  --text-h2--line-height: 1.15;
+  --text-h3: clamp(1.25rem, 1.12rem + 0.6vw, 1.625rem);
+  --text-h3--line-height: 1.25;
+  --text-body: clamp(1rem, 0.97rem + 0.15vw, 1.125rem);
+  --text-body--line-height: 1.6;
+  --text-small: 0.875rem;
+  --text-small--line-height: 1.5;
+  --text-label: 0.75rem;
+  --text-label--line-height: 1.4;
+  --text-label--letter-spacing: 0.08em;
+
+  /* content widths: one narrow (prose), one wide */
+  --container-prose: 68ch;
+  --container-wide: 80rem;
+}
+
+/*
+  font families reference the next/font variables set on <html> in layout.tsx.
+  @theme inline so utilities inline the value and avoid nested-scope fallback issues.
+*/
+@theme inline {
+  --font-display: var(--font-newsreader);
+  --font-body: var(--font-public-sans);
+  --font-mono: var(--font-ibm-plex-mono);
+}
+
+/* custom daisyUI theme: maps daisyUI's semantic slots to our tokens only. */
+@plugin 'daisyui/theme' {
+  name: 'hcc';
+  default: true;
+  prefersdark: false;
+  color-scheme: light;
+
+  --color-base-100: #ffffff;
+  --color-base-200: #f3efe6;
+  --color-base-300: #e6e1d6;
+  --color-base-content: #17191a;
+
+  --color-primary: #1f5a57;
+  --color-primary-content: #ffffff;
+  --color-secondary: #17191a;
+  --color-secondary-content: #ffffff;
+  --color-accent: #1f5a57;
+  --color-accent-content: #ffffff;
+  --color-neutral: #17191a;
+  --color-neutral-content: #ffffff;
+
+  --color-info: #1f5a57;
+  --color-info-content: #ffffff;
+  --color-success: #1f5a57;
+  --color-success-content: #ffffff;
+  --color-warning: #17191a;
+  --color-warning-content: #ffffff;
+  --color-error: #a12d2d;
+  --color-error-content: #ffffff;
+
+  --radius-selector: 3px;
+  --radius-field: 3px;
+  --radius-box: 3px;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+
+  /* flat and editorial: no depth, no noise (docs/03 hard bans) */
+  --depth: 0;
+  --noise: 0;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: var(--text-body);
+  line-height: var(--text-body--line-height);
+}
+
+/* respect reduced-motion globally (docs/03 motion rules) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

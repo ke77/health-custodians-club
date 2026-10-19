@@ -9,7 +9,6 @@ type Props = {
   items: Item[]
 }
 
-// accessible accordion built on native <details>/<summary>: keyboard-operable with no client js.
 export function Accordion({ items }: Props) {
   return (
     <div className='border-t border-rule'>

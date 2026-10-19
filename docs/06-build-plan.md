@@ -55,7 +55,7 @@ Phase 1 target: live before school resumes on 26 October 2026. If time runs shor
 ### 8. Admin dashboard (lean)
 - [ ] Magic-link sign-in. Only emails in `admins`. Screen to add and remove admin emails.
 - [ ] Applications table: search, filters, detail view, status workflow, notes, typed student ID, CSV export of the filtered set.
-- [ ] Settings screen: open/closed switch, deadline, cohort label.
+- [ ] Settings screen: open/closed switch, deadline, cohort label, adding executives and other club members, contact details(in case they ever change their contact details)
 - [ ] No public link to the dashboard yet.
 
 ### 9. Quality pass

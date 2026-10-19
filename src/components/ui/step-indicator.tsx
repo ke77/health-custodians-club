@@ -5,7 +5,6 @@ type Props = {
   current: number // 1-based
 }
 
-// row of numbered steps in mono, current step in teal (docs/03). labels hidden on phones, numbers always shown.
 export function StepIndicator({ steps, current }: Props) {
   return (
     <ol className='flex flex-wrap items-center gap-x-4 gap-y-2'>

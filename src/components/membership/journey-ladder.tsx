@@ -1,23 +1,25 @@
-import { cn } from '@/lib/utils/cn'
+type Step = string | { title: string; caption?: string }
 
 type Props = {
-  steps: string[]
+  steps: Step[]
 }
 
-// membership journey as a ladder (docs/02, docs/03): horizontal on desktop, stacks vertically on phones.
-// built in html and css, single teal accent. no interview step while O01 holds.
+function normalise(step: Step): { title: string; caption?: string } {
+  return typeof step === 'string' ? { title: step } : step
+}
+
 export function JourneyLadder({ steps }: Props) {
   return (
     <ol className='flex flex-col gap-0 md:flex-row md:gap-0'>
-      {steps.map((step, i) => {
+      {steps.map((raw, i) => {
+        const { title, caption } = normalise(raw)
         const n = i + 1
         const isLast = n === steps.length
         return (
           <li
-            key={step}
+            key={title}
             className='relative flex items-start gap-4 pb-8 md:flex-1 md:flex-col md:gap-4 md:pb-0'
           >
-            {/* connecting line */}
             {!isLast && (
               <span
                 aria-hidden
@@ -28,11 +30,14 @@ export function JourneyLadder({ steps }: Props) {
               aria-hidden
               className='relative z-10 mt-1 size-[15px] shrink-0 rounded-full border-2 border-teal bg-paper md:mt-0'
             />
-            <div className='flex flex-col gap-1 md:pr-4'>
+            <div className='flex flex-col gap-1 md:pr-6'>
               <span className='font-mono text-label tabular-nums text-teal'>
                 {String(n).padStart(2, '0')}
               </span>
-              <span className={cn('font-display text-h3 text-ink')}>{step}</span>
+              <span className='font-display text-h3 text-ink'>{title}</span>
+              {caption && (
+                <p className='mt-1 font-body text-small text-muted'>{caption}</p>
+              )}
             </div>
           </li>
         )

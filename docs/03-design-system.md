@@ -13,6 +13,8 @@ All values below are defined once as tokens in `src/app/globals.css` (Tailwind v
 | `muted` | `#5B5E5C` | Secondary text, captions |
 | `teal` | `#1F5A57` | The single accent: buttons, links, small labels, map, journey diagram |
 | `sand` | `#F3EFE6` | Form fields only |
+| `cream` | `#E6C56B` | Secondary button fill (ink text). Works on both paper and ink backgrounds. |
+| `cream-soft` | `#FAF1D9` | Section-background wash (e.g. Beyond the curriculum). Chosen to blend into surrounding paper. |
 | `rule` | ink at about 12% opacity | Hairline dividers |
 
 Contrast (computed, WCAG AA needs 4.5:1 for body text, 3:1 for large text and UI):
@@ -29,7 +31,7 @@ The hero image overlay is the only gradient allowed (dark, linear).
 | Role | Font | Notes |
 |------|------|-------|
 | Display and headings | Newsreader | Large sizes, tight leading |
-| Body and UI | Public Sans | Civic, readable |
+| Body and UI | Hanken Grotesk | Warm humanist grotesque, civic and readable. Used for paragraphs, buttons and UI text |
 | Labels and metadata | IBM Plex Mono | Small, uppercase, letter-spaced. Section numbers ("§ 02 / Mission"), form step counters, table headers |
 
 Self-host with `next/font`. Fluid type scale with `clamp()`, tokenised (`--text-display`, `--text-h1`, `--text-h2`, `--text-h3`, `--text-body`, `--text-small`, `--text-label`). Body at least 16px on phones. Line length 60 to 75 characters for prose. British spelling.
@@ -37,7 +39,8 @@ Self-host with `next/font`. Fluid type scale with `clamp()`, tokenised (`--text-
 ## Layout and spacing
 
 - Mobile first. Design at 360px, then scale up. Test 360, 768, 1280.
-- One content width token for prose (narrow), one for wide layouts. A 12-column grid on desktop, single column on phones.
+- Section width: every section from the header to the footer uses the `container-site` utility — `width: 91vw`, centred (`margin-inline: auto`), capped at `--container-wide` (80rem). One narrow token (`--container-prose`) caps prose measure. A 12-column grid on desktop, single column on phones.
+- Hero fills `min-h-[90vh]`.
 - Spacing from a small token scale (4, 8, 12, 16, 24, 32, 48, 64, 96, 128). No arbitrary pixel values in components.
 - Sections separated by hairline rules and white space, not boxes or shadows.
 - Photographs carry much of the design: full-screen hero, section images, leader headshots. Honest, documentary, natural light, everyday Ghanaian life and community health settings. No staged stock (no smiling doctors with stethoscopes).
@@ -45,7 +48,7 @@ Self-host with `next/font`. Fluid type scale with `clamp()`, tokenised (`--text-
 
 ## Components to build first (on a `/styleguide` route, protected or removed before launch)
 
-1. **Button** (`rounded-md`): primary (teal fill, paper text), secondary (ink outline), secondaryLight (paper outline, for dark backgrounds such as the hero and footer). Arrow nudges 2 to 4px on hover. Visible focus ring in teal with offset (paper on dark backgrounds).
+1. **Button** (`rounded-md`): primary (teal fill, paper text), secondary (cream fill, ink text — works on both paper and ink backgrounds, used for Apply CTAs), secondaryLight (paper outline, for dark backgrounds such as the hero and footer), link (teal text with underline-draw on hover + arrow nudge, no padding). Sizes: `md` default (`px-10 py-4`, generous, more horizontal than vertical), `sm` (`px-6 py-2.5`, for the compact navbar button). Arrow nudges 2 to 4px on hover. Visible focus ring in teal with offset (paper on dark backgrounds).
 2. **Link**: underline draws on hover.
 3. **Section header**: mono label ("§ 02 / Mission") above a serif heading, hairline rule.
 4. **Input, Textarea, Select, Checkbox, Radio**: sand fill, visible labels (never placeholder-only), error text below linked with `aria-describedby`, errors announced via `aria-live`. Searchable select for institutions.

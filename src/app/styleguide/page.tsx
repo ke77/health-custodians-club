@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/ui/buttons'
 import { TextLink } from '@/components/ui/text-link'
 import { SectionHeader } from '@/components/ui/section-header'
 import { Input } from '@/components/ui/input'
@@ -48,7 +48,7 @@ export default function StyleguidePage() {
   if (process.env.NODE_ENV === 'production') notFound()
 
   return (
-    <main className='mx-auto w-full max-w-[var(--container-wide)] px-4 py-16 sm:px-8'>
+    <main className='container-site py-16'>
       <header className='flex flex-col gap-3 pb-6'>
         <p className='font-mono text-label uppercase text-muted'>
           Health Custodians Club
@@ -84,12 +84,12 @@ export default function StyleguidePage() {
           <p className='font-display text-h2 text-ink'>Heading 2 Newsreader</p>
           <p className='font-display text-h3 text-ink'>Heading 3 Newsreader</p>
           <p className='max-w-[var(--container-prose)] font-body text-body text-ink'>
-            Body Public Sans. Most health problems are not sudden. They begin as
-            small habits no one explained. This measure is held near sixty-eight
-            characters for comfortable reading.
+            Body Hanken Grotesk. Most health problems are not sudden. They begin
+            as small habits no one explained. This measure is held near
+            sixty-eight characters for comfortable reading.
           </p>
           <p className='font-body text-small text-muted'>
-            Small Public Sans — captions and secondary text.
+            Small Hanken Grotesk — captions and secondary text.
           </p>
           <p className='font-mono text-label uppercase text-muted'>
             Label IBM Plex Mono — § 02 / Mission

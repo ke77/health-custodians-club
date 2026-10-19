@@ -8,8 +8,6 @@ type Props = {
   bio?: string
 }
 
-// leadership entry: photo, name, role. typographic, not a shadowed card (docs/03).
-// renders a graceful empty frame when no photo is supplied (content comes from the database).
 export function PersonEntry({ name, role, photoSrc, bio }: Props) {
   return (
     <figure className='flex flex-col gap-4'>

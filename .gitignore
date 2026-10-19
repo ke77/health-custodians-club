@@ -37,6 +37,7 @@ yarn-error.log*
 # reference screenshots (layout references only, not committed)
 /reference/*
 !/reference/README.md
+/docs/
 
 # vercel
 .vercel

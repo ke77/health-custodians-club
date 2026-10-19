@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
-import { Newsreader, Public_Sans, IBM_Plex_Mono } from 'next/font/google'
+import { Newsreader, Hanken_Grotesk, IBM_Plex_Mono } from 'next/font/google'
 import { Footer } from '@/components/layout/footer'
 import './globals.css'
+import { Navbar } from '@/components/layout/navbar'
 
 const newsreader = Newsreader({
   subsets: ['latin'],
@@ -10,9 +11,9 @@ const newsreader = Newsreader({
   display: 'swap',
 })
 
-const publicSans = Public_Sans({
+const hankenGrotesk = Hanken_Grotesk({
   subsets: ['latin'],
-  variable: '--font-public-sans',
+  variable: '--font-hanken',
   display: 'swap',
 })
 
@@ -34,9 +35,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html
       lang='en'
       data-theme='hcc'
-      className={`${newsreader.variable} ${publicSans.variable} ${ibmPlexMono.variable} h-full antialiased`}
+      className={`${newsreader.variable} ${hankenGrotesk.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
       <body className='flex min-h-full flex-col'>
+        <Navbar />
         <div className='flex flex-1 flex-col'>{children}</div>
         <Footer />
       </body>

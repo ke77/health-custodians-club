@@ -23,7 +23,6 @@ function countWords(text: string) {
   return trimmed.split(/\s+/).length
 }
 
-// textarea with a live word counter for the short answers (docs/04: 150 to 200 words).
 export function WordCounterField({
   label,
   hint,

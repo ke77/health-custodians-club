@@ -8,7 +8,6 @@ type Props = {
   className?: string
 }
 
-// underline draws in on hover/focus via a background-size transition (respects reduced-motion globally)
 const underline =
   'bg-[length:0%_1px] bg-left-bottom bg-no-repeat transition-[background-size] duration-300 hover:bg-[length:100%_1px] focus-visible:bg-[length:100%_1px]'
 

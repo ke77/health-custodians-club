@@ -7,7 +7,6 @@ type Props = {
   className?: string
 }
 
-// mono label above a serif heading, optional hairline rule (docs/03)
 export function SectionHeader({ label, title, rule = true, className }: Props) {
   return (
     <div className={cn('flex flex-col', className)}>

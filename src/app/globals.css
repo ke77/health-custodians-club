@@ -17,6 +17,9 @@
   --color-muted: #5b5e5c;
   --color-teal: #1f5a57;
   --color-sand: #f3efe6;
+  /* --color-cream: #e6c56b; */
+  /* --color-cream-soft: #faf1d9; */
+  --color-cream: #faf1d9;
   /* hairline dividers: ink at ~12% opacity */
   --color-rule: color-mix(in srgb, #17191a 12%, transparent);
 
@@ -47,7 +50,7 @@
 
   /* content widths: one narrow (prose), one wide */
   --container-prose: 68ch;
-  --container-wide: 80rem;
+  --container-wide: 90rem;
 }
 
 /*
@@ -56,8 +59,15 @@
 */
 @theme inline {
   --font-display: var(--font-newsreader);
-  --font-body: var(--font-public-sans);
+  --font-body: var(--font-hanken);
   --font-mono: var(--font-ibm-plex-mono);
+}
+
+/* shared width for every section from the header to the footer: 91vw, centred, capped at the wide token */
+.container-site {
+  margin-inline: auto;
+  width: 91vw;
+  max-width: var(--container-wide);
 }
 
 /* custom daisyUI theme: maps daisyUI's semantic slots to our tokens only. */

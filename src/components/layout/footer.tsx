@@ -1,6 +1,14 @@
+import type { ComponentType } from 'react'
 import Link from 'next/link'
+import { FaLinkedinIn, FaFacebook, FaInstagram } from 'react-icons/fa6'
 
 type FooterLink = { href: string; label: string }
+
+const socials: { label: string; href: string; Icon: ComponentType<{ className?: string }> }[] = [
+  { label: 'Instagram', href: '#', Icon: FaInstagram },
+  { label: 'Facebook', href: '#', Icon: FaFacebook },
+  { label: 'LinkedIn', href: '#', Icon: FaLinkedinIn },
+]
 
 const columns: { heading: string; links: FooterLink[] }[] = [
   {
@@ -34,14 +42,13 @@ function FooterLink({ href, label }: FooterLink) {
   return (
     <Link
       href={href}
-      className='font-body text-small text-paper transition-opacity hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-paper'
+      className='font-body text-base text-ink/70 transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink'
     >
       {label}
     </Link>
   )
 }
 
-// copyright year, cached so it is prerenderable under cache components (baked at build/revalidate)
 async function copyrightYear() {
   'use cache'
   return new Date().getFullYear()
@@ -51,44 +58,59 @@ export async function Footer() {
   const year = await copyrightYear()
 
   return (
-    <footer className='bg-ink text-paper'>
-      <div className='mx-auto w-full max-w-[var(--container-wide)] px-4 py-16 sm:px-8 sm:py-20'>
-        <div className='grid gap-12 md:grid-cols-[1.5fr_1fr_1fr_1fr]'>
-          <div className='flex flex-col gap-4'>
-            <span className='font-display text-h3 text-paper'>
+    <footer className='bg-paper text-ink/90'>
+      <div className='container-site pt-20 pb-16'>
+        <div className='flex sm:flex-row flex-col justify-between'>
+          <div className='flex flex-col gap-5'>
+            <span className='font-sans text-h2 text-ink/80 font-semibold'>
               Health Custodians Club
             </span>
-            <p className='max-w-[32ch] font-body text-small text-paper/70'>
+            <p className='max-w-[36ch] font-body text-base text-ink/70 leading-7'>
               Training health students to make health knowledge reach the people
               who need it.
             </p>
           </div>
 
-          {columns.map((col) => (
-            <nav key={col.heading} className='flex flex-col gap-4'>
-              <p className='font-mono text-label uppercase text-paper/60'>
-                {col.heading}
-              </p>
-              <ul className='flex flex-col gap-3'>
-                {col.links.map((l) => (
-                  <li key={l.href}>
-                    <FooterLink {...l} />
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          ))}
+          <div className="flex flex-col sm:flex-row justify-between gap-18 sm:gap-42 mt-12 md:mt-0">
+
+            {columns.map((col) => (
+              <nav key={col.heading} className='flex flex-col gap-5'>
+                <p className='font-mono uppercase text-base text-ink'>
+                  {col.heading}
+                </p>
+                <ul className='flex flex-col gap-3'>
+                  {col.links.map((l) => (
+                    <li key={l.href}>
+                      <FooterLink {...l} />
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            ))}
+          </div>
         </div>
 
-        {/* contact details and social handles render here from settings once available (docs/02, docs/05) */}
-
-        <div className='mt-16 flex flex-col gap-4 border-t border-paper/15 pt-8 sm:flex-row sm:items-center sm:justify-between'>
-          <p className='font-body text-small text-paper/70'>
+        <div className='mt-16 sm:mt-24 flex flex-col gap-4 pt-8 sm:flex-row sm:items-center sm:justify-between'>
+          <p className='font-body text-base text-ink/80'>
             &copy; {year} Health Custodians Club
           </p>
-          <div className='flex items-center gap-6'>
-            <FooterLink href='/privacy' label='Privacy' />
-            <FooterLink href='/terms' label='Terms' />
+          <div className='flex items-center gap-5'>
+            <Link href='/privacy-policy' className='text-ink/70 text-base transition-colors hover:text-ink'>Privacy</Link>
+            <Link href='/terms-of-service' className='text-ink/70 text-base hover:text-ink transition-colors'>Terms</Link>
+            <span className='h-7 w-px bg-ink/60' aria-hidden />
+            <ul className='flex items-center gap-5'>
+              {socials.map(({ label, href, Icon }) => (
+                <li key={label}>
+                  <a
+                    href={href}
+                    aria-label={label}
+                    className='block text-ink/80 transition-opacity hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-paper'
+                  >
+                    <Icon className='size-5' />
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

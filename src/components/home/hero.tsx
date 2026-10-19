@@ -1,48 +1,41 @@
-import Image from 'next/image'
-import { Navbar } from '@/components/layout/navbar'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/ui/buttons';
 
-type Props = {
-  // the club supplies the hero photograph later. until then the background is a dark ink band, no stock image (docs/02).
-  imageSrc?: string
-}
-
-export function Hero({ imageSrc }: Props) {
+export function Hero() {
   return (
-    <section className='relative flex min-h-[85vh] flex-col bg-ink text-paper'>
+    <section className='relative flex min-h-[87vh] flex-col justify-end sm:justify-initial bg-ink text-paper bg-[url(/hero-image.jpg)] bg-cover bg-center bg-no-repeat'>
       {/* background photograph when supplied, otherwise the ink band shows through */}
-      {imageSrc && (
-        <Image
-          src={imageSrc}
+      {/* {imageSrc && ( */}
+        {/* <Image
+          src='/hero-image.jpg'
           alt=''
           fill
           priority
           sizes='100vw'
           className='object-cover'
-        />
-      )}
+        /> */}
+      {/* // )} */}
       {/* the hero overlay is the only gradient allowed (dark, linear) */}
       <div
         aria-hidden
-        className='absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/40'
+        className='absolute inset-0 bg-gradient-to-t from-ink to-ink/60'
       />
 
-      <div className='relative z-10 flex min-h-[85vh] flex-col'>
-        <Navbar />
+      <div className='relative z-10 flex min-h-[85vh] sm:min-h-[80vh] flex-col'>
+        {/* <Navbar /> */}
 
-        <div className='mx-auto flex w-full max-w-[var(--container-wide)] flex-1 flex-col justify-end px-4 pt-16 pb-16 sm:px-8 sm:pb-24'>
-          <h1 className='max-w-[18ch] font-display text-display text-paper'>
+        <div className='container-site flex flex-1 flex-col justify-end pt-16 pb-16 sm:pb-24'>
+          <h1 className='max-w-[21ch] font-display text-display text-paper'>
             Most illness starts long before the hospital.
           </h1>
           <p className='mt-6 max-w-[var(--container-prose)] font-body text-body text-paper/85'>
             Health Custodians Club trains health students to close the gap between
             how people live every day and what they know about it.
           </p>
-          <div className='mt-10 flex flex-col gap-4 sm:flex-row sm:items-center'>
-            <Button href='#what-we-do' variant='primary' arrow>
+          <div className='mt-10 flex flex-row gap-3 md:gap-4 sm:items-center jusitfy-between'>
+            <Button href='#what-we-do' variant='primary' className='px-8 py-3.5 md:px-9 md:py-4 text-ink' arrow>
               What we do
             </Button>
-            <Button href='/membership/apply' variant='secondaryLight'>
+            <Button href='/membership/apply' variant='secondary' className='px-9 py-3.5 md:px-9 md:py-4 text-ink'>
               Apply to join
             </Button>
           </div>

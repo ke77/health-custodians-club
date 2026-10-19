@@ -9,8 +9,6 @@ type FieldShellProps = {
   children: ReactNode
 }
 
-// shared label/hint/error scaffolding for form controls.
-// labels are always visible (never placeholder-only); errors link via aria-describedby and announce via aria-live.
 export function FieldShell({ id, label, hint, error, children }: FieldShellProps) {
   return (
     <div className='flex flex-col gap-2'>

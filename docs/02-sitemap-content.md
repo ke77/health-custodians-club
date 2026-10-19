@@ -36,7 +36,7 @@ Sections top to bottom:
    - Primary button: "What we do" (scrolls to the next section).
    - Second button: "Apply to join" (to `/membership/apply`).
    - Image: CLUB. Placeholder until supplied: a dark ink background, no stock image.
-2. **What HCC does** (`id="what-we-do"`). Three pillars: Training, Research, Sensitization. One sentence each and a link to `/programs`. Do not render as three identical icon cards. Use a typographic list with mono numbering (01, 02, 03) and hairline dividers.
+2. **What HCC does** (`id="what-we-do"`). Three pillars: Training, Research, Sensitization. One sentence each and a link to `/programs`. Do not render as three identical icon cards. do not generic Use a typographic list with mono numbering (01, 02, 03) and hairline dividers.
    - DRAFT Training: "Virtual sessions that build communication, leadership, language and research skills beyond the university syllabus."
    - DRAFT Research: "Members find health problems in their own communities and build evidence-based responses."
    - DRAFT Sensitization: "Plain-language health education in schools, marketplaces and rural communities."
@@ -98,7 +98,7 @@ Standalone page, editable in Phase 2. No partners yet, so show a short statement
 
 "Coming soon" notice at launch with a line about what will appear: announcements, training sessions, outreach activities and events. Phase 2: posts from `posts`, written in a standalone editor in the dashboard (installable on a phone as a web app).
 
-## Privacy `/privacy` and Terms `/terms`
+## Privacy `/privacy-policy` and Terms `/terms-of-service`
 
 Short pages. Club supplies content. Until then render a clear "Being prepared" notice. Reference Ghana's Data Protection Act, 2012 (Act 843) in the privacy copy once supplied.
 

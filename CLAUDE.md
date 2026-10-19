@@ -41,7 +41,7 @@ Package manager: pnpm. Add a `typecheck` script (`tsc --noEmit`).
 ## Design rules (details in `docs/03-design-system.md`)
 
 - Minimalist and editorial. White page, ink text, one teal accent. Sand `#F3EFE6` for form fields only.
-- Fonts: Newsreader (headings), Public Sans (body), IBM Plex Mono (small labels). Self-host via `next/font`.
+- Fonts: Newsreader (headings), Hanken Grotesk (body and UI), IBM Plex Mono (small labels). Self-host via `next/font`.
 - All colours, fonts and spacing live as tokens in `src/app/globals.css`. Never hardcode a hex, font name or magic spacing value in a component.
 - No generic AI-template tells: no gradients (other than the hero's dark image overlay), glass, glow, mesh backgrounds, emoji icons, rows of identical icon cards, stat counters, testimonial carousels, filler slogans, kente patterns, flag-colour overload.
 - Icons come from `react-icons` or `lucide-react` only. The Ghana map is the one allowed custom SVG.

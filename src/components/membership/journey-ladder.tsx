@@ -1,6 +1,11 @@
 import { cn } from '@/lib/utils/cn'
 
-export type JourneyStep = { title: string; caption?: string }
+export type JourneyStep = {
+  title: string
+  caption?: string
+  // a step not every cohort goes through: tagged 'If applicable'
+  optional?: boolean
+}
 
 type Props = {
   steps: JourneyStep[]
@@ -95,6 +100,9 @@ export function JourneyLadder({ steps, tone = 'light' }: Props) {
               <span className={cn('font-mono text-label tabular-nums', t.number)}>
                 {String(i + 1).padStart(2, '0')}
               </span>
+              {step.optional && (
+                <span className={cn('mt-1 font-mono text-label uppercase', t.number)}>If applicable</span>
+              )}
               <h3 className={cn('mt-1 font-display text-h3', t.title)}>{step.title}</h3>
               {step.caption && (
                 <p className={cn('mt-2 font-body text-small', t.caption)}>{step.caption}</p>

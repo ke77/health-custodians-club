@@ -12,6 +12,7 @@ type Props = {
   arrow?: boolean
   type?: 'button' | 'submit'
   disabled?: boolean
+  onClick?: () => void
   className?: string
 }
 
@@ -61,6 +62,7 @@ export function Button({
   arrow,
   type = 'button',
   disabled,
+  onClick,
   className,
 }: Props) {
   const isLink = variant === 'link'
@@ -91,7 +93,7 @@ export function Button({
   }
 
   return (
-    <button type={type} disabled={disabled} className={classes}>
+    <button type={type} disabled={disabled} onClick={onClick} className={classes}>
       {inner}
     </button>
   )

@@ -12,8 +12,7 @@ export function WhatWeDo() {
           </h2>
           <p className='mt-8 max-w-[var(--container-prose)] font-body text-body text-muted'>
             Health Custodians Club trains students from across the health
-            sciences in communication, leadership, languages and research &mdash;
-            the skills a degree rarely teaches. Members use them to study the
+            sciences in communication, leadership, languages and research; skills rarely found in our curriculum. Members use them to study the
             health problems around them and to explain health plainly, in the
             languages people speak, in schools, markets and rural communities.
           </p>

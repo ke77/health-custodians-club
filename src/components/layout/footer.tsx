@@ -26,7 +26,7 @@ const columns: { heading: string; links: FooterLink[] }[] = [
     links: [
       { href: '/blog', label: 'Blog' },
       { href: '/partners', label: 'Partners' },
-      { href: '/#faq', label: 'FAQ' },
+      { href: '/membership#faq', label: 'FAQ' },
     ],
   },
   {
@@ -59,7 +59,7 @@ export async function Footer() {
 
   return (
     <footer className='bg-paper text-ink/90'>
-      <div className='container-site pt-12 md:pt-6 md:mt-14 pb-14 md:pb-16'>
+      <div className='container-site pt-18 md:pt-6 md:mt-14 pb-14 md:pb-16'>
         <div className='flex sm:flex-row flex-col justify-between'>
           <div className='flex flex-col gap-5'>
             <span className='font-sans text-h2 text-ink/80 font-semibold'>
@@ -91,19 +91,19 @@ export async function Footer() {
         </div>
 
         {/*
-          mobile: socials on their own row, then copyright (left) and the legal links (right).
+          phones: three short left-aligned rows: socials, the legal links on one line, then the copyright.
           md and up: copyright left; legal links, divider and socials on the right.
         */}
-        <div className='mt-5 md:mt-8 grid grid-cols-[1fr_auto] items-start gap-x-6 gap-y-6 pt-8 md:mt-24 md:flex md:items-center md:gap-5'>
-          <p className='font-body text-base text-ink/80 md:mr-auto'>
+        <div className='mt-10 flex flex-col gap-4 border-t border-rule pt-8 md:mt-24 md:flex-row md:items-center md:gap-5 md:border-t-0'>
+          <p className='order-last font-body text-small text-ink/70 md:order-none md:mr-auto md:text-base md:text-ink/80'>
             &copy; {year} Health Custodians Club
           </p>
-          <div className='flex flex-col items-end gap-1 md:flex-row md:items-center md:gap-3'>
-            <Link href='/privacy-policy' className='text-ink/70 text-base transition-colors hover:text-ink'>Privacy Policy</Link>
-            <Link href='/terms-of-service' className='text-ink/70 text-base hover:text-ink transition-colors'>Terms of Service</Link>
+          <div className='flex items-center gap-5 md:gap-3'>
+            <Link href='/privacy-policy' className='text-ink/70 text-small md:text-base transition-colors hover:text-ink'>Privacy Policy</Link>
+            <Link href='/terms-of-service' className='text-ink/70 text-small md:text-base hover:text-ink transition-colors'>Terms of Service</Link>
           </div>
           <span className='hidden md:block h-7 w-px bg-ink/60' aria-hidden />
-          <ul className='order-first col-span-2 flex items-center gap-5 md:order-none'>
+          <ul className='order-first mb-2 flex items-center gap-5 md:order-none md:mb-0'>
             {socials.map(({ label, href, Icon }) => (
               <li key={label}>
                 <a

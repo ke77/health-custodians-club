@@ -24,6 +24,12 @@ export const accordion = {
   duration: 0.3,
 } as const
 
+// application form: each step fades in, nudged up slightly
+export const formStep = {
+  duration: 0.25,
+  distance: 8,
+} as const
+
 // scroll-to-top button: shows after one viewport of scrolling
 export const scrollTop = {
   duration: 0.2,

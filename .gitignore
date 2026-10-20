@@ -34,10 +34,9 @@ yarn-error.log*
 .env*
 !.env.example
 
-# reference screenshots (layout references only, not committed)
-/reference/*
-!/reference/README.md
+# project docs and reference screenshots (kept locally, not committed)
 /docs/
+/reference/
 
 # vercel
 .vercel

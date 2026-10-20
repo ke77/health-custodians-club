@@ -1,4 +1,5 @@
 import { Image as ImageIcon } from 'lucide-react'
+import { Reveal } from '@/components/ui/reveal'
 
 /*
 type Setting = {
@@ -38,18 +39,18 @@ const settings: Setting[] = [
 export function WhereWeWork() {
   return (
     <section id='where-we-work' className='bg-paper'>
-      <div className='container-site py-24 sm:py-32'>
-        <div className='grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16'>
-          <div className='order-first md:order-last relative flex aspect-[3/2] flex-col items-center justify-center gap-3 rounded-md border border-rule lg:order-first'>
+      <div className='container-site py-28 sm:py-32'>
+        <div className='grid gap-14 lg:grid-cols-2 lg:items-center lg:gap-16'>
+          <Reveal className='order-first md:order-last relative flex aspect-[3/2] flex-col items-center justify-center gap-3 rounded-md border border-rule shadow-image lg:order-first'>
             <ImageIcon className='size-10 text-muted' aria-hidden />
             <span className='font-mono text-label uppercase text-muted'>
               Photo to come
             </span>
-          </div>
+          </Reveal>
 
-          <div className='flex flex-col items-start'>
-            <h2 className='w-full max-w-full text-wrap md:max-w-[24ch] font-bold font-sans text-h1 text-ink md:tracking-[.03em] leading-9 md:leading-14'>
-              Where health knowledge is needed most.
+          <Reveal index={1} className='flex flex-col items-start'>
+            <h2 className='heading-section text-ink'>
+              We work in settings where health knowledge is needed most.
             </h2>
             <p className='mt-6 max-w-[var(--container-prose)] font-body text-base text-muted leading-[1.8em]'>
               Members work in the places where day-to-day life shapes health:
@@ -58,7 +59,7 @@ export function WhereWeWork() {
               away. Through regional representatives, outreaches are planned
               across all 16 regions of Ghana.
             </p>
-          </div>
+          </Reveal>
         </div>
 
         {/*

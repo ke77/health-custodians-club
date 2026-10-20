@@ -2,8 +2,10 @@ import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 import { Newsreader, Hanken_Grotesk, IBM_Plex_Mono } from 'next/font/google'
 import { Footer } from '@/components/layout/footer'
-import './globals.css'
+import { MotionProvider } from '@/components/layout/motion-provider'
 import { Navbar } from '@/components/layout/navbar'
+import { ScrollToTop } from '@/components/layout/scroll-to-top'
+import './globals.css'
 
 const newsreader = Newsreader({
   subsets: ['latin'],
@@ -35,12 +37,17 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html
       lang='en'
       data-theme='hcc'
+      // lets next.js switch off css smooth scrolling during route changes, so new pages start at the top instantly
+      data-scroll-behavior='smooth'
       className={`${newsreader.variable} ${hankenGrotesk.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
       <body className='flex min-h-full flex-col'>
-        <Navbar />
-        <div className='flex flex-1 flex-col'>{children}</div>
-        <Footer />
+        <MotionProvider>
+          <Navbar />
+          <div className='flex flex-1 flex-col'>{children}</div>
+          <Footer />
+          <ScrollToTop />
+        </MotionProvider>
       </body>
     </html>
   )

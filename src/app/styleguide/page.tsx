@@ -12,6 +12,8 @@ import { Accordion } from '@/components/ui/accordion'
 import { WordCounterField } from '@/components/ui/word-counter'
 import { PersonEntry } from '@/components/about/person-entry'
 import { JourneyLadder } from '@/components/membership/journey-ladder'
+import { Reveal } from '@/components/ui/reveal'
+import { membershipJourney } from '@/lib/config/membership-journey'
 
 export const metadata = {
   title: 'Styleguide — HCC',
@@ -24,6 +26,7 @@ const colours = [
   { name: 'muted', value: '#5B5E5C', cls: 'bg-muted' },
   { name: 'teal', value: '#1F5A57', cls: 'bg-teal' },
   { name: 'sand', value: '#F3EFE6', cls: 'bg-sand border border-rule' },
+  { name: 'cream', value: '#FAF1D9', cls: 'bg-cream border border-rule' },
   { name: 'rule', value: 'ink 12%', cls: 'bg-rule border border-rule' },
 ]
 
@@ -62,7 +65,7 @@ export default function StyleguidePage() {
       </header>
 
       <Block title='Colour'>
-        <div className='grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-6'>
+        <div className='grid grid-cols-2 gap-4 sm:grid-cols-4 md:grid-cols-7'>
           {colours.map((c) => (
             <div key={c.name} className='flex flex-col gap-2'>
               <div className={`h-20 w-full rounded-sm ${c.cls}`} />
@@ -80,6 +83,7 @@ export default function StyleguidePage() {
       <Block title='Type scale'>
         <div className='flex flex-col gap-4'>
           <p className='font-display text-display text-ink'>Display Newsreader</p>
+          <p className='heading-section text-ink'>Section heading (heading-section)</p>
           <p className='font-display text-h1 text-ink'>Heading 1 Newsreader</p>
           <p className='font-display text-h2 text-ink'>Heading 2 Newsreader</p>
           <p className='font-display text-h3 text-ink'>Heading 3 Newsreader</p>
@@ -87,6 +91,9 @@ export default function StyleguidePage() {
             Body Hanken Grotesk. Most health problems are not sudden. They begin
             as small habits no one explained. This measure is held near
             sixty-eight characters for comfortable reading.
+          </p>
+          <p className='font-body text-base md:text-md text-ink/70'>
+            Body md Hanken Grotesk (text-base, md:text-md) — list and card copy.
           </p>
           <p className='font-body text-small text-muted'>
             Small Hanken Grotesk — captions and secondary text.
@@ -239,17 +246,24 @@ export default function StyleguidePage() {
         </div>
       </Block>
 
-      <Block title='Journey ladder'>
-        <JourneyLadder
-          steps={[
-            'Apply',
-            'Review',
-            'Admission',
-            'Two-year cohort',
-            'Certificate',
-            'Alumni',
-          ]}
-        />
+      <Block title='Journey ladder (light)'>
+        <JourneyLadder steps={membershipJourney} />
+      </Block>
+
+      <Block title='Journey ladder (dark band)'>
+        <div className='rounded-sm bg-ink p-8'>
+          <JourneyLadder steps={membershipJourney} tone='dark' />
+        </div>
+      </Block>
+
+      <Block title='Reveal (scroll-in)'>
+        <ul className='grid gap-6 sm:grid-cols-3'>
+          {['First', 'Second', 'Third'].map((label, i) => (
+            <Reveal key={label} as='li' index={i} className='border-t border-rule pt-4'>
+              <p className='font-body text-base text-ink'>{label} block, staggered by index.</p>
+            </Reveal>
+          ))}
+        </ul>
       </Block>
 
       <Block title='Dark band'>

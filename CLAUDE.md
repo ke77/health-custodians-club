@@ -40,12 +40,13 @@ Package manager: pnpm. Add a `typecheck` script (`tsc --noEmit`).
 
 ## Design rules (details in `docs/03-design-system.md`)
 
-- Minimalist and editorial. White page, ink text, one teal accent. Sand `#F3EFE6` for form fields only.
+- Minimalist and editorial. White page, ink text, cream `#FAF1D9` for primary buttons and washes, teal held in reserve. Sand `#F3EFE6` for form fields only.
+- Every section sits in `container-site` (88vw, capped at 86rem). Section h2s use the `heading-section` utility. Dark bands are `bg-ink text-paper`.
 - Fonts: Newsreader (headings), Hanken Grotesk (body and UI), IBM Plex Mono (small labels). Self-host via `next/font`.
 - All colours, fonts and spacing live as tokens in `src/app/globals.css`. Never hardcode a hex, font name or magic spacing value in a component.
 - No generic AI-template tells: no gradients (other than the hero's dark image overlay), glass, glow, mesh backgrounds, emoji icons, rows of identical icon cards, stat counters, testimonial carousels, filler slogans, kente patterns, flag-colour overload.
 - Icons come from `react-icons` or `lucide-react` only. The Ghana map is the one allowed custom SVG.
-- Motion is subtle (link underline draw, small arrow nudge). Respect `prefers-reduced-motion`.
+- Motion is subtle: `motion` library, timings in `src/lib/config/motion.ts`. Wrap section content blocks in `<Reveal>` (not the hero), plus link underline draw and small arrow nudge. Respect `prefers-reduced-motion`.
 - Mobile first. Design and test at 360px width first. Every component is responsive by default.
 - Reference screenshots show layout, spacing and structure only. Never copy their colours, fonts, copy or imagery.
 

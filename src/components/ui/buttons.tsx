@@ -27,7 +27,7 @@ const variants: Record<Exclude<Variant, 'link'>, string> = {
 }
 
 const linkBase =
-  'group inline-flex items-center gap-2 font-body text-base font-medium text-ink/80 rounded-xs focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal'
+  'group inline-flex items-center gap-2 font-body text-base font-medium text-ink/80 rounded-xs focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink/90'
 
 const underlineDraw =
   '[background-image:linear-gradient(currentColor,currentColor)] bg-[length:0%_1px] bg-left-bottom bg-no-repeat transition-[background-size] duration-300 group-hover:bg-[length:100%_1px] group-focus-visible:bg-[length:100%_1px]'
@@ -72,6 +72,15 @@ export function Button({
       {children}
     </Content>
   )
+
+  // in-page anchors use a plain <a> so the browser scrolls to the section natively
+  if (href?.startsWith('#')) {
+    return (
+      <a href={href} className={classes}>
+        {inner}
+      </a>
+    )
+  }
 
   if (href) {
     return (

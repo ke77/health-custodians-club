@@ -7,6 +7,7 @@ import {
   Stethoscope,
   GraduationCap,
 } from 'lucide-react'
+import { Reveal } from '@/components/ui/reveal'
 
 type Skill = {
   title: string
@@ -57,27 +58,29 @@ export function BeyondTheCurriculum() {
   return (
     <section id='beyond-the-curriculum' className='bg-cream/20'>
       <div className='container-site py-24 sm:py-32'>
-        <h2 className='w-[95%] max-w-full text-wrap md:max-w-[24ch] font-bold font-sans text-h1 text-ink tracking-[.03em] leading-9 md:leading-14'>
-          A health degree teaches the science. HCC teaches the rest.
-        </h2>
-        <p className='mt-6 max-w-[var(--container-prose)] font-body text-base text-ink/70'>
-          It rarely teaches you how to explain a diagnosis in Twi, lead a team,
-          or design a small study. That is where we come in.
-        </p>
+        <Reveal>
+          <h2 className='heading-section text-ink'>
+            Beyond the curriculum
+          </h2>
+          <p className='mt-6 md:mt-8 max-w-[var(--container-prose)] font-body text-base md:text-md text-ink/70'>
+            A health degree teaches the science, but rarely teaches you how to lead a team, design a small study, or explain a diagnosis in Twi. That is where we come in.
+          </p>
+        </Reveal>
 
-        <ul className='mt-14 grid grid-cols-1 gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-3'>
-          {skills.map(({ title, Icon, description }) => (
-            <li key={title} className='flex gap-4'>
-              <span className='flex size-10 shrink-0 items-center justify-center rounded-md bg-ink text-paper'>
+        <ul className='mt-14 md:mt-20 grid grid-cols-1 gap-x-18 gap-y-14 sm:grid-cols-2 lg:grid-cols-3'>
+          {skills.map(({ title, Icon, description }, i) => (
+            // stagger by column so each row of three settles left to right
+            <Reveal key={title} as='li' index={i % 3} className='flex gap-4'>
+              {/* <span className='flex size-10 shrink-0 items-center justify-center rounded-md bg-ink text-paper'>
                 <Icon className='size-5' aria-hidden />
-              </span>
+              </span> */}
               <div className='flex flex-col gap-2'>
-                <h3 className='font-body text-base font-semibold text-ink'>
+                <h3 className='font-body text-md md:text-lg font-semibold text-ink'>
                   {title}
                 </h3>
-                <p className='font-body text-base text-ink/70'>{description}</p>
+                <p className='font-body text-base md:text-md text-ink/70 leading-[1.6em]'>{description}</p>
               </div>
-            </li>
+            </Reveal>
           ))}
         </ul>
       </div>

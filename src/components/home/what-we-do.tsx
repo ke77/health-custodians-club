@@ -1,12 +1,13 @@
 import { Image as ImageIcon } from 'lucide-react'
 import { Button } from '@/components/ui/buttons'
+import { Reveal } from '@/components/ui/reveal'
 
 export function WhatWeDo() {
   return (
     <section id='what-we-do' className='bg-paper'>
       <div className='container-site grid gap-12 py-24 sm:py-28 lg:grid-cols-2 lg:items-center lg:gap-16'>
-        <div className='flex flex-col items-start'>
-          <h2 className='w-full max-w-full text-wrap md:max-w-[24ch] font-bold font-sans text-h1 text-ink tracking-[.03em] leading-9 md:leading-14'>
+        <Reveal className='flex flex-col items-start'>
+          <h2 className='heading-section text-ink'>
             Making health knowledge simple enough to use.
           </h2>
           <p className='mt-8 max-w-[var(--container-prose)] font-body text-body text-muted'>
@@ -21,14 +22,14 @@ export function WhatWeDo() {
               More about HCC
             </Button>
           </div>
-        </div>
+        </Reveal>
 
-        <div className='flex aspect-[3/2] flex-col items-center justify-center gap-3 rounded-md border border-rule'>
+        <Reveal index={1} className='flex aspect-[3/2] flex-col items-center justify-center gap-3 rounded-md border border-rule shadow-image'>
           <ImageIcon className='size-10 text-muted' aria-hidden />
           <span className='font-mono text-label uppercase text-muted'>
             Photo to come
           </span>
-        </div>
+        </Reveal>
       </div>
     </section>
   )

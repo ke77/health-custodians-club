@@ -3,8 +3,11 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { X } from 'lucide-react'
+import { AnimatePresence, motion, stagger, useReducedMotion } from 'motion/react'
+import type { Variants } from 'motion/react'
 import { Button } from '@/components/ui/buttons'
-import { cn } from '@/lib/utils/cn'
+import { Logo } from '@/components/layout/logo'
+import { easeOut, menu } from '@/lib/config/motion'
 
 const links = [
   { href: '/', label: 'Home' },
@@ -26,27 +29,36 @@ function MenuIcon({ className = "w-6 h-6" }: { className?: string }) {
   );
 }
 
-function Wordmark({
-  onClick,
-  className,
-}: {
-  onClick?: () => void
-  className?: string
-}) {
-  return (
-    <Link
-      href='/'
-      onClick={onClick}
-      className={cn('font-display text-h3 text-ink', className)}
-    >
-      <span>HCC</span>
-      {/* <span className='hidden sm:inline'>Health Custodians Club</span> */}
-    </Link>
-  )
+// the panel drops down like a curtain, then the links rise in one after another
+const panel: Variants = {
+  closed: {
+    clipPath: 'inset(0 0 100% 0)',
+    transition: { duration: menu.duration * 0.75, ease: easeOut },
+  },
+  open: {
+    clipPath: 'inset(0 0 0% 0)',
+    transition: {
+      duration: menu.duration,
+      ease: easeOut,
+      delayChildren: stagger(menu.stagger, { startDelay: menu.duration * 0.4 }),
+    },
+  },
+}
+
+// reduced motion: a plain fade, no curtain and no rising links
+const panelReduced: Variants = {
+  closed: { opacity: 0 },
+  open: { opacity: 1 },
+}
+
+const item: Variants = {
+  closed: { opacity: 0, y: menu.linkDistance },
+  open: { opacity: 1, y: 0, transition: { duration: menu.duration, ease: easeOut } },
 }
 
 export function Navbar() {
   const [open, setOpen] = useState(false)
+  const reduceMotion = useReducedMotion()
 
   useEffect(() => {
     if (!open) return
@@ -62,12 +74,12 @@ export function Navbar() {
   }, [open])
 
   return (
-    <header className='sticky z-20 bg-paper text-ink'>
+    <header className='sticky z-20 bg-transparent text-paper'>
       <nav
         aria-label='Primary'
         className='container-site flex items-center justify-between py-4 lg:grid lg:grid-cols-3'
       >
-        <Wordmark className='lg:justify-self-start' />
+        <Logo className='lg:justify-self-start' />
 
         <ul className='hidden items-center gap-8 lg:flex lg:justify-self-center'>
           {links.map((l) => (
@@ -93,45 +105,60 @@ export function Navbar() {
           onClick={() => setOpen(true)}
           aria-label='Open menu'
           aria-expanded={open}
-          className='flex items-center justify-center text-ink lg:hidden transition-all duration-300'
+          aria-controls='mobile-menu'
+          className='flex size-11 items-center justify-end text-ink lg:hidden'
         >
-          {/* <Menu className='size-6' aria-hidden /> */}
           <MenuIcon />
         </button>
       </nav>
 
-      {open && (
-        <div className='fixed inset-0 z-50 flex flex-col bg-paper lg:hidden'>
-          <div className='container-site flex items-center justify-between py-5'>
-            <Wordmark onClick={() => setOpen(false)} />
-            <button
-              type='button'
-              onClick={() => setOpen(false)}
-              aria-label='Close menu'
-              className='flex size-11 items-center justify-center text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal'
-            >
-              <X className='size-6' aria-hidden />
-            </button>
-          </div>
-          <nav className='container-site flex flex-1 flex-col gap-2 pt-8 transition-all duration-300'>
-            {links.map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            key='mobile-menu'
+            id='mobile-menu'
+            role='dialog'
+            aria-modal='true'
+            aria-label='Menu'
+            variants={reduceMotion ? panelReduced : panel}
+            initial='closed'
+            animate='open'
+            exit='closed'
+            className='fixed inset-0 z-50 flex flex-col bg-paper lg:hidden'
+          >
+            <div className='container-site flex items-center justify-between py-4'>
+              <Logo onClick={() => setOpen(false)} />
+              <button
+                type='button'
                 onClick={() => setOpen(false)}
-                className='border-b border-rule py-4 font-display text-h2 text-ink hover:text-ink/60'
+                aria-label='Close menu'
+                autoFocus
+                className='flex size-11 items-center justify-end text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink'
               >
-                {l.label}
-              </Link>
-            ))}
-            <div className='pt-8'>
-              <Button href='/membership/apply' variant='primary' className='w-full bg-transparent md:px-9 py-4 text-ink' arrow>
-                Apply to join
-              </Button>
+                <X className='size-6' aria-hidden />
+              </button>
             </div>
-          </nav>
-        </div>
-      )}
+            <nav aria-label='Mobile' className='container-site flex flex-1 flex-col gap-2 pt-8'>
+              {links.map((l) => (
+                <motion.div key={l.href} variants={reduceMotion ? undefined : item}>
+                  <Link
+                    href={l.href}
+                    onClick={() => setOpen(false)}
+                    className='block border-b border-rule py-4 font-display text-h2 text-ink hover:text-ink/60'
+                  >
+                    {l.label}
+                  </Link>
+                </motion.div>
+              ))}
+              <motion.div variants={reduceMotion ? undefined : item} className='pt-8'>
+                <Button href='/membership/apply' variant='primary' className='w-full bg-transparent md:px-9 py-4 text-ink' arrow>
+                  Apply to join
+                </Button>
+              </motion.div>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   )
 }

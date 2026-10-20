@@ -17,8 +17,7 @@
   --color-muted: #5b5e5c;
   --color-teal: #1f5a57;
   --color-sand: #f3efe6;
-  /* --color-cream: #e6c56b; */
-  /* --color-cream-soft: #faf1d9; */
+  /* cream: soft warm fill for primary buttons and section washes (bg-cream/20) */
   --color-cream: #faf1d9;
   /* hairline dividers: ink at ~12% opacity */
   --color-rule: color-mix(in srgb, #17191a 12%, transparent);
@@ -26,6 +25,17 @@
   /* radius: small and consistent. sm for fields and cards, md for buttons (docs/03) */
   --radius-sm: 3px;
   --radius-md: 6px;
+
+  /*
+    shadows: only these two, never decorative card shadows (docs/03).
+    float lifts fixed controls (scroll-to-top) off the page; image settles section photos onto the paper.
+  */
+  --shadow-float:
+    0 2px 6px color-mix(in srgb, #17191a 20%, transparent),
+    0 10px 24px -6px color-mix(in srgb, #17191a 40%, transparent);
+  --shadow-image:
+    0 1px 2px color-mix(in srgb, #17191a 6%, transparent),
+    0 18px 40px -16px color-mix(in srgb, #17191a 24%, transparent);
 
   /*
     fluid type scale (clamp). PROVISIONAL values, flagged for review:
@@ -42,6 +52,9 @@
   --text-h3--line-height: 1.25;
   --text-body: clamp(1rem, 0.97rem + 0.15vw, 1.125rem);
   --text-body--line-height: 1.6;
+  /* md sits between base (16px) and lg (18px): larger card and list body copy on tablet and up */
+  --text-md: 1.0625rem;
+  --text-md--line-height: 1.6;
   --text-small: 0.875rem;
   --text-small--line-height: 1.5;
   --text-label: 0.75rem;
@@ -50,7 +63,9 @@
 
   /* content widths: one narrow (prose), one wide */
   --container-prose: 68ch;
-  --container-wide: 90rem;
+  --container-wide: 86rem;
+  /* fluid site width used by .container-site: leaves 6vw of air on each side */
+  --container-site: 88vw;
 }
 
 /*
@@ -61,13 +76,36 @@
   --font-display: var(--font-newsreader);
   --font-body: var(--font-hanken);
   --font-mono: var(--font-ibm-plex-mono);
+  /* font-sans (bold section headings, footer name) resolves to Hanken Grotesk, not the os system font */
+  --font-sans: var(--font-hanken);
 }
 
-/* shared width for every section from the header to the footer: 91vw, centred, capped at the wide token */
+/* shared width for every section from the header to the footer: 88vw, centred, capped at the wide token */
 .container-site {
   margin-inline: auto;
-  width: 91vw;
-  max-width: var(--container-wide);
+  width: --theme(--container-site);
+  max-width: --theme(--container-wide);
+}
+
+/*
+  the bold sans section heading used on every content section (h2).
+  mobile: 2rem on 2.25rem leading. md and up: up to 3.25rem on 3.5rem leading, tracked out slightly.
+  usage: <h2 className='heading-section'>…</h2>, add text-paper on dark bands.
+*/
+@utility heading-section {
+  width: 100%;
+  max-width: 100%;
+  text-wrap: wrap;
+  font-family: --theme(--font-sans);
+  font-size: --theme(--text-h1);
+  font-weight: 700;
+  line-height: 2.25rem;
+  letter-spacing: 0.03em;
+
+  @variant md {
+    max-width: 24ch;
+    line-height: 3.5rem;
+  }
 }
 
 /* custom daisyUI theme: maps daisyUI's semantic slots to our tokens only. */
@@ -120,14 +158,10 @@ body {
   line-height: var(--text-body--line-height);
 }
 
-/* respect reduced-motion globally (docs/03 motion rules) */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+/* smooth in-page anchor scrolling (e.g. the hero's "What we do"), off for reduced-motion users */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
   }
 }
+

@@ -27,8 +27,9 @@
   --radius-md: 6px;
 
   /*
-    shadows: only these two, never decorative card shadows (docs/03).
-    float lifts fixed controls (scroll-to-top) off the page; image settles section photos onto the paper.
+    shadows: only these three, never decorative card shadows (docs/03).
+    float lifts fixed controls (scroll-to-top) off the page; image settles section photos onto the paper;
+    button gives filled and outline buttons a little lift (text-link buttons stay flat).
   */
   --shadow-float:
     0 2px 6px color-mix(in srgb, #17191a 20%, transparent),
@@ -36,6 +37,9 @@
   --shadow-image:
     0 1px 2px color-mix(in srgb, #17191a 6%, transparent),
     0 18px 40px -16px color-mix(in srgb, #17191a 24%, transparent);
+  --shadow-button:
+    0 1px 2px color-mix(in srgb, #17191a 12%, transparent),
+    0 6px 16px -6px color-mix(in srgb, #17191a 35%, transparent);
 
   /*
     fluid type scale (clamp). PROVISIONAL values, flagged for review:

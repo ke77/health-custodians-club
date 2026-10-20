@@ -16,7 +16,7 @@ type Props = {
 }
 
 const base =
-  'group inline-flex min-h-11 items-center justify-center gap-2 rounded-lg font-body text-base font-medium transition-[opacity,color,background-color] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal disabled:cursor-not-allowed disabled:opacity-50'
+  'group inline-flex min-h-11 items-center justify-center gap-2 rounded-lg font-body text-base font-medium shadow-button transition-[opacity,color,background-color] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal disabled:cursor-not-allowed disabled:opacity-50'
 
 
 const variants: Record<Exclude<Variant, 'link'>, string> = {

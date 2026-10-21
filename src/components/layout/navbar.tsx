@@ -11,12 +11,12 @@ import { easeOut, menu } from '@/lib/config/motion'
 import { HiArrowRight } from 'react-icons/hi'
 
 const links = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/programs', label: 'Programs' },
-  { href: '/membership', label: 'Membership' },
-  { href: '/contact', label: 'Contact' },
-  { href: '/blog', label: 'Blog' },
+  { href: '#', label: 'Home' },
+  { href: '#', label: 'About' },
+  { href: '#', label: 'Programs' },
+  { href: '#', label: 'Membership' },
+  { href: '#', label: 'Contact' },
+  { href: '#', label: 'Blog' },
   // { href: '/partners', label: 'Partners' },
 ]
 
@@ -139,20 +139,20 @@ export function Navbar() {
                 <X className='size-6' aria-hidden />
               </button>
             </div>
-            <nav aria-label='Mobile' className='container-site flex flex-1 flex-col gap-2 pt-8'>
+            <nav aria-label='Mobile' className='container-site flex flex-1 flex-col gap-2 pt-11'>
               {links.map((l) => (
                 <motion.div key={l.href} variants={reduceMotion ? undefined : item}>
                   <Link
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className='block border-b border-rule py-4 font-display text-h2 text-ink hover:text-ink/60'
+                    className='block border-b border-rule/50 py-4 font-display text-h2 text-ink hover:text-ink/60'
                   >
                     {l.label}
                   </Link>
                 </motion.div>
               ))}
-              <motion.div variants={reduceMotion ? undefined : item} className='pt-12 flex justify-center'>
-                <Link href='/membership/apply' className='group inline-flex items-center gap-2 hover:gap-3 transition-all duration-300 font-body text-md text-ink/80'>
+              <motion.div variants={reduceMotion ? undefined : item} className='pt-16 flex justify-center'>
+                <Link href='#' className='group inline-flex items-center gap-2 hover:gap-3 transition-all duration-300 font-body text-md text-ink/80'>
                   Apply to join
                   <HiArrowRight />
                 </Link>

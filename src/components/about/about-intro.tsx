@@ -55,7 +55,7 @@ export function AboutIntro() {
         <div className='relative mt-14 sm:mt-20'>
           <div aria-hidden className='absolute inset-x-0 top-1/2 bottom-0 bg-cream/20' />
           <div className='container-site relative'>
-            <Reveal className='relative aspect-[4/3] overflow-hidden rounded-md border border-rule bg-paper shadow-image sm:aspect-[21/9]'>
+            <Reveal className='relative aspect-[4/3] overflow-hidden rounded-3xl border border-rule bg-paper shadow-image sm:aspect-[21/9]'>
               {PHOTO_SRC ? (
                 <Image
                   src={PHOTO_SRC}
@@ -81,9 +81,9 @@ export function AboutIntro() {
         <div className='container-site grid gap-14 py-20 sm:py-24 md:grid-cols-2 md:gap-16'>
           <Reveal>
             <p className='font-mono text-label uppercase text-muted'>Our mission</p>
-            <h2 className='mt-4 font-body text-h3 font-semibold text-ink'>
+            {/* <h2 className='mt-4 font-body text-h3 font-semibold text-ink'>
               Healthier communities, served by better-prepared health students.
-            </h2>
+            </h2> */}
             <p className='mt-5 font-body text-base md:text-md text-ink/70 leading-[1.7]'>
               We help members discover and pursue their aspirations. We work to
               reduce the burden of disease in Africa through education, outreach
@@ -97,9 +97,9 @@ export function AboutIntro() {
 
           <Reveal index={1}>
             <p className='font-mono text-label uppercase text-muted'>Our vision</p>
-            <h2 className='mt-4 font-body text-h3 font-semibold text-ink'>
+            {/* <h2 className='mt-4 font-body text-h3 font-semibold text-ink'>
               A leading hub for the next generation of health professionals.
-            </h2>
+            </h2> */}
             <p className='mt-5 font-body text-base md:text-md text-ink/70 leading-[1.7]'>
               To develop health students with the practical, leadership,
               communication, research and interpersonal skills that go beyond the

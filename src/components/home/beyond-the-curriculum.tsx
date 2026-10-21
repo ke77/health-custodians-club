@@ -67,7 +67,7 @@ export function BeyondTheCurriculum() {
           </p>
         </Reveal>
 
-        <ul className='mt-14 md:mt-22 grid grid-cols-1 gap-x-18 gap-y-12 sm:grid-cols-2 lg:grid-cols-3'>
+        <ul className='mt-14 md:mt-22 grid grid-cols-1 gap-x-18 gap-y-16 sm:grid-cols-2 lg:grid-cols-3'>
           {skills.map(({ title, Icon, description }, i) => (
             // stagger by column so each row of three settles left to right
             <Reveal key={title} as='li' index={i % 3} className='flex gap-4'>

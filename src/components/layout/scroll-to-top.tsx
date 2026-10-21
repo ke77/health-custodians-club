@@ -31,7 +31,7 @@ export function ScrollToTop() {
           exit={{ opacity: 0, y: scrollTop.distance }}
           transition={{ duration: scrollTop.duration, ease: easeOut }}
           // the faint paper ring keeps the ink button visible over the ink bands
-          className='group fixed right-5 bottom-13 md:right-4 md:bottom-4 z-30 flex size-11 md:size-13 items-center justify-center rounded-full bg-ink/85 text-paper shadow-float transition-colors hover:bg-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink sm:right-6 sm:bottom-6 cursor-pointer'
+          className='group fixed right-6 bottom-12 md:right-7 md:bottom-14 z-30 flex size-11 md:size-13 items-center justify-center rounded-full bg-ink/85 text-paper shadow-float transition-colors hover:bg-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink sm:right-6 sm:bottom-6 cursor-pointer'
         >
           <ArrowUp
             className='size-5 transition-transform group-hover:-translate-y-0.5'

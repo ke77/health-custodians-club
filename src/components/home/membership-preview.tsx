@@ -30,7 +30,7 @@ export function MembershipPreview() {
             The club is open to tertiary students in the health sciences, Level 200 and
             above.
           </p>
-          <Button href='/membership/apply' variant='link' className='mt-5 text-paper focus-visible:outline-paper' arrow>
+          <Button href='#' variant='link' className='mt-5 text-paper focus-visible:outline-paper' arrow>
             Apply to join
           </Button>
         </Reveal>

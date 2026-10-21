@@ -17,7 +17,7 @@ export function WhatWeDo() {
             languages people speak, in schools, markets and rural communities.
           </p>
           <div className='mt-8 md:mt-10'>
-            <Button href='/about' variant='link' arrow>
+            <Button href='#' variant='link' arrow>
               More about HCC
             </Button>
           </div>

@@ -2,20 +2,20 @@ import Image from 'next/image'
 import { Button } from '@/components/ui/buttons'
 
 // stand-in photograph (Dr Josiah Sarpong, Unsplash licence) until the club supplies its own group photo (D21)
-const PHOTO_SRC = '/hero-students.jpg'
+const PHOTO_SRC = '/hero3.jpg'
 
 export function Hero() {
   return (
-    <section className='relative flex min-h-[70vh] md:min-h-[90vh] flex-col justify-end sm:justify-initial bg-ink text-paper'>
-      <Image
+    <section className="relative flex min-h-[70vh] md:min-h-[90vh] flex-col justify-end sm:justify-initial bg-ink text-paper bg-[url('/hero3.jpg')] bg-cover bg-bottom-right">
+      {/* <Image
         src={PHOTO_SRC}
         alt=''
         fill
         priority
         sizes='100vw'
         className='object-cover'
-      />
-      {/*
+      /> */}
+      {/* 
         the hero overlay is the only gradient allowed (dark, linear; look from reference/screenshots/altermate-hero.png).
         md and up: darkest behind the text on the left, easing off to the right.
         phones: the text sits low and spans the width, so the dark end is at the bottom instead
@@ -40,7 +40,7 @@ export function Hero() {
             <Button href='#what-we-do' variant='primary' className='flex-1 whitespace-nowrap px-4 py-3.5 sm:flex-none sm:px-8 md:px-9 md:py-4 text-ink' arrow>
               What we do
             </Button>
-            <Button href='/membership/apply' variant='dark' className='flex-1 whitespace-nowrap px-4 py-3.5 sm:flex-none sm:px-9 md:py-4 text-ink'>
+            <Button href='#' variant='dark' className='flex-1 whitespace-nowrap px-4 py-3.5 sm:flex-none sm:px-9 md:py-4 text-ink'>
               Apply to join
             </Button>
           </div>

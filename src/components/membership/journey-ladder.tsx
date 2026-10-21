@@ -63,7 +63,7 @@ export function JourneyLadder({ steps, tone = 'light' }: Props) {
             <span
               aria-hidden
               className={cn(
-                'absolute top-0 bottom-0 left-1.25 border-l-2 border-rule/70 lg:hidden',
+                'absolute top-0 bottom-0 left-1.25 border-l-2 border-rule lg:hidden',
                 t.line,
               )}
             />
@@ -97,9 +97,9 @@ export function JourneyLadder({ steps, tone = 'light' }: Props) {
               )}
             >
               {!above && <div className='lg:mb-5'>{connector}</div>}
-              <span className={cn('font-mono text-label tabular-nums', t.number)}>
+              {/* <span className={cn('font-mono text-label tabular-nums', t.number)}>
                 {String(i + 1).padStart(2, '0')}
-              </span>
+              </span> */}
               {step.optional && (
                 <span className={cn('mt-1 font-mono text-label md:uppercase', t.number)}>If applicable</span>
               )}

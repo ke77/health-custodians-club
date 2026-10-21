@@ -16,14 +16,21 @@ export function WhatWeDo() {
             health problems around them and to explain health plainly, in the
             languages people speak, in schools, markets and rural communities.
           </p>
-          <div className='mt-8'>
+          <div className='mt-8 md:mt-10'>
             <Button href='/about' variant='link' arrow>
               More about HCC
             </Button>
           </div>
         </Reveal>
-
+{/* 
         <Reveal index={1} className='flex aspect-[3/2] flex-col items-center justify-center gap-3 rounded-md border border-rule shadow-image'>
+          <ImageIcon className='size-10 text-muted' aria-hidden />
+          <span className='font-mono text-label uppercase text-muted'>
+            Photo to come
+          </span>
+        </Reveal> */}
+
+        <Reveal index={1} className='flex aspect-[3/2] flex-col items-center justify-center gap-3 rounded-md'>
           <ImageIcon className='size-10 text-muted' aria-hidden />
           <span className='font-mono text-label uppercase text-muted'>
             Photo to come

@@ -1,7 +1,7 @@
 'use client'
 
 import { useWatch } from 'react-hook-form'
-import { genders, hoursOptions, leadershipOptions, proficiencies } from '@/lib/config/application'
+import { genders, gradeScaleOf, hoursOptions, leadershipOptions, proficiencies } from '@/lib/config/application'
 import type { ApplicationFormValues } from '@/lib/validation/application'
 import type { StepMeta } from '@/components/membership/apply/form-progress'
 
@@ -27,8 +27,7 @@ function sections(v: ApplicationFormValues): Row[][] {
       { label: 'Programme', value: v.programme === 'Other health-related' ? v.programmeOther : v.programme },
       { label: 'Level', value: v.level ? `Level ${v.level}` : '' },
       { label: 'Student ID', value: v.studentId },
-      { label: 'CGPA', value: v.cgpa },
-      { label: 'CWA', value: v.cwa },
+      { label: gradeScaleOf(v.grade) === 'cwa' ? 'CWA' : 'CGPA', value: v.grade },
     ],
     [
       { label: 'Home region', value: v.homeRegion },

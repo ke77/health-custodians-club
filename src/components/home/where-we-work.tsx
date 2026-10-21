@@ -39,20 +39,20 @@ const settings: Setting[] = [
 export function WhereWeWork() {
   return (
     <section id='where-we-work' className='bg-paper'>
-      <div className='container-site py-28 sm:py-32'>
-        <div className='grid gap-14 lg:grid-cols-2 lg:items-center lg:gap-16'>
-          <Reveal className='order-first md:order-last relative flex aspect-[3/2] flex-col items-center justify-center gap-3 rounded-md border border-rule shadow-image lg:order-first'>
+      <div className='container-site py-28 sm:py-42'>
+        <div className='grid gap-14 lg:grid-cols-2 lg:items-center md:gap-20'>
+          <Reveal className='order-first md:order-last relative flex aspect-[2/2] flex-col items-center justify-center gap-3 rounded-md lg:order-first'>
             <ImageIcon className='size-10 text-muted' aria-hidden />
             <span className='font-mono text-label uppercase text-muted'>
               Photo to come
             </span>
           </Reveal>
 
-          <Reveal index={1} className='flex flex-col items-start'>
+          <Reveal index={1} className='flex flex-col gap-y-2 md:gap-y-4 items-start'>
             <h2 className='heading-section text-ink'>
               We work in settings where health knowledge is needed most.
             </h2>
-            <p className='mt-6 max-w-[var(--container-prose)] font-body text-base text-muted leading-[1.8em]'>
+            <p className='mt-6 max-w-[var(--container-prose)] font-body text-base md:text-body text-muted leading-[1.9em]'>
               Members work in the places where day-to-day life shapes health:
               schools before habits set in, marketplaces where traders breathe
               open-air pollution, and rural communities where a clinic is hours

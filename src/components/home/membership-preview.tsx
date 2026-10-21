@@ -13,7 +13,7 @@ export function MembershipPreview() {
               Two years of training, then alumni for good.
             </h2>
           </div>
-          <p className='font-body text-base text-paper/80 lg:max-w-[52ch] leading-7'>
+          <p className='font-body text-base md:text-body text-paper/80 lg:max-w-[60ch] leading-8'>
             Members train together for two years and graduate with an official
             certificate. Alumni stay close, we mentor the next intake,
             supporting outreach in the regions, and keeping the work going long
@@ -21,13 +21,13 @@ export function MembershipPreview() {
           </p>
         </Reveal>
 
-        <Reveal className='mt-16 md:mt-14 pt-12 sm:mt-20 sm:pt-16'>
+        <Reveal className='mt-16 md:mt-18 pt-12 sm:mt-20 sm:pt-16'>
           <JourneyLadder steps={membershipJourney} tone='dark' />
         </Reveal>
 
-        <Reveal className='mt-16 flex flex-col items-start gap-4 sm:mt-20 sm:flex-row sm:items-center sm:justify-between'>
+        <Reveal className='mt-16 flex flex-col items-start gap-4 sm:mt-26 sm:flex-row sm:items-center sm:justify-between'>
           <p className='max-w-[48ch] font-body text-base text-paper/80 leading-7'>
-            Open to tertiary students in the health sciences, Level 200 and
+            The club is open to tertiary students in the health sciences, Level 200 and
             above.
           </p>
           <Button href='/membership/apply' variant='link' className='mt-5 text-paper focus-visible:outline-paper' arrow>

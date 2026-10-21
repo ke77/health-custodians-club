@@ -94,11 +94,11 @@ export async function Footer() {
           phones: three short left-aligned rows: socials, the legal links on one line, then the copyright.
           md and up: copyright left; legal links, divider and socials on the right.
         */}
-        <div className='mt-10 flex flex-col gap-4 border-t border-rule pt-8 md:mt-24 md:flex-row md:items-center md:gap-5 md:border-t-0'>
+        <div className='mt-10 flex flex-col gap-2 border-t border-rule/50 pt-8 md:mt-24 md:flex-row md:items-center md:gap-5 md:border-t-0'>
           <p className='order-last font-body text-small text-ink/70 md:order-none md:mr-auto md:text-base md:text-ink/80'>
             &copy; {year} Health Custodians Club
           </p>
-          <div className='flex items-center gap-5 md:gap-3'>
+          <div className='mt-3 md:mt-0 flex items-center gap-3 md:gap-3'>
             <Link href='/privacy-policy' className='text-ink/70 text-small md:text-base transition-colors hover:text-ink'>Privacy Policy</Link>
             <Link href='/terms-of-service' className='text-ink/70 text-small md:text-base hover:text-ink transition-colors'>Terms of Service</Link>
           </div>

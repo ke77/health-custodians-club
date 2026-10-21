@@ -18,7 +18,7 @@ export function ClosingCta() {
       />
       <div aria-hidden className='absolute inset-0 -z-10 bg-ink/75' />
 
-      <div className='container-site py-24 sm:py-32'>
+      <div className='container-site py-24 md:py-36'>
         <Reveal className='mx-auto flex max-w-4xl flex-col items-start gap-10 md:flex-row md:items-center md:justify-between md:gap-16'>
           <div>
             <h2 className='heading-section text-paper'>

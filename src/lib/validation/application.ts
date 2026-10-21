@@ -8,6 +8,7 @@ import {
   languages,
   leadershipOptions,
   levels,
+  gradeScaleOf,
   minimumCgpa,
   programmes,
   regionNames,
@@ -92,16 +93,19 @@ export const academicSchema = z
     programme: z.enum(programmes, 'Choose your programme.'),
     programmeOther: z.string().trim(),
     studentId: z.string().trim().min(3, 'Enter your student ID number.').max(40, 'That ID looks too long.'),
-    cgpa: z
+    // CGPA or CWA, whichever the institution uses (see gradeScaleOf)
+    grade: z
       .string()
       .trim()
-      .min(1, 'Enter your current CGPA.')
-      .refine((v) => /^\d(\.\d{1,2})?$/.test(v) && Number(v) <= 4, 'Enter your CGPA on a 4.00 scale, for example 3.25.')
-      .refine((v) => Number(v) >= minimumCgpa, `The minimum CGPA is ${minimumCgpa.toFixed(2)}.`),
-    cwa: z
-      .string()
-      .trim()
-      .refine((v) => v === '' || (/^\d{1,3}(\.\d{1,2})?$/.test(v) && Number(v) <= 100), 'Enter your CWA out of 100, or leave it blank.'),
+      .min(1, 'Enter your CGPA or CWA.')
+      .refine(
+        (v) => /^\d{1,3}(\.\d{1,2})?$/.test(v) && gradeScaleOf(v) !== null,
+        'Enter a CGPA out of 4.00 (for example 3.25) or a CWA out of 100 (for example 68.5).',
+      )
+      .refine(
+        (v) => gradeScaleOf(v) !== 'cgpa' || Number(v) >= minimumCgpa,
+        `The minimum CGPA is ${minimumCgpa.toFixed(2)}.`,
+      ),
   })
   .superRefine((v, ctx) => {
     if (v.institution === 'Other' && v.institutionOther.length < 2) {
@@ -190,8 +194,7 @@ export type ApplicationFormValues = {
   programme: string
   programmeOther: string
   studentId: string
-  cgpa: string
-  cwa: string
+  grade: string
   homeRegion: string
   currentRegion: string
   languages: { language: string; level: string }[]
@@ -226,8 +229,7 @@ export const emptyApplication: ApplicationFormValues = {
   programme: '',
   programmeOther: '',
   studentId: '',
-  cgpa: '',
-  cwa: '',
+  grade: '',
   homeRegion: '',
   currentRegion: '',
   languages: [],

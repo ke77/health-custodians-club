@@ -2,12 +2,13 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { X } from 'lucide-react'
+import { ArrowRightToLine, X } from 'lucide-react'
 import { AnimatePresence, motion, stagger, useReducedMotion } from 'motion/react'
 import type { Variants } from 'motion/react'
 import { Button } from '@/components/ui/buttons'
 import { Logo } from '@/components/layout/logo'
 import { easeOut, menu } from '@/lib/config/motion'
+import { HiArrowRight } from 'react-icons/hi'
 
 const links = [
   { href: '/', label: 'Home' },
@@ -95,7 +96,7 @@ export function Navbar() {
         </ul>
 
         <div className='hidden lg:flex lg:justify-self-end'>
-          <Button variant='primary' href='/membership/apply' className='rounded-lg text-sm px-14'>
+          <Button variant='dark' href='/membership/apply' className='rounded-lg text-sm px-14'>
             Apply
           </Button>
         </div>
@@ -150,10 +151,11 @@ export function Navbar() {
                   </Link>
                 </motion.div>
               ))}
-              <motion.div variants={reduceMotion ? undefined : item} className='pt-8'>
-                <Button href='/membership/apply' variant='primary' className='w-full bg-transparent md:px-9 py-4 text-ink' arrow>
+              <motion.div variants={reduceMotion ? undefined : item} className='pt-12 flex justify-center'>
+                <Link href='/membership/apply' className='group inline-flex items-center gap-2 hover:gap-3 transition-all duration-300 font-body text-md text-ink/80'>
                   Apply to join
-                </Button>
+                  <HiArrowRight />
+                </Link>
               </motion.div>
             </nav>
           </motion.div>

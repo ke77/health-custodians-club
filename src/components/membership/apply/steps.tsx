@@ -16,6 +16,7 @@ import {
   languages,
   leadershipOptions,
   levels,
+  gradeScaleOf,
   minimumCgpa,
   proficiencies,
   programmes,
@@ -143,25 +144,28 @@ export function AcademicStep() {
       )}
 
       <Input id='studentId' label='Student ID number' autoComplete='off' error={err('studentId')} {...reg('studentId')} />
-      <div className={grid}>
-        <Input
-          id='cgpa'
-          label='Current CGPA'
-          hint={`On a 4.00 scale. The minimum is ${minimumCgpa.toFixed(2)}.`}
-          inputMode='decimal'
-          error={err('cgpa')}
-          {...reg('cgpa')}
-        />
-        <Input
-          id='cwa'
-          label='CWA (optional)'
-          hint='If your institution uses one, out of 100.'
-          inputMode='decimal'
-          error={err('cwa')}
-          {...reg('cwa')}
-        />
-      </div>
+      <Input
+        id='grade'
+        label='CGPA / CWA'
+        hint={`Whichever your institution uses: a CGPA out of 4.00 (minimum ${minimumCgpa.toFixed(2)}), or a CWA out of 100.`}
+        inputMode='decimal'
+        error={err('grade')}
+        {...reg('grade')}
+      />
+      {/* confirms which scale we read the number as, so a typo is easy to spot */}
+      <GradeScaleNote />
     </div>
+  )
+}
+
+function GradeScaleNote() {
+  const grade = useWatch<ApplicationFormValues, 'grade'>({ name: 'grade' })
+  const scale = gradeScaleOf(grade)
+  if (!scale) return null
+  return (
+    <p className='-mt-3 font-mono text-label uppercase text-muted'>
+      Read as {scale === 'cgpa' ? 'a CGPA, out of 4.00' : 'a CWA, out of 100'}
+    </p>
   )
 }
 

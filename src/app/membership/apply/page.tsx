@@ -22,7 +22,7 @@ export default function ApplyPage() {
             </p>
             <p className='font-body text-small text-muted'>
               For tertiary students in the health sciences, Level 200 and above, with a CGPA of at least{' '}
-              {minimumCgpa.toFixed(2)}.{' '}
+              {minimumCgpa.toFixed(2)} (or a CWA, where your institution uses one).{' '}
               <Link
                 href='/membership#eligibility'
                 className='font-medium text-ink underline decoration-ink/30 underline-offset-4 hover:decoration-ink'

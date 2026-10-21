@@ -8,7 +8,10 @@ const listed = programmes.filter((p) => p !== 'Other health-related')
 const criteria: { label: string; value: ReactNode }[] = [
   { label: 'Who', value: 'Tertiary students with a background in the health sciences.' },
   { label: 'Level', value: 'Level 200 or above.' },
-  { label: 'CGPA', value: `${minimumCgpa.toFixed(2)} or higher, on a 4.00 scale.` },
+  {
+    label: 'CGPA / CWA',
+    value: `A CGPA of ${minimumCgpa.toFixed(2)} or higher on a 4.00 scale, or a CWA if your institution uses one.`,
+  },
   {
     label: 'Programmes',
     value: (

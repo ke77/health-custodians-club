@@ -17,8 +17,8 @@ export function FaqSection({ items, groups, intro, more }: Props) {
 
   return (
     <section id='faq' className='bg-paper'>
-      <div className='container-site grid gap-12 py-24 sm:py-32 lg:grid-cols-[minmax(0,2fr)_minmax(0,5fr)] lg:gap-20'>
-        <Reveal className='flex flex-col items-start lg:sticky lg:top-24 lg:self-start'>
+      <div className='container-site grid gap-12 py-24 md:py-36 lg:grid-cols-[minmax(0,2fr)_minmax(0,5fr)] md:gap-52'>
+        <Reveal className='flex flex-col items-start lg:sticky lg:top-24 lg:self-start md:w-[48ch]'>
           <h2 className='heading-section text-ink'>Frequently asked questions</h2>
           <p className='mt-6 md:mt-8 max-w-[var(--container-prose)] font-body text-base md:text-md text-ink/70'>
             {intro}

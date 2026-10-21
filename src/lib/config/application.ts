@@ -122,3 +122,20 @@ export const heardAboutOptions = [
 ] as const
 
 export const minimumCgpa = 2.8
+
+/*
+  one grade field takes either scale, told apart by size: up to 4.00 is a CGPA, 10 to 100 is a CWA
+  (KNUST and others). the CWA minimum is still open (O04), so no CWA threshold is enforced yet.
+*/
+export const gradeScales = {
+  cgpa: { max: 4 },
+  cwa: { min: 10, max: 100 },
+} as const
+
+export function gradeScaleOf(value: string): 'cgpa' | 'cwa' | null {
+  const n = Number(value)
+  if (value.trim() === '' || Number.isNaN(n)) return null
+  if (n >= 0 && n <= gradeScales.cgpa.max) return 'cgpa'
+  if (n >= gradeScales.cwa.min && n <= gradeScales.cwa.max) return 'cwa'
+  return null
+}

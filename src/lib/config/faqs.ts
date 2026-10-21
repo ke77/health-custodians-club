@@ -63,7 +63,7 @@ export const membershipFaqs: AccordionItem[] = [
   {
     question: 'Who can apply?',
     answer:
-      'Tertiary students in the health sciences at Level 200 and above, with a CGPA of at least 2.80, studying one of the programmes listed under Eligibility on this page. Health professionals cannot apply for membership at this stage, but can support the club as mentors and partners.',
+      'Tertiary students in the health sciences at Level 200 and above, with a CGPA of at least 2.80 (or a CWA, where your institution uses one), studying one of the programmes listed under Eligibility on this page. Health professionals cannot apply for membership at this stage, but can support the club as mentors and partners.',
   },
   {
     question: 'How much time does membership take?',

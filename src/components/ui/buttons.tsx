@@ -1,9 +1,9 @@
 import type { ReactNode } from 'react'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import { HiArrowRight } from 'react-icons/hi'
 import { cn } from '@/lib/utils/cn'
 
-type Variant = 'primary' | 'secondary' | 'secondaryLight' | 'link'
+type Variant = 'primary' | 'secondary' | 'secondaryLight' | 'link' | 'dark';
 
 type Props = {
   children: ReactNode
@@ -25,6 +25,7 @@ const variants: Record<Exclude<Variant, 'link'>, string> = {
   secondary: 'bg-paper text-ink/80',
   secondaryLight:
     'border border-paper text-paper hover:bg-paper hover:text-ink focus-visible:outline-paper',
+  dark: 'bg-ink/90 text-paper hover:opacity-95'
 }
 
 const linkBase =
@@ -46,7 +47,7 @@ function Content({
     <>
       {isLink ? <span className={underlineDraw}>{children}</span> : children}
       {arrow && (
-        <ArrowRight
+        <HiArrowRight
           className='size-4 transition-transform group-hover:translate-x-1'
           aria-hidden
         />

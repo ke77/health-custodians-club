@@ -6,7 +6,7 @@ const PHOTO_SRC = '/hero-students.jpg'
 
 export function Hero() {
   return (
-    <section className='relative flex min-h-[90vh] flex-col justify-end sm:justify-initial bg-ink text-paper'>
+    <section className='relative flex min-h-[70vh] md:min-h-[90vh] flex-col justify-end sm:justify-initial bg-ink text-paper'>
       <Image
         src={PHOTO_SRC}
         alt=''
@@ -22,13 +22,13 @@ export function Hero() {
       */}
       <div
         aria-hidden
-        className='absolute inset-0 bg-linear-to-t from-ink/90 to-ink/55 md:bg-linear-to-r md:from-ink/95 md:via-ink/75 md:to-ink/40'
+        className='absolute inset-0 bg-linear-to-t from-ink/40 via-ink/80 to-ink/1 md:bg-linear-to-r md:from-ink/50 md:to-ink/70'
       />
 
-      <div className='relative z-10 flex min-h-[85vh] sm:min-h-[80vh] flex-col'>
+      <div className='relative z-10 flex min-h-[83vh] sm:min-h-[80vh] flex-col'>
         {/* <Navbar /> */}
 
-        <div className='container-site flex flex-1 flex-col justify-end pt-16 pb-16 sm:pb-24'>
+        <div className='container-site flex flex-1 flex-col justify-end pt-10 pb-16 sm:pb-24'>
           <h1 className='max-w-[21ch] font-display text-display text-paper'>
             Most illness starts long before the hospital.
           </h1>
@@ -40,7 +40,7 @@ export function Hero() {
             <Button href='#what-we-do' variant='primary' className='flex-1 whitespace-nowrap px-4 py-3.5 sm:flex-none sm:px-8 md:px-9 md:py-4 text-ink' arrow>
               What we do
             </Button>
-            <Button href='/membership/apply' variant='secondary' className='flex-1 whitespace-nowrap px-4 py-3.5 sm:flex-none sm:px-9 md:py-4 text-ink'>
+            <Button href='/membership/apply' variant='dark' className='flex-1 whitespace-nowrap px-4 py-3.5 sm:flex-none sm:px-9 md:py-4 text-ink'>
               Apply to join
             </Button>
           </div>

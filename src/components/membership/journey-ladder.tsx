@@ -78,7 +78,7 @@ export function JourneyLadder({ steps, tone = 'light' }: Props) {
                 <span
                   aria-hidden
                   className={cn(
-                    'absolute top-1/2 left-0 hidden -translate-y-1/2 border-t-2 border-dotted lg:block',
+                    'absolute top-1/2 left-0 hidden -translate-y-1/2 border-t lg:block',
                     t.line,
                   )}
                   style={{ width: `${steps.length * 100}%` }}
@@ -101,11 +101,11 @@ export function JourneyLadder({ steps, tone = 'light' }: Props) {
                 {String(i + 1).padStart(2, '0')}
               </span>
               {step.optional && (
-                <span className={cn('mt-1 font-mono text-label uppercase', t.number)}>If applicable</span>
+                <span className={cn('mt-1 font-mono text-label md:uppercase', t.number)}>If applicable</span>
               )}
-              <h3 className={cn('mt-1 font-display text-h3', t.title)}>{step.title}</h3>
+              <h3 className={cn('mt-1 font-body md:font-display text-h3', t.title)}>{step.title}</h3>
               {step.caption && (
-                <p className={cn('mt-2 font-body text-small', t.caption)}>{step.caption}</p>
+                <p className={cn('mt-3 md:mt-2 font-body text-small', t.caption)}>{step.caption}</p>
               )}
               {above && <div className='lg:mt-5'>{connector}</div>}
             </div>

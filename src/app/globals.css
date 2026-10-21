@@ -36,7 +36,7 @@
     0 10px 24px -6px color-mix(in srgb, #17191a 40%, transparent);
   --shadow-image:
     0 1px 2px color-mix(in srgb, #17191a 6%, transparent),
-    0 18px 40px -16px color-mix(in srgb, #17191a 24%, transparent);
+    0 20px 40px -14px color-mix(in srgb, #17191a 24%, transparent);
   --shadow-button:
     0 1px 2px color-mix(in srgb, #17191a 12%, transparent),
     0 6px 16px -6px color-mix(in srgb, #17191a 35%, transparent);

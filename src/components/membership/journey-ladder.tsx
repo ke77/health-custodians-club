@@ -63,7 +63,7 @@ export function JourneyLadder({ steps, tone = 'light' }: Props) {
             <span
               aria-hidden
               className={cn(
-                'absolute top-0 bottom-0 left-1.25 border-l-2 border-rule lg:hidden',
+                'absolute top-0 bottom-0 left-1.25 border-l-2 border-paper/80 lg:hidden',
                 t.line,
               )}
             />

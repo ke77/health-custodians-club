@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 import type { ReactNode } from 'react'
 import { Newsreader, Hanken_Grotesk, IBM_Plex_Mono } from 'next/font/google'
 import { MotionProvider } from '@/components/layout/motion-provider'
+import { PageLoader } from '@/components/layout/page-loader'
 import './globals.css'
 
 const newsreader = Newsreader({
@@ -41,6 +43,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className='flex min-h-full flex-col'>
         {/* the public site and the dashboard each add their own chrome: app/(site)/layout.tsx, app/admin/layout.tsx */}
         <MotionProvider>{children}</MotionProvider>
+        {/* usePathname can suspend on dynamic routes, so it gets its own boundary and never blocks a page */}
+        <Suspense fallback={null}>
+          <PageLoader />
+        </Suspense>
       </body>
     </html>
   )

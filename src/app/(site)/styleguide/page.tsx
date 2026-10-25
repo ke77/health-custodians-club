@@ -126,7 +126,11 @@ export default function StyleguidePage() {
           <Button variant='primary' arrow>
             Apply to join
           </Button>
-          <Button variant='secondary'>What we do</Button>
+          <Button variant='secondary' arrow>
+            What we do
+          </Button>
+          <Button variant='dark'>Apply</Button>
+          <Button variant='outline'>Outline</Button>
           <Button variant='primary' disabled>
             Disabled
           </Button>

@@ -2,7 +2,7 @@ import type { AccordionItem } from '@/components/ui/accordion'
 
 /*
   FAQs (docs/02-sitemap-content.md, FAQ). the full set lives on /membership#faq in two groups;
-  the homepage shows five and links there. interim source until the faqs table exists.
+  the homepage shows five and links there. edit the text here: they are hard-coded on purpose.
   club answers 1 and 3 carry wording adjusted for D03 and D30, pending club confirmation (O18).
   membership answers are DRAFT, built only from agreed facts (D30, D31, D40, D50, D52, O01, O09). no cost question (O07).
 */

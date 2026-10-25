@@ -1,6 +1,6 @@
 'use client'
 
-import { ArrowRight } from 'lucide-react'
+import { MoveRight } from 'lucide-react'
 import type { InterestType } from '@/lib/config/contact'
 
 // the contact form listens for this to preselect its interest type
@@ -18,7 +18,7 @@ export function WriteToUsLink({ interest, audience }: { interest: InterestType; 
         Write to us
       </span>
       <span className='sr-only'> as {audience.toLowerCase()}</span>
-      <ArrowRight className='size-4 transition-transform group-hover:translate-x-1' aria-hidden />
+      <MoveRight className='size-5 transition-transform group-hover:translate-x-1' aria-hidden />
     </a>
   )
 }

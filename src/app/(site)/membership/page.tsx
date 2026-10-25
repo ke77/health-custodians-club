@@ -21,7 +21,8 @@ export default function MembershipPage() {
         groups={faqGroups}
         intro='Everything about applying and membership first, then questions about the club and its work.'
       />
-      <ClosingCta />
+      {/* extra air above the band on this page, where the FAQ ends close to it */}
+      <ClosingCta className='mt-16 md:mt-28' />
     </>
   )
 }

@@ -1,23 +1,30 @@
 /*
-  contact page content. details mirror the settings row (docs/05-data-model.md: contact_email, phones,
-  whatsapp, socials) and stay empty until the club supplies them: the page shows "to come" instead of
-  inventing anything. no physical location is shown (O11, and the club is not tied to one campus).
+  the club's contact details, hard-coded on purpose: edit them here. every page that shows them (the footer,
+  the contact page, the coming-soon pages) reads this one object.
+  socials: replace each '#' with the club's real link. an empty string hides that icon everywhere.
+  phones and whatsapp are plain numbers with the country code, e.g. '+233 24 000 0000'; empty shows "To come".
 */
-export type SocialLink = { platform: 'instagram' | 'facebook' | 'linkedin' | 'x'; href: string }
+export type SocialPlatform = 'instagram' | 'facebook' | 'linkedin' | 'whatsapp'
+export type SocialLink = { platform: SocialPlatform; href: string }
 
 export const contactDetails: {
   email: string | null
-  // where the club operates. left empty (O11 showed no location); added back on request, shows "To come" until set
+  // where the club operates. empty shows "To come" (the club is not tied to one campus, O11)
   location: string | null
   phones: string[]
   whatsapp: string[]
   socials: SocialLink[]
 } = {
-  email: null,
+  email: 'healthcustodiansclub@gmail.com',
   location: null,
   phones: [],
   whatsapp: [],
-  socials: [],
+  socials: [
+    { platform: 'instagram', href: '#' },
+    { platform: 'facebook', href: '#' },
+    { platform: 'linkedin', href: '#' },
+    { platform: 'whatsapp', href: '#' },
+  ],
 }
 
 // the interest types a message can carry (docs/02-sitemap-content.md, Contact)

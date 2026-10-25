@@ -124,11 +124,10 @@
   --color-base-300: #e6e1d6;
   --color-base-content: #17191a;
 
-  /*--color-primary: #1f5a57;*/
-  /*--color-primary: #AEC58E;*/
-  --color-primary: #ffd600;
-  --color-primary-content: #ffffff;
-  --color-secondary: #17191a;
+  /* brand colours: primary is the gold, secondary the blue. buttons use bg-primary / bg-secondary */
+  --color-primary: #fcb702;
+  --color-primary-content: #17191a;
+  --color-secondary: #0163a2;
   --color-secondary-content: #ffffff;
   --color-accent: #1f5a57;
   --color-accent-content: #ffffff;
@@ -171,3 +170,78 @@ body {
   }
 }
 
+
+/* the blog editor's rich-text area: render tiptap output in the site's ink/newsreader style */
+.rte-content {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: var(--text-body);
+  line-height: 1.7;
+  color: var(--color-ink);
+}
+.rte-content:focus {
+  outline: none;
+}
+.rte-content > * + * {
+  margin-top: 0.9em;
+}
+.rte-content h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  line-height: 1.2;
+  margin-top: 1.4em;
+}
+.rte-content h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  line-height: 1.25;
+  margin-top: 1.2em;
+}
+.rte-content ul,
+.rte-content ol {
+  padding-left: 1.4em;
+}
+.rte-content ul {
+  list-style: disc;
+}
+.rte-content ol {
+  list-style: decimal;
+}
+.rte-content li > * + * {
+  margin-top: 0.4em;
+}
+.rte-content blockquote {
+  border-left: 2px solid var(--color-ink);
+  padding-left: 1em;
+  color: var(--color-muted);
+  font-style: italic;
+}
+.rte-content a {
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.rte-content hr {
+  border: none;
+  border-top: 1px solid var(--color-rule);
+  margin: 1.5em 0;
+}
+.rte-content img.rte-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 3px;
+}
+/* placeholder is not enabled; show a hint only when the doc is a single empty paragraph */
+.rte-content p.is-editor-empty:first-child::before {
+  content: 'Write the post…';
+  color: var(--color-muted);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+/* the page loader's dots stay on screen but stop pulsing for people who ask for less motion */
+@media (prefers-reduced-motion: reduce) {
+  .page-loader span {
+    animation: none !important;
+  }
+}

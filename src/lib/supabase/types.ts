@@ -1,7 +1,3 @@
-// generated from the live schema. after a migration, regenerate with:
-// pnpm dlx supabase gen types typescript --linked --schema public > src/lib/supabase/types.ts
-// (then put these two lines back)
-
 export type Json =
   | string
   | number
@@ -177,6 +173,42 @@ export type Database = {
         }
         Relationships: []
       }
+      faqs: {
+        Row: {
+          answer: string
+          category: Database["public"]["Enums"]["faq_category"]
+          created_at: string
+          id: string
+          on_homepage: boolean
+          published: boolean
+          question: string
+          sort_order: number
+          updated_at: string
+        }
+        Insert: {
+          answer: string
+          category?: Database["public"]["Enums"]["faq_category"]
+          created_at?: string
+          id?: string
+          on_homepage?: boolean
+          published?: boolean
+          question: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Update: {
+          answer?: string
+          category?: Database["public"]["Enums"]["faq_category"]
+          created_at?: string
+          id?: string
+          on_homepage?: boolean
+          published?: boolean
+          question?: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
       inquiries: {
         Row: {
           created_at: string
@@ -209,6 +241,132 @@ export type Database = {
           name?: string
           organisation?: string | null
           status?: Database["public"]["Enums"]["inquiry_status"]
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      partners: {
+        Row: {
+          created_at: string
+          id: string
+          logo_path: string | null
+          name: string
+          published: boolean
+          sort_order: number
+          updated_at: string
+          url: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          logo_path?: string | null
+          name: string
+          published?: boolean
+          sort_order?: number
+          updated_at?: string
+          url?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          logo_path?: string | null
+          name?: string
+          published?: boolean
+          sort_order?: number
+          updated_at?: string
+          url?: string | null
+        }
+        Relationships: []
+      }
+      people: {
+        Row: {
+          bio: string | null
+          created_at: string
+          id: string
+          name: string
+          photo_path: string | null
+          published: boolean
+          role: string
+          socials: Json
+          sort_order: number
+          type: Database["public"]["Enums"]["person_type"]
+          updated_at: string
+        }
+        Insert: {
+          bio?: string | null
+          created_at?: string
+          id?: string
+          name: string
+          photo_path?: string | null
+          published?: boolean
+          role: string
+          socials?: Json
+          sort_order?: number
+          type: Database["public"]["Enums"]["person_type"]
+          updated_at?: string
+        }
+        Update: {
+          bio?: string | null
+          created_at?: string
+          id?: string
+          name?: string
+          photo_path?: string | null
+          published?: boolean
+          role?: string
+          socials?: Json
+          sort_order?: number
+          type?: Database["public"]["Enums"]["person_type"]
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      posts: {
+        Row: {
+          author_name: string | null
+          body: Json
+          cover_alt: string | null
+          cover_path: string | null
+          created_at: string
+          excerpt: string | null
+          gallery: Json
+          id: string
+          kind: Database["public"]["Enums"]["post_kind"]
+          published_at: string | null
+          slug: string
+          status: Database["public"]["Enums"]["post_status"]
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          author_name?: string | null
+          body?: Json
+          cover_alt?: string | null
+          cover_path?: string | null
+          created_at?: string
+          excerpt?: string | null
+          gallery?: Json
+          id?: string
+          kind?: Database["public"]["Enums"]["post_kind"]
+          published_at?: string | null
+          slug: string
+          status?: Database["public"]["Enums"]["post_status"]
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          author_name?: string | null
+          body?: Json
+          cover_alt?: string | null
+          cover_path?: string | null
+          created_at?: string
+          excerpt?: string | null
+          gallery?: Json
+          id?: string
+          kind?: Database["public"]["Enums"]["post_kind"]
+          published_at?: string | null
+          slug?: string
+          status?: Database["public"]["Enums"]["post_status"]
+          title?: string
           updated_at?: string
         }
         Relationships: []
@@ -246,6 +404,39 @@ export type Database = {
         Update: {
           last_number?: number
           year?: number
+        }
+        Relationships: []
+      }
+      regions: {
+        Row: {
+          active: boolean
+          created_at: string
+          head_institution: string | null
+          head_name: string | null
+          head_photo_path: string | null
+          head_published: boolean
+          region: Database["public"]["Enums"]["region"]
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean
+          created_at?: string
+          head_institution?: string | null
+          head_name?: string | null
+          head_photo_path?: string | null
+          head_published?: boolean
+          region: Database["public"]["Enums"]["region"]
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean
+          created_at?: string
+          head_institution?: string | null
+          head_name?: string | null
+          head_photo_path?: string | null
+          head_published?: boolean
+          region?: Database["public"]["Enums"]["region"]
+          updated_at?: string
         }
         Relationships: []
       }
@@ -341,6 +532,7 @@ export type Database = {
         | "accepted"
         | "rejected"
         | "waitlisted"
+      faq_category: "membership" | "club"
       gender: "male" | "female" | "prefer_not_to_say"
       inquiry_interest:
         | "adviser"
@@ -350,6 +542,15 @@ export type Database = {
         | "member"
         | "other"
       inquiry_status: "new" | "handled"
+      person_type: "executive" | "adviser"
+      post_kind:
+        | "announcement"
+        | "training"
+        | "outreach"
+        | "event"
+        | "news"
+        | "article"
+      post_status: "draft" | "published"
       programme:
         | "Medicine"
         | "Nursing"
@@ -519,6 +720,7 @@ export const Constants = {
         "rejected",
         "waitlisted",
       ],
+      faq_category: ["membership", "club"],
       gender: ["male", "female", "prefer_not_to_say"],
       inquiry_interest: [
         "adviser",
@@ -529,6 +731,9 @@ export const Constants = {
         "other",
       ],
       inquiry_status: ["new", "handled"],
+      person_type: ["executive", "adviser"],
+      post_kind: ["announcement", "training", "outreach", "event", "news", "article"],
+      post_status: ["draft", "published"],
       programme: [
         "Medicine",
         "Nursing",

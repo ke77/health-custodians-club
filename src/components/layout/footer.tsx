@@ -1,14 +1,7 @@
-import type { ComponentType } from 'react'
 import Link from 'next/link'
-import { FaLinkedinIn, FaFacebook, FaInstagram } from 'react-icons/fa6'
+import { socialIcons as socials } from '@/lib/config/socials'
 
 type FooterLink = { href: string; label: string }
-
-const socials: { label: string; href: string; Icon: ComponentType<{ className?: string }> }[] = [
-  { label: 'Instagram', href: '#', Icon: FaInstagram },
-  { label: 'Facebook', href: '#', Icon: FaFacebook },
-  { label: 'LinkedIn', href: '#', Icon: FaLinkedinIn },
-]
 
 const columns: { heading: string; links: FooterLink[] }[] = [
   {
@@ -102,20 +95,25 @@ export async function Footer() {
             <Link href='/privacy-policy' className='text-ink/70 text-small md:text-base transition-colors hover:text-ink'>Privacy Policy</Link>
             <Link href='/terms-of-service' className='text-ink/70 text-small md:text-base hover:text-ink transition-colors'>Terms of Service</Link>
           </div>
-          <span className='hidden md:block h-7 w-px bg-ink/60' aria-hidden />
-          <ul className='order-first mb-2 flex items-center gap-5 md:order-none md:mb-0'>
-            {socials.map(({ label, href, Icon }) => (
-              <li key={label}>
-                <a
-                  href={href}
-                  aria-label={label}
-                  className='block text-ink/80 transition-opacity hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink'
-                >
-                  <Icon className='size-5' />
-                </a>
-              </li>
-            ))}
-          </ul>
+          {socials.length > 0 && (
+            <>
+              <span className='hidden md:block h-7 w-px bg-ink/60' aria-hidden />
+              <ul className='order-first mb-2 flex items-center gap-5 md:order-none md:mb-0'>
+                {socials.map(({ label, href, Icon }) => (
+                  <li key={label}>
+                    <a
+                      href={href}
+                      {...(href !== '#' && { target: '_blank', rel: 'noreferrer' })}
+                      aria-label={label}
+                      className='block text-ink/80 transition-opacity hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink'
+                    >
+                      <Icon className='size-5' />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
         </div>
       </div>
     </footer>

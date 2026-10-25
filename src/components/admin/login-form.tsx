@@ -77,7 +77,7 @@ export function LoginForm() {
               {pending ? 'Sending…' : 'Email me a sign-in code'}
             </Button>
             <Button
-              variant='secondary'
+              variant='outline'
               disabled={pending}
               onClick={() => {
                 setResult(null)

@@ -259,7 +259,7 @@ export function AdminShell({ account, badges, children }: Props) {
         </aside>
 
         <main id='admin-main' className='min-w-0'>
-          <div className='mx-auto w-full max-w-6xl px-6 py-10 lg:px-12 lg:py-14'>{children}</div>
+          <div className='mx-auto w-full max-w-5xl px-6 py-10 lg:px-10 lg:py-14'>{children}</div>
         </main>
       </div>
     </div>

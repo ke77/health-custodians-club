@@ -8,16 +8,16 @@ import type { Variants } from 'motion/react'
 import { Button } from '@/components/ui/buttons'
 // import { Logo } from '@/components/layout/logo'
 import { easeOut, menu } from '@/lib/config/motion'
-import { HiArrowRight } from 'react-icons/hi'
+import { MoveRight } from 'lucide-react'
 import Image from 'next/image';
 
 const links = [
-  { href: '#', label: 'Home' },
-  { href: '#', label: 'About' },
-  { href: '#', label: 'Programs' },
-  { href: '#', label: 'Membership' },
-  { href: '#', label: 'Contact' },
-  { href: '#', label: 'Blog' },
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/programs', label: 'Programs' },
+  { href: '/membership', label: 'Membership' },
+  { href: '/contact', label: 'Contact' },
+  { href: '/blog', label: 'Blog' },
   // { href: '/partners', label: 'Partners' },
 ]
 
@@ -98,7 +98,7 @@ export function Navbar() {
         </ul>
 
         <div className='hidden lg:flex lg:justify-self-end'>
-          <Button variant='dark' href='/membership/apply' className='rounded-lg text-sm px-14'>
+          <Button variant='secondary' href='/membership/apply' className='rounded-lg text-sm px-14'>
             Apply
           </Button>
         </div>
@@ -155,9 +155,9 @@ export function Navbar() {
                 </motion.div>
               ))}
               <motion.div variants={reduceMotion ? undefined : item} className='pt-16 flex justify-center'>
-                <Link href='#' className='group inline-flex items-center gap-2 hover:gap-3 transition-all duration-300 font-body text-md text-ink/80'>
+                <Link href='/membership/apply' onClick={() => setOpen(false)} className='group inline-flex items-center gap-2 hover:gap-3 transition-all duration-300 font-body text-md text-ink/80'>
                   Apply to join
-                  <HiArrowRight />
+                  <MoveRight className='size-5' aria-hidden />
                 </Link>
               </motion.div>
             </nav>

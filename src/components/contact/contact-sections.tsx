@@ -3,8 +3,7 @@ import { Mail, MapPin, Phone } from 'lucide-react'
 import { Reveal } from '@/components/ui/reveal'
 import { ContactForm } from '@/components/contact/contact-form'
 import { audiences, contactDetails } from '@/lib/config/contact'
-
-const socialLabels = { instagram: 'Instagram', facebook: 'Facebook', linkedin: 'LinkedIn', x: 'X' } as const
+import { socialMeta } from '@/lib/config/socials'
 
 // a value, or the honest placeholder until the club supplies it
 function orToCome(value: ReactNode | null) {
@@ -98,10 +97,15 @@ export function ContactSection() {
           <div className='mt-10'>
             <p className='font-mono text-label uppercase text-muted'>Socials</p>
             <div className='mt-3 flex flex-col gap-2'>
-              {socials.length ? (
-                socials.map((s) => (
-                  <a key={s.platform} href={s.href} className={`${linkClass} w-fit`}>
-                    {socialLabels[s.platform]}
+              {socials.some((s) => s.href) ? (
+                socials.filter((s) => s.href).map((s) => (
+                  <a
+                    key={s.platform}
+                    href={s.href}
+                    {...(s.href !== '#' && { target: '_blank', rel: 'noreferrer' })}
+                    className={`${linkClass} w-fit`}
+                  >
+                    {socialMeta[s.platform].label}
                   </a>
                 ))
               ) : (

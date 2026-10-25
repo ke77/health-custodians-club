@@ -20,18 +20,16 @@ export const adminNav: AdminNavGroup[] = [
   {
     label: 'Website',
     items: [
-      { href: '/admin/blog', label: 'Blog', ready: false },
-      { href: '/admin/leadership', label: 'Leadership', ready: false },
-      { href: '/admin/faqs', label: 'FAQs', ready: false },
-      { href: '/admin/partners', label: 'Partners', ready: false },
+      { href: '/admin/blog', label: 'Blog', ready: true },
+      { href: '/admin/leadership', label: 'Leadership', ready: true },
+      { href: '/admin/partners', label: 'Partners', ready: true },
     ],
   },
   {
     label: 'Settings',
     items: [
       { href: '/admin/settings/applications', label: 'Applications window', ready: true },
-      { href: '/admin/settings/contact', label: 'Contact & socials', ready: false },
-      { href: '/admin/settings/banner', label: 'Announcement banner', ready: false },
+      { href: '/admin/settings/banner', label: 'Announcement banner', ready: true },
       { href: '/admin/settings/admins', label: 'Admins', ready: true },
     ],
   },

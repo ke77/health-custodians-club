@@ -1,14 +1,15 @@
 import Image from 'next/image'
 import { Button } from '@/components/ui/buttons'
 import { Reveal } from '@/components/ui/reveal'
+import { cn } from '@/lib/utils/cn'
 
 // stand-in until the club supplies a closing photograph (D21): swap this one path
 const PHOTO_SRC = '/hero-image.jpg'
 
 // full-bleed photo band with a flat ink overlay (not a gradient: the gradient is the hero's alone)
-export function ClosingCta() {
+export function ClosingCta({ className }: { className?: string }) {
   return (
-    <section id='join' className='relative isolate overflow-hidden bg-ink text-paper'>
+    <section id='join' className={cn('relative isolate overflow-hidden bg-ink text-paper', className)}>
       <Image
         src={PHOTO_SRC}
         alt=''

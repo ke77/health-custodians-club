@@ -1,4 +1,6 @@
 import type { ReactNode } from 'react'
+import { Suspense } from 'react'
+import { AnnouncementBanner } from '@/components/layout/announcement-banner'
 import { Footer } from '@/components/layout/footer'
 import { Navbar } from '@/components/layout/navbar'
 import { ScrollToTop } from '@/components/layout/scroll-to-top'
@@ -7,6 +9,9 @@ import { ScrollToTop } from '@/components/layout/scroll-to-top'
 export default function SiteLayout({ children }: { children: ReactNode }) {
   return (
     <>
+      <Suspense fallback={null}>
+        <AnnouncementBanner />
+      </Suspense>
       <Navbar />
       <div className='flex flex-1 flex-col'>{children}</div>
       <Footer />

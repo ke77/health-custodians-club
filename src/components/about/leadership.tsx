@@ -18,7 +18,7 @@ export function Leadership() {
         </Reveal>
 
         {executives.length > 0 ? (
-          <ul className='mt-14 md:mt-20 grid grid-cols-2 gap-x-6 gap-y-14 sm:grid-cols-3 sm:gap-x-10 md:gap-y-20'>
+          <ul className='mt-14 md:mt-20 grid grid-cols-2 gap-x-4 gap-y-14 sm:grid-cols-3 sm:gap-x-10 md:gap-y-20'>
             {executives.map((person, i) => (
               <Reveal key={person.id} as='li' index={i % 3}>
                 <MemberCard person={person} />

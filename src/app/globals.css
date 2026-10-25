@@ -124,7 +124,9 @@
   --color-base-300: #e6e1d6;
   --color-base-content: #17191a;
 
-  --color-primary: #1f5a57;
+  /*--color-primary: #1f5a57;*/
+  /*--color-primary: #AEC58E;*/
+  --color-primary: #ffd600;
   --color-primary-content: #ffffff;
   --color-secondary: #17191a;
   --color-secondary-content: #ffffff;

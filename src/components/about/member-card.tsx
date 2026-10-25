@@ -25,11 +25,11 @@ type Props = {
   person: Pick<Person, 'name' | 'role' | 'photoPath' | 'socials'>
 }
 
-// a leadership entry (layout from reference/screenshots/about-mid.png, without the card box): round headshot, name, role, socials
+
 export function MemberCard({ person: { name, role, photoPath, socials } }: Props) {
   return (
     <article className='flex flex-col items-center text-center'>
-      <div className='relative size-28 overflow-hidden rounded-full bg-ink/5 shadow-image sm:size-36'>
+      <div className='relative size-28 overflow-hidden rounded-full bg-ink/5 shadow-sm sm:size-36'>
         {photoPath ? (
           <Image
             src={photoPath}
@@ -49,10 +49,10 @@ export function MemberCard({ person: { name, role, photoPath, socials } }: Props
       </div>
 
       <h3 className='mt-6 font-body text-md md:text-lg font-semibold text-ink'>{name}</h3>
-      <p className='mt-1 font-mono text-label uppercase text-muted'>{role}</p>
+      <p className='mt-1 font-body text-label uppercase text-muted text-base'>{role}</p>
 
       {socials.length > 0 && (
-        <ul className='mt-3 flex items-center gap-1'>
+        <ul className='mt-3 flex items-center'>
           {socials.map(({ platform, href }) => {
             const { label, Icon } = socialMeta[platform]
             return (

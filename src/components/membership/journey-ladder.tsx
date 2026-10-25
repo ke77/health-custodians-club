@@ -63,7 +63,7 @@ export function JourneyLadder({ steps, tone = 'light' }: Props) {
             <span
               aria-hidden
               className={cn(
-                'absolute top-0 bottom-0 left-1.25 border-l-2 border-paper/80 lg:hidden',
+                'absolute top-0 bottom-0 left-1.25 border-l-2 border-paper/70 lg:hidden',
                 t.line,
               )}
             />
@@ -103,6 +103,7 @@ export function JourneyLadder({ steps, tone = 'light' }: Props) {
               {step.optional && (
                 <span className={cn('mt-1 font-mono text-label md:uppercase', t.number)}>If applicable</span>
               )}
+              
               <h3 className={cn('mt-1 font-body md:font-display text-h3', t.title)}>{step.title}</h3>
               {step.caption && (
                 <p className={cn('mt-3 md:mt-2 font-body text-small', t.caption)}>{step.caption}</p>

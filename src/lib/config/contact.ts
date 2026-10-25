@@ -7,11 +7,14 @@ export type SocialLink = { platform: 'instagram' | 'facebook' | 'linkedin' | 'x'
 
 export const contactDetails: {
   email: string | null
+  // where the club operates. left empty (O11 showed no location); added back on request, shows "To come" until set
+  location: string | null
   phones: string[]
   whatsapp: string[]
   socials: SocialLink[]
 } = {
   email: null,
+  location: null,
   phones: [],
   whatsapp: [],
   socials: [],

@@ -21,7 +21,7 @@ const base =
 
 
 const variants: Record<Exclude<Variant, 'link'>, string> = {
-  primary: 'bg-cream text-ink/80 hover:opacity-90',
+  primary: 'bg-primary text-ink/90 hover:opacity-90',
   secondary: 'bg-paper text-ink/80',
   secondaryLight:
     'border border-paper text-paper hover:bg-paper hover:text-ink focus-visible:outline-paper',

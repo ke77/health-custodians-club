@@ -6,9 +6,10 @@ import { ArrowRightToLine, X } from 'lucide-react'
 import { AnimatePresence, motion, stagger, useReducedMotion } from 'motion/react'
 import type { Variants } from 'motion/react'
 import { Button } from '@/components/ui/buttons'
-import { Logo } from '@/components/layout/logo'
+// import { Logo } from '@/components/layout/logo'
 import { easeOut, menu } from '@/lib/config/motion'
 import { HiArrowRight } from 'react-icons/hi'
+import Image from 'next/image';
 
 const links = [
   { href: '#', label: 'Home' },
@@ -75,19 +76,20 @@ export function Navbar() {
   }, [open])
 
   return (
-    <header className='sticky z-20 bg-transparent text-paper'>
+    <header className='sticky top-0 z-30  bg-paper/95 backdrop-blur-sm'>
       <nav
         aria-label='Primary'
-        className='container-site flex items-center justify-between py-4 lg:grid lg:grid-cols-3'
+        className='container-site flex items-center justify-between py-4 md:py-2 lg:grid lg:grid-cols-3'
       >
-        <Logo className='lg:justify-self-start' />
+        {/*<Logo className='lg:justify-self-start' />*/}
+        <Image src='/logo.png' className='lg:justify-self-start bg-transparent md:w-16' width={40} height={20} alt='site-logo' />
 
         <ul className='hidden items-center gap-8 lg:flex lg:justify-self-center'>
           {links.map((l) => (
             <li key={l.href}>
               <Link
                 href={l.href}
-                className='font-body text-base text-ink/80 transition-colors hover:text-ink/60 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-paper'
+                className='font-body text-base text-ink/80 transition-colors hover:text-primary/60 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-paper'
               >
                 {l.label}
               </Link>
@@ -128,7 +130,8 @@ export function Navbar() {
             className='fixed inset-0 z-50 flex flex-col bg-paper lg:hidden'
           >
             <div className='container-site flex items-center justify-between py-4'>
-              <Logo onClick={() => setOpen(false)} />
+              {/*<Logo onClick={() => setOpen(false)} />*/}
+              <Image src='/logo.png' className='lg:justify-self-start bg-transparent md:w-16' width={40} height={20} alt='site-logo' />
               <button
                 type='button'
                 onClick={() => setOpen(false)}

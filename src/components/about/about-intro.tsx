@@ -5,16 +5,11 @@ import { Reveal } from '@/components/ui/reveal'
 // set to a file in public/ once the club supplies a group photo; until then the placeholder frame shows
 const PHOTO_SRC: string | null = null
 
-/*
-  the top of /about (layout from reference/screenshots/about-top.png): label and heading left, story right,
-  a wide photo that straddles the paper and the cream wash, then mission and vision on the wash.
-  copy is DRAFT, edited from docs/source/founding-document.md.
-*/
 export function AboutIntro() {
   return (
     <>
       <section className='bg-paper'>
-        <div className='container-site pt-16 sm:pt-24'>
+        <div className='container-site pt-3 md:pt-14'>
           <Reveal className='grid gap-10 lg:grid-cols-2 lg:gap-16'>
             <h1 className='heading-section text-ink'>
               Health knowledge that reaches people before illness does.
@@ -55,7 +50,7 @@ export function AboutIntro() {
         <div className='relative mt-14 sm:mt-20'>
           <div aria-hidden className='absolute inset-x-0 top-1/2 bottom-0 bg-cream/20' />
           <div className='container-site relative'>
-            <Reveal className='relative aspect-[4/3] overflow-hidden rounded-3xl border border-rule bg-paper shadow-image sm:aspect-[21/9]'>
+            <Reveal className='relative aspect-[4/3] overflow-hidden rounded-3xl border border-rule bg-paper md:shadow-image sm:aspect-[21/9]'>
               {PHOTO_SRC ? (
                 <Image
                   src={PHOTO_SRC}
@@ -78,13 +73,13 @@ export function AboutIntro() {
       </section>
 
       <section className='bg-cream/20'>
-        <div className='container-site grid gap-14 py-20 sm:py-24 md:grid-cols-2 md:gap-16'>
+        <div className='container-site grid gap-14 pt-12 pb-20 sm:py-24 md:grid-cols-2 md:gap-16'>
           <Reveal>
-            <p className='font-mono text-label uppercase text-muted'>Our mission</p>
+            <p className='font-body tracking-widest uppercase text-muted text-xl font-extrabold'>Our mission</p>
             {/* <h2 className='mt-4 font-body text-h3 font-semibold text-ink'>
               Healthier communities, served by better-prepared health students.
             </h2> */}
-            <p className='mt-5 font-body text-base md:text-md text-ink/70 leading-[1.7]'>
+            <p className='mt-3 md:mt-5 font-body text-base md:text-md text-ink/70 leading-[1.7]'>
               We help members discover and pursue their aspirations. We work to
               reduce the burden of disease in Africa through education, outreach
               and advocacy. We develop disciplined, purpose-driven leaders. We make
@@ -96,11 +91,11 @@ export function AboutIntro() {
           </Reveal>
 
           <Reveal index={1}>
-            <p className='font-mono text-label uppercase text-muted'>Our vision</p>
+            <p className='font-body tracking-widest uppercase text-muted text-xl font-extrabold'>Our vision</p>
             {/* <h2 className='mt-4 font-body text-h3 font-semibold text-ink'>
               A leading hub for the next generation of health professionals.
             </h2> */}
-            <p className='mt-5 font-body text-base md:text-md text-ink/70 leading-[1.7]'>
+            <p className='mt-3 md:mt-5 font-body text-base md:text-md text-ink/70 leading-[1.7]'>
               To develop health students with the practical, leadership,
               communication, research and interpersonal skills that go beyond the
               university curriculum, so they excel in their careers, serve

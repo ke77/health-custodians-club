@@ -22,11 +22,7 @@ function position(lat: number, lon: number) {
   }
 }
 
-/*
-  dot map with a pin per region, plus the region list beside it (stacked list then map below lg).
-  drawn for an ink band: paper pins and text, cream for the active region (teal is too dark on ink).
-  a pin or a list entry lights up its partner: hover, or keyboard focus on the pin, shows the region label.
-*/
+
 export function RegionMap({ regions, map, className }: Props) {
   const [active, setActive] = useState<string | null>(null)
   const present = regions.filter((r) => r.present)

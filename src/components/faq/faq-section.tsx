@@ -4,14 +4,12 @@ import { Button } from '@/components/ui/buttons'
 import { Reveal } from '@/components/ui/reveal'
 
 type Props = {
-  // one list, or several labelled groups (each its own accordion)
   items?: AccordionItem[]
   groups?: { label: string; items: AccordionItem[] }[]
   intro: string
   more?: { href: string; label: string }
 }
 
-// heading and intro left (sticky on desktop), questions right; stacked on phones
 export function FaqSection({ items, groups, intro, more }: Props) {
   const lists = groups ?? [{ label: '', items: items ?? [] }]
 

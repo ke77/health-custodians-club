@@ -2,11 +2,13 @@
 
 import { useEffect, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
+import { useRouter } from 'next/navigation'
 import { FormProvider, useForm } from 'react-hook-form'
 import type { FieldPath } from 'react-hook-form'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { ArrowLeft } from 'lucide-react'
 import { Button } from '@/components/ui/buttons'
+import { TurnstileWidget } from '@/components/ui/turnstile'
 import { ProgressBar, ProgressRail } from '@/components/membership/apply/form-progress'
 import type { StepMeta } from '@/components/membership/apply/form-progress'
 import {
@@ -62,7 +64,16 @@ function writeDraft(draft: Draft | null) {
   }
 }
 
-type Status = 'idle' | 'submitting' | 'not_connected' | 'failed'
+type Status = 'idle' | 'submitting' | 'closed' | 'duplicate' | 'rate_limited' | 'turnstile' | 'failed'
+
+// the message shown when the server refuses a submission (the answers stay saved on this device)
+const statusMessage: Record<Exclude<Status, 'idle' | 'submitting'>, string> = {
+  closed: 'Applications have just closed, so this could not be submitted. Your answers are saved on this device.',
+  duplicate: 'You have already applied this cohort with this email. If that was not you, write to us.',
+  rate_limited: 'That is a few attempts in a short time. Please wait a few minutes and try again.',
+  turnstile: 'We could not confirm you are human. Tick the box above, then submit again.',
+  failed: 'Something went wrong on our side. Your answers are saved on this device; please try again in a moment.',
+}
 
 const lastStep = steps.length - 1
 const clampStep = (n: number) => Math.min(Math.max(Number(n) || 0, 0), lastStep)
@@ -72,7 +83,9 @@ const clampStep = (n: number) => Math.min(Math.max(Number(n) || 0, 0), lastStep)
   can seed the form on its very first render
 */
 export function ApplicationForm() {
+  const router = useRouter()
   const [draft] = useState(readDraft)
+  const [token, setToken] = useState<string | null>(null)
   const form = useForm<ApplicationFormValues>({
     defaultValues: draft ? { ...emptyApplication, ...draft.values, website: '' } : emptyApplication,
   })
@@ -163,9 +176,10 @@ export function ApplicationForm() {
     }
     setStatus('submitting')
     try {
-      const result = await submitApplication(getValues())
+      const result = await submitApplication(getValues(), token ?? undefined)
       if (result.ok) {
         writeDraft(null)
+        router.push(`/membership/apply/success?ref=${encodeURIComponent(result.reference)}`)
         return
       }
       if (result.reason === 'invalid') {
@@ -177,7 +191,7 @@ export function ApplicationForm() {
         setStatus('idle')
         return
       }
-      setStatus('not_connected')
+      setStatus(result.reason === 'error' ? 'failed' : result.reason)
     } catch {
       setStatus('failed')
     }
@@ -263,15 +277,18 @@ export function ApplicationForm() {
             </motion.div>
           </AnimatePresence>
 
-          {status === 'not_connected' && (
-            <p role='status' className='mt-8 rounded-sm bg-cream/60 px-4 py-3 font-body text-base text-ink'>
-              Your application is complete, but we cannot receive applications online just yet. Everything is saved
-              on this device, so you can submit it as soon as applications open.
-            </p>
+          {isLast && (
+            <div className='mt-8'>
+              <TurnstileWidget onToken={setToken} />
+            </div>
           )}
-          {status === 'failed' && (
-            <p role='alert' className='mt-8 rounded-sm bg-cream/60 px-4 py-3 font-body text-base text-ink'>
-              Something went wrong on our side. Your answers are saved on this device; please try again in a moment.
+
+          {status !== 'idle' && status !== 'submitting' && (
+            <p
+              role='alert'
+              className='mt-8 rounded-sm bg-cream/60 px-4 py-3 font-body text-base text-ink'
+            >
+              {statusMessage[status]}
             </p>
           )}
 

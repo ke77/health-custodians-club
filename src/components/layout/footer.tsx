@@ -42,7 +42,7 @@ function FooterLink({ href, label }: FooterLink) {
   return (
     <Link
       href={href}
-      className='font-body text-base text-ink/70 transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink'
+      className='font-body text-base text-ink/70 transition-colors hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink'
     >
       {label}
     </Link>
@@ -71,7 +71,7 @@ export async function Footer() {
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row justify-between gap-18 sm:gap-42 mt-12 md:mt-0">
+          <div className="flex flex-col md:flex-wrap sm:flex-row justify-between gap-18 sm:gap-42 mt-12 md:mt-0">
 
             {columns.map((col) => (
               <nav key={col.heading} className='flex flex-col gap-5'>
@@ -109,7 +109,7 @@ export async function Footer() {
                 <a
                   href={href}
                   aria-label={label}
-                  className='block text-ink/80 transition-opacity hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink'
+                  className='block text-ink/80 transition-opacity hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink'
                 >
                   <Icon className='size-5' />
                 </a>

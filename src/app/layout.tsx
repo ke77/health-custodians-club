@@ -1,10 +1,7 @@
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 import { Newsreader, Hanken_Grotesk, IBM_Plex_Mono } from 'next/font/google'
-import { Footer } from '@/components/layout/footer'
 import { MotionProvider } from '@/components/layout/motion-provider'
-import { Navbar } from '@/components/layout/navbar'
-import { ScrollToTop } from '@/components/layout/scroll-to-top'
 import './globals.css'
 
 const newsreader = Newsreader({
@@ -42,12 +39,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       className={`${newsreader.variable} ${hankenGrotesk.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
       <body className='flex min-h-full flex-col'>
-        <MotionProvider>
-          <Navbar />
-          <div className='flex flex-1 flex-col'>{children}</div>
-          <Footer />
-          <ScrollToTop />
-        </MotionProvider>
+        {/* the public site and the dashboard each add their own chrome: app/(site)/layout.tsx, app/admin/layout.tsx */}
+        <MotionProvider>{children}</MotionProvider>
       </body>
     </html>
   )

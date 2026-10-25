@@ -40,7 +40,7 @@ export function describedBy(id: string, hint?: string, error?: string) {
 }
 
 export const fieldBase =
-  'min-h-11 rounded-sm bg-sand px-4 py-3 font-body text-body text-ink placeholder:text-muted outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal'
+  'min-h-11 rounded-sm bg-transparent border-b border-b-ink/20 px-4 py-3 font-body text-body text-ink placeholder:text-muted outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal'
 
 export function errorRing(error?: string) {
   return cn(error && 'outline-2 outline-error')

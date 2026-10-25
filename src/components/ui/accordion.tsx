@@ -52,7 +52,7 @@ export function Accordion({ items, defaultOpen = 0, className }: Props) {
                   aria-hidden
                   className={cn(
                     'flex size-7 shrink-0 items-center justify-center rounded-full transition-colors',
-                    isOpen ? 'bg-ink/10 text-ink' : 'text-ink/60 group-hover:text-ink',
+                    isOpen ? 'bg-primary/40 text-ink' : 'text-ink/60 group-hover:text-ink',
                   )}
                 >
                   <motion.span

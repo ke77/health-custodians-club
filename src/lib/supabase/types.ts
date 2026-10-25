@@ -1,0 +1,569 @@
+// generated from the live schema. after a migration, regenerate with:
+// pnpm dlx supabase gen types typescript --linked --schema public > src/lib/supabase/types.ts
+// (then put these two lines back)
+
+export type Json =
+  | string
+  | number
+  | boolean
+  | null
+  | { [key: string]: Json | undefined }
+  | Json[]
+
+export type Database = {
+  // Allows to automatically instantiate createClient with right options
+  // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
+  __InternalSupabase: {
+    PostgrestVersion: "14.18"
+  }
+  public: {
+    Tables: {
+      admins: {
+        Row: {
+          added_by: string | null
+          created_at: string
+          email: string
+          id: string
+          name: string | null
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          added_by?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          name?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          added_by?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          name?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      applications: {
+        Row: {
+          answer_balance: string
+          answer_health_gap: string
+          answer_motivation: string
+          answer_skills: string
+          cgpa: number | null
+          cohort: string
+          committed: boolean
+          consent_at: string
+          created_at: string
+          current_region: Database["public"]["Enums"]["region"]
+          cwa: number | null
+          date_of_birth: string
+          email: string
+          full_name: string
+          gender: Database["public"]["Enums"]["gender"] | null
+          heard_about: string
+          heard_about_other: string | null
+          home_region: Database["public"]["Enums"]["region"]
+          hours_per_month: number
+          id: string
+          institution: string
+          institution_other: string | null
+          interests: string[]
+          ip_hash: string | null
+          language_other: string | null
+          languages: Json
+          leadership_interest: string | null
+          level: number
+          notes: string | null
+          phone: string
+          programme: Database["public"]["Enums"]["programme"]
+          programme_other: string | null
+          reference: string
+          skills: string[]
+          status: Database["public"]["Enums"]["application_status"]
+          status_changed_at: string | null
+          status_changed_by: string | null
+          student_id: string
+          updated_at: string
+          whatsapp: string
+        }
+        Insert: {
+          answer_balance: string
+          answer_health_gap: string
+          answer_motivation: string
+          answer_skills: string
+          cgpa?: number | null
+          cohort: string
+          committed: boolean
+          consent_at: string
+          created_at?: string
+          current_region: Database["public"]["Enums"]["region"]
+          cwa?: number | null
+          date_of_birth: string
+          email: string
+          full_name: string
+          gender?: Database["public"]["Enums"]["gender"] | null
+          heard_about: string
+          heard_about_other?: string | null
+          home_region: Database["public"]["Enums"]["region"]
+          hours_per_month: number
+          id?: string
+          institution: string
+          institution_other?: string | null
+          interests?: string[]
+          ip_hash?: string | null
+          language_other?: string | null
+          languages: Json
+          leadership_interest?: string | null
+          level: number
+          notes?: string | null
+          phone: string
+          programme: Database["public"]["Enums"]["programme"]
+          programme_other?: string | null
+          reference?: string
+          skills?: string[]
+          status?: Database["public"]["Enums"]["application_status"]
+          status_changed_at?: string | null
+          status_changed_by?: string | null
+          student_id: string
+          updated_at?: string
+          whatsapp: string
+        }
+        Update: {
+          answer_balance?: string
+          answer_health_gap?: string
+          answer_motivation?: string
+          answer_skills?: string
+          cgpa?: number | null
+          cohort?: string
+          committed?: boolean
+          consent_at?: string
+          created_at?: string
+          current_region?: Database["public"]["Enums"]["region"]
+          cwa?: number | null
+          date_of_birth?: string
+          email?: string
+          full_name?: string
+          gender?: Database["public"]["Enums"]["gender"] | null
+          heard_about?: string
+          heard_about_other?: string | null
+          home_region?: Database["public"]["Enums"]["region"]
+          hours_per_month?: number
+          id?: string
+          institution?: string
+          institution_other?: string | null
+          interests?: string[]
+          ip_hash?: string | null
+          language_other?: string | null
+          languages?: Json
+          leadership_interest?: string | null
+          level?: number
+          notes?: string | null
+          phone?: string
+          programme?: Database["public"]["Enums"]["programme"]
+          programme_other?: string | null
+          reference?: string
+          skills?: string[]
+          status?: Database["public"]["Enums"]["application_status"]
+          status_changed_at?: string | null
+          status_changed_by?: string | null
+          student_id?: string
+          updated_at?: string
+          whatsapp?: string
+        }
+        Relationships: []
+      }
+      inquiries: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          interest: Database["public"]["Enums"]["inquiry_interest"]
+          message: string
+          name: string
+          organisation: string | null
+          status: Database["public"]["Enums"]["inquiry_status"]
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          interest: Database["public"]["Enums"]["inquiry_interest"]
+          message: string
+          name: string
+          organisation?: string | null
+          status?: Database["public"]["Enums"]["inquiry_status"]
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          interest?: Database["public"]["Enums"]["inquiry_interest"]
+          message?: string
+          name?: string
+          organisation?: string | null
+          status?: Database["public"]["Enums"]["inquiry_status"]
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      rate_limit_events: {
+        Row: {
+          action: string
+          created_at: string
+          id: number
+          key: string
+        }
+        Insert: {
+          action: string
+          created_at?: string
+          id?: never
+          key: string
+        }
+        Update: {
+          action?: string
+          created_at?: string
+          id?: never
+          key?: string
+        }
+        Relationships: []
+      }
+      reference_counters: {
+        Row: {
+          last_number: number
+          year: number
+        }
+        Insert: {
+          last_number?: number
+          year: number
+        }
+        Update: {
+          last_number?: number
+          year?: number
+        }
+        Relationships: []
+      }
+      settings: {
+        Row: {
+          application_deadline: string | null
+          applications_open: boolean
+          banner_link: string | null
+          banner_on: boolean
+          banner_text: string | null
+          contact_email: string | null
+          created_at: string
+          current_cohort: string
+          id: number
+          phones: Json
+          socials: Json
+          updated_at: string
+          whatsapp: Json
+        }
+        Insert: {
+          application_deadline?: string | null
+          applications_open?: boolean
+          banner_link?: string | null
+          banner_on?: boolean
+          banner_text?: string | null
+          contact_email?: string | null
+          created_at?: string
+          current_cohort?: string
+          id?: number
+          phones?: Json
+          socials?: Json
+          updated_at?: string
+          whatsapp?: Json
+        }
+        Update: {
+          application_deadline?: string | null
+          applications_open?: boolean
+          banner_link?: string | null
+          banner_on?: boolean
+          banner_text?: string | null
+          contact_email?: string | null
+          created_at?: string
+          current_cohort?: string
+          id?: number
+          phones?: Json
+          socials?: Json
+          updated_at?: string
+          whatsapp?: Json
+        }
+        Relationships: []
+      }
+      waitlist: {
+        Row: {
+          cohort: string
+          created_at: string
+          email: string
+          id: string
+          notified_at: string | null
+          updated_at: string
+        }
+        Insert: {
+          cohort: string
+          created_at?: string
+          email: string
+          id?: string
+          notified_at?: string | null
+          updated_at?: string
+        }
+        Update: {
+          cohort?: string
+          created_at?: string
+          email?: string
+          id?: string
+          notified_at?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+    }
+    Views: {
+      [_ in never]: never
+    }
+    Functions: {
+      is_admin: { Args: never; Returns: boolean }
+      next_reference: { Args: { p_year: number }; Returns: string }
+    }
+    Enums: {
+      application_status:
+        | "submitted"
+        | "under_review"
+        | "shortlisted"
+        | "interview"
+        | "accepted"
+        | "rejected"
+        | "waitlisted"
+      gender: "male" | "female" | "prefer_not_to_say"
+      inquiry_interest:
+        | "adviser"
+        | "partner"
+        | "professional"
+        | "alumni"
+        | "member"
+        | "other"
+      inquiry_status: "new" | "handled"
+      programme:
+        | "Medicine"
+        | "Nursing"
+        | "Midwifery"
+        | "Pharmacy"
+        | "Physician Assistantship"
+        | "Medical Laboratory Science"
+        | "Public Health"
+        | "Nutrition and Dietetics"
+        | "Physiotherapy"
+        | "Radiography and Medical Imaging"
+        | "Dentistry"
+        | "Optometry"
+        | "Biomedical Science"
+        | "Clinical Psychology"
+        | "Other health-related"
+      region:
+        | "Ahafo"
+        | "Ashanti"
+        | "Bono"
+        | "Bono East"
+        | "Central"
+        | "Eastern"
+        | "Greater Accra"
+        | "North East"
+        | "Northern"
+        | "Oti"
+        | "Savannah"
+        | "Upper East"
+        | "Upper West"
+        | "Volta"
+        | "Western"
+        | "Western North"
+    }
+    CompositeTypes: {
+      [_ in never]: never
+    }
+  }
+}
+
+type DatabaseWithoutInternals = Omit<Database, "__InternalSupabase">
+
+type DefaultSchema = DatabaseWithoutInternals[Extract<keyof Database, "public">]
+
+export type Tables<
+  DefaultSchemaTableNameOrOptions extends
+    | keyof (DefaultSchema["Tables"] & DefaultSchema["Views"])
+    | { schema: keyof DatabaseWithoutInternals },
+  TableName extends (DefaultSchemaTableNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
+  }
+    ? keyof (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
+        DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])
+    : never) = never,
+> = DefaultSchemaTableNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
+      DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])[TableName] extends {
+      Row: infer R
+    }
+    ? R
+    : never
+  : DefaultSchemaTableNameOrOptions extends keyof (DefaultSchema["Tables"] &
+        DefaultSchema["Views"])
+    ? (DefaultSchema["Tables"] &
+        DefaultSchema["Views"])[DefaultSchemaTableNameOrOptions] extends {
+        Row: infer R
+      }
+      ? R
+      : never
+    : never
+
+export type TablesInsert<
+  DefaultSchemaTableNameOrOptions extends
+    | keyof DefaultSchema["Tables"]
+    | { schema: keyof DatabaseWithoutInternals },
+  TableName extends (DefaultSchemaTableNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
+  }
+    ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
+    : never) = never,
+> = DefaultSchemaTableNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
+      Insert: infer I
+    }
+    ? I
+    : never
+  : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema["Tables"]
+    ? DefaultSchema["Tables"][DefaultSchemaTableNameOrOptions] extends {
+        Insert: infer I
+      }
+      ? I
+      : never
+    : never
+
+export type TablesUpdate<
+  DefaultSchemaTableNameOrOptions extends
+    | keyof DefaultSchema["Tables"]
+    | { schema: keyof DatabaseWithoutInternals },
+  TableName extends (DefaultSchemaTableNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
+  }
+    ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
+    : never) = never,
+> = DefaultSchemaTableNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
+      Update: infer U
+    }
+    ? U
+    : never
+  : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema["Tables"]
+    ? DefaultSchema["Tables"][DefaultSchemaTableNameOrOptions] extends {
+        Update: infer U
+      }
+      ? U
+      : never
+    : never
+
+export type Enums<
+  DefaultSchemaEnumNameOrOptions extends
+    | keyof DefaultSchema["Enums"]
+    | { schema: keyof DatabaseWithoutInternals },
+  EnumName extends (DefaultSchemaEnumNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
+  }
+    ? keyof DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"]
+    : never) = never,
+> = DefaultSchemaEnumNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"][EnumName]
+  : DefaultSchemaEnumNameOrOptions extends keyof DefaultSchema["Enums"]
+    ? DefaultSchema["Enums"][DefaultSchemaEnumNameOrOptions]
+    : never
+
+export type CompositeTypes<
+  PublicCompositeTypeNameOrOptions extends
+    | keyof DefaultSchema["CompositeTypes"]
+    | { schema: keyof DatabaseWithoutInternals },
+  CompositeTypeName extends (PublicCompositeTypeNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
+  }
+    ? keyof DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
+    : never) = never,
+> = PublicCompositeTypeNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"][CompositeTypeName]
+  : PublicCompositeTypeNameOrOptions extends keyof DefaultSchema["CompositeTypes"]
+    ? DefaultSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
+    : never
+
+export const Constants = {
+  public: {
+    Enums: {
+      application_status: [
+        "submitted",
+        "under_review",
+        "shortlisted",
+        "interview",
+        "accepted",
+        "rejected",
+        "waitlisted",
+      ],
+      gender: ["male", "female", "prefer_not_to_say"],
+      inquiry_interest: [
+        "adviser",
+        "partner",
+        "professional",
+        "alumni",
+        "member",
+        "other",
+      ],
+      inquiry_status: ["new", "handled"],
+      programme: [
+        "Medicine",
+        "Nursing",
+        "Midwifery",
+        "Pharmacy",
+        "Physician Assistantship",
+        "Medical Laboratory Science",
+        "Public Health",
+        "Nutrition and Dietetics",
+        "Physiotherapy",
+        "Radiography and Medical Imaging",
+        "Dentistry",
+        "Optometry",
+        "Biomedical Science",
+        "Clinical Psychology",
+        "Other health-related",
+      ],
+      region: [
+        "Ahafo",
+        "Ashanti",
+        "Bono",
+        "Bono East",
+        "Central",
+        "Eastern",
+        "Greater Accra",
+        "North East",
+        "Northern",
+        "Oti",
+        "Savannah",
+        "Upper East",
+        "Upper West",
+        "Volta",
+        "Western",
+        "Western North",
+      ],
+    },
+  },
+} as const

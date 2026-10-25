@@ -5,7 +5,7 @@ import { membershipJourney } from '@/lib/config/membership-journey'
 
 export function MembershipPreview() {
   return (
-    <section id='membership' className='bg-ink text-paper'>
+    <section id='membership' className='bg-ink/95 text-paper'>
       <div className='container-site py-24 sm:py-32'>
         <Reveal className='grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-end lg:gap-16'>
           <div>

@@ -8,7 +8,7 @@ export function RegionalPresence() {
   const count = regions.filter((r) => r.present).length
 
   return (
-    <section id='regions' className='bg-ink text-paper'>
+    <section id='regions' className='bg-ink/95 text-white'>
       <div className='container-site py-24 sm:py-32'>
         <Reveal>
           <h2 className='heading-section text-paper'>

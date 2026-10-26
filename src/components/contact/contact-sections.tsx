@@ -1,9 +1,9 @@
 import type { ComponentType, ReactNode } from 'react'
-import { Mail, MapPin, Phone } from 'lucide-react'
+import { Mail, Phone } from 'lucide-react'
 import { Reveal } from '@/components/ui/reveal'
 import { ContactForm } from '@/components/contact/contact-form'
 import { audiences, contactDetails } from '@/lib/config/contact'
-import { socialMeta } from '@/lib/config/socials'
+import { socialIcons } from '@/lib/config/socials'
 
 // a value, or the honest placeholder until the club supplies it
 function orToCome(value: ReactNode | null) {
@@ -53,7 +53,7 @@ export function Audiences() {
 
 // contact details on the left, the message form on the right (layout from reference/screenshots/contact-section2.png)
 export function ContactSection() {
-  const { email, phones, whatsapp, socials } = contactDetails
+  const { email, phones, whatsapp } = contactDetails
 
   return (
     <section id='send-a-message' className='scroll-mt-6 bg-paper'>
@@ -96,22 +96,24 @@ export function ContactSection() {
 
           <div className='mt-10'>
             <p className='font-body text-lg md:text-2xl font-bold text-muted'>Socials</p>
-            <div className='mt-3 flex flex-col gap-2'>
-              {socials.some((s) => s.href) ? (
-                socials.filter((s) => s.href).map((s) => (
-                  <a
-                    key={s.platform}
-                    href={s.href}
-                    {...(s.href !== '#' && { target: '_blank', rel: 'noreferrer' })}
-                    className={`${linkClass} w-fit`}
-                  >
-                    {socialMeta[s.platform].label}
-                  </a>
-                ))
-              ) : (
-                <span className='text-muted'>To come</span>
-              )}
-            </div>
+            {socialIcons.length > 0 ? (
+              <ul className='mt-3 flex items-center gap-3'>
+                {socialIcons.map(({ label, href, Icon }) => (
+                  <li key={label}>
+                    <a
+                      href={href}
+                      {...(href !== '#' && { target: '_blank', rel: 'noreferrer' })}
+                      aria-label={label}
+                      className='flex size-11 items-center justify-center rounded-full border border-rule text-ink/80 transition-colors hover:border-ink hover:bg-ink hover:text-paper focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink'
+                    >
+                      <Icon className='size-5' />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <span className='mt-3 block text-muted'>To come</span>
+            )}
           </div>
         </Reveal>
 

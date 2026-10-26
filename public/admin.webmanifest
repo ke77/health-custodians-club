@@ -1,0 +1,22 @@
+{
+  "id": "/admin",
+  "name": "HCC Dashboard",
+  "short_name": "HCC Admin",
+  "description": "Manage applications, enquiries, the blog and site content for the Health Custodians Club.",
+  "start_url": "/admin",
+  "scope": "/admin",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    { "src": "/pwa/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/pwa/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/pwa/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Applications", "url": "/admin/applications", "icons": [{ "src": "/pwa/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Enquiries", "url": "/admin/enquiries", "icons": [{ "src": "/pwa/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Blog", "url": "/admin/blog", "icons": [{ "src": "/pwa/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

@@ -1,5 +1,5 @@
 import type { ComponentType } from 'react'
-import { FaInstagram, FaXTwitter, FaFacebookF, FaLinkedinIn, FaWhatsapp } from 'react-icons/fa6'
+import { FaInstagram, FaFacebookF, FaLinkedinIn, FaWhatsapp } from 'react-icons/fa6'
 import { contactDetails } from '@/lib/config/contact'
 import type { SocialPlatform } from '@/lib/config/contact'
 

@@ -76,6 +76,7 @@ export function Navbar() {
   }, [open])
 
   return (
+    <>
     <header className='sticky top-0 z-30  bg-paper/95 backdrop-blur-sm'>
       <nav
         aria-label='Primary'
@@ -114,7 +115,12 @@ export function Navbar() {
           <MenuIcon />
         </button>
       </nav>
+    </header>
 
+      {/*
+        outside the header on purpose: the header has a backdrop blur, and a backdrop filter makes it the containing
+        block for `fixed` children, which shrinks this full-screen panel to the height of the header bar
+      */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -164,6 +170,6 @@ export function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   )
 }

@@ -18,19 +18,19 @@ function Detail({ icon: Icon, label, children }: { icon: ComponentType<{ classNa
   return (
     <div className='flex items-start gap-3'>
       <Icon className='mt-0.5 size-5 shrink-0 text-ink/70' aria-hidden />
-      <div className='flex flex-col gap-1'>
-        <p className='font-mono text-label uppercase text-muted'>{label}</p>
+      <div className='flex flex-col md:flex-row gap-2'>
+        <p className='font-body text-lg md:text-lg font-semibold text-muted'>{label}: </p>
         <div className='font-body text-base md:text-md text-ink/80'>{children}</div>
       </div>
     </div>
   )
 }
 
-// a short pitch per audience, laid out like "Beyond the curriculum" on the homepage
+
 export function Audiences() {
   return (
     <section id='who'>
-      <div className='container-site pt-6 pb-24 md:pt-5 md:pb-32'>
+      <div className='container-site pt-6 pb-24 md:pt-8 md:pb-32'>
         <Reveal>
           <h1 className='heading-section text-ink'>Groups of particular interest</h1>
           <p className='mt-4 md:mt-5 max-w-[var(--container-prose)] font-body text-base md:text-md text-ink/70'>
@@ -53,7 +53,7 @@ export function Audiences() {
 
 // contact details on the left, the message form on the right (layout from reference/screenshots/contact-section2.png)
 export function ContactSection() {
-  const { email, location, phones, whatsapp, socials } = contactDetails
+  const { email, phones, whatsapp, socials } = contactDetails
 
   return (
     <section id='send-a-message' className='scroll-mt-6 bg-paper'>
@@ -70,9 +70,9 @@ export function ContactSection() {
               {orToCome(email ? <a href={`mailto:${email}`} className={linkClass}>{email}</a> : null)}
             </Detail>
 
-            <Detail icon={MapPin} label='Location'>
+            {/*<Detail icon={MapPin} label='Location'>
               {orToCome(location)}
-            </Detail>
+            </Detail>*/}
 
             <Detail icon={Phone} label='Contacts'>
               {orToCome(
@@ -95,7 +95,7 @@ export function ContactSection() {
           </div>
 
           <div className='mt-10'>
-            <p className='font-mono text-label uppercase text-muted'>Socials</p>
+            <p className='font-body text-lg md:text-2xl font-bold text-muted'>Socials</p>
             <div className='mt-3 flex flex-col gap-2'>
               {socials.some((s) => s.href) ? (
                 socials.filter((s) => s.href).map((s) => (

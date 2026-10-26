@@ -305,7 +305,7 @@ export function ApplicationForm() {
             ) : (
               <span />
             )}
-            <Button type='submit' variant='primary' disabled={status === 'submitting'} className='px-8 py-3.5 text-ink' arrow>
+            <Button type='submit' variant='secondary' disabled={status === 'submitting'} className='px-8 py-3.5' arrow>
               {isLast ? (status === 'submitting' ? 'Submitting…' : 'Submit application') : 'Continue'}
             </Button>
           </div>

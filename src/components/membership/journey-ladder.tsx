@@ -106,7 +106,7 @@ export function JourneyLadder({ steps, tone = 'light' }: Props) {
               
               <h3 className={cn('mt-1 font-body md:font-display text-h3', t.title)}>{step.title}</h3>
               {step.caption && (
-                <p className={cn('mt-3 md:mt-2 font-body text-small', t.caption)}>{step.caption}</p>
+                <p className={cn('mt-3 md:mt-2 font-body text-base', t.caption)}>{step.caption}</p>
               )}
               {above && <div className='lg:mt-5'>{connector}</div>}
             </div>

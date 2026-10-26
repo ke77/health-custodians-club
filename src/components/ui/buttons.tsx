@@ -18,7 +18,7 @@ type Props = {
 }
 
 const base =
-  'group inline-flex min-h-11 items-center justify-center gap-2 rounded-lg font-body text-base font-medium shadow-button transition-[opacity,color,background-color] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal disabled:cursor-not-allowed disabled:opacity-50'
+  'group inline-flex min-h-11 items-center justify-center gap-2 rounded-lg font-body text-base font-medium shadow-button transition-[opacity,color,background-color] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal disabled:cursor-not-allowed disabled:opacity-50 cursor-pointer'
 
 
 const variants: Record<Exclude<Variant, 'link'>, string> = {
@@ -31,7 +31,7 @@ const variants: Record<Exclude<Variant, 'link'>, string> = {
 }
 
 const linkBase =
-  'group inline-flex items-center gap-2 font-body text-base font-medium text-ink/80 rounded-xs focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink/90'
+  'group inline-flex items-center gap-2 font-body text-base md:text-xl font-medium text-ink/80 rounded-xs focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink/90'
 
 const underlineDraw =
   '[background-image:linear-gradient(currentColor,currentColor)] bg-[length:0%_1px] bg-left-bottom bg-no-repeat transition-[background-size] duration-300 group-hover:bg-[length:100%_1px] group-focus-visible:bg-[length:100%_1px]'

@@ -10,7 +10,7 @@ export function MembershipProcess() {
       <div className='container-site py-24 sm:py-32'>
         <Reveal>
           <h2 className='heading-section text-paper'>From application to alumni</h2>
-          <p className='mt-6 md:mt-8 max-w-[var(--container-prose)] font-body text-base md:text-md text-paper/80'>
+          <p className='mt-6 md:mt-8 max-w-[var(--container-prose)] font-body text-base md:text-lg text-paper/80'>
             Every member follows the same path, from a short online application to a place in the alumni network.
           </p>
         </Reveal>
@@ -32,7 +32,7 @@ export function CohortAndRegions() {
           {/*<h2 className='mt-4 font-body text-h3 font-semibold text-ink'>
             Two years, one certificate, then alumni for good.
           </h2>*/}
-          <p className='mt-4 font-body text-base md:text-md text-ink/70 leading-[1.7]'>
+          <p className='mt-4 font-body text-base md:text-lg text-ink/70 leading-[1.7]'>
             Each cohort trains together for two years. At graduation, every member receives an official certificate.
             Graduation is not the end: alumni are always welcome to keep supporting the club, from mentoring new
             members to joining outreach in their region.
@@ -42,7 +42,7 @@ export function CohortAndRegions() {
         <Reveal index={1}>
           <p className='font-body text-2xl font-bold'>Regional heads</p>
           {/*<h2 className='mt-4 font-body text-h3 font-semibold text-ink'>A presiding head in every region.</h2>*/}
-          <p className='mt-4 font-body text-base md:text-md text-ink/70 leading-[1.7]'>
+          <p className='mt-4 font-body text-base md:text-lg text-ink/70 leading-[1.7]'>
             Members are organised by region. Each of Ghana&rsquo;s 16 regions has a regional head who presides over
             members there, helps plan outreach in local schools, markets and communities, and works with the
             executives to check new applications.

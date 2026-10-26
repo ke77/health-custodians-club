@@ -8,6 +8,7 @@ import {
   GraduationCap,
 } from 'lucide-react'
 import { Reveal } from '@/components/ui/reveal'
+import { Button } from '../ui/buttons'
 
 type Skill = {
   title: string
@@ -83,7 +84,14 @@ export function BeyondTheCurriculum() {
             </Reveal>
           ))}
         </ul>
+        
+        <div className='mt-8 md:mt-16'>
+          <Button href='/programs' variant='link' arrow>
+            Explore our programs
+          </Button>
+        </div>
       </div>
+
     </section>
   )
 }

@@ -89,7 +89,7 @@ export function Navbar() {
             <li key={l.href}>
               <Link
                 href={l.href}
-                className='font-body text-base text-ink/80 transition-colors hover:text-primary/60 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-paper'
+                className='font-body text-base md:text-lg text-ink/80 transition-colors hover:text-primary/60 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-paper'
               >
                 {l.label}
               </Link>
@@ -98,7 +98,7 @@ export function Navbar() {
         </ul>
 
         <div className='hidden lg:flex lg:justify-self-end'>
-          <Button variant='secondary' href='/membership/apply' className='rounded-lg text-sm px-14'>
+          <Button variant='secondary' href='/membership/apply' className='rounded-lg text-base px-14 py-3.5'>
             Apply
           </Button>
         </div>

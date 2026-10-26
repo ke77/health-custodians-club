@@ -12,7 +12,7 @@ type FieldShellProps = {
 export function FieldShell({ id, label, hint, error, children }: FieldShellProps) {
   return (
     <div className='flex flex-col gap-2'>
-      <label htmlFor={id} className='font-mono text-label uppercase text-ink'>
+      <label htmlFor={id} className='font-body font-semibold text-lg text-ink/80'>
         {label}
       </label>
       {hint && (
@@ -40,7 +40,7 @@ export function describedBy(id: string, hint?: string, error?: string) {
 }
 
 export const fieldBase =
-  'min-h-11 rounded-sm bg-transparent border-b border-b-ink/20 px-4 py-3 font-body text-body text-ink placeholder:text-muted outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal'
+  'min-h-11 rounded-sm bg-gray-100/90 focus:border-b focus:border-b-ink/20 px-4 py-3 font-body text-body text-ink placeholder:text-muted outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal'
 
 export function errorRing(error?: string) {
   return cn(error && 'outline-2 outline-error')

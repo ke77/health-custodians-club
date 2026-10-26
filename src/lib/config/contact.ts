@@ -10,13 +10,13 @@ export type SocialLink = { platform: SocialPlatform; href: string }
 export const contactDetails: {
   email: string | null
   // where the club operates. empty shows "To come" (the club is not tied to one campus, O11)
-  location: string | null
+  // location: string | null
   phones: string[]
   whatsapp: string[]
   socials: SocialLink[]
 } = {
   email: 'healthcustodiansclub@gmail.com',
-  location: null,
+  // location: null,
   phones: [],
   whatsapp: [],
   socials: [

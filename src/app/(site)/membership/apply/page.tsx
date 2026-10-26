@@ -19,16 +19,16 @@ export default async function ApplyPage() {
   return (
     <section className='bg-paper'>
       <div className='container-site pt-16 pb-24 sm:pt-24 sm:pb-32'>
-        <header className='grid gap-6 border-b border-rule pb-12 lg:grid-cols-[minmax(0,2fr)_minmax(0,5fr)] lg:gap-20 lg:pb-16'>
+        <header className='grid gap-6 pb-12 lg:grid-cols-[minmax(0,2fr)_minmax(0,5fr)] lg:gap-20 lg:pb-16'>
           <h1 className='heading-section text-ink lg:whitespace-nowrap'>Apply to join</h1>
           <div className='flex flex-col gap-4 lg:pt-3'>
             {open ? (
               <>
-                <p className='max-w-[var(--container-prose)] font-body text-base md:text-md text-ink/70 leading-[1.7]'>
+                <p className='max-w-[var(--container-prose)] font-body text-base md:text-lg text-ink/70 leading-[1.7]'>
                   Seven short steps, about twenty minutes. Your answers are saved on this device as you go, so you can
                   stop and come back to them.
                 </p>
-                <p className='font-body text-small text-muted'>
+                <p className='font-body text-small md:text-base text-muted'>
                   For tertiary students in the health sciences, Level 200 and above, with a CGPA of at least{' '}
                   {minimumCgpa.toFixed(2)} (or a CWA, where your institution uses one).{' '}
                   <Link

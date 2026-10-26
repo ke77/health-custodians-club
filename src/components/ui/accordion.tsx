@@ -45,7 +45,7 @@ export function Accordion({ items, defaultOpen = 0, className }: Props) {
                 aria-expanded={isOpen}
                 aria-controls={panelId}
                 onClick={() => setOpen(isOpen ? null : i)}
-                className='group flex w-full cursor-pointer items-center justify-between gap-6 py-6 text-left font-body text-base font-semibold text-ink md:text-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink'
+                className='group flex w-full cursor-pointer items-center justify-between gap-6 py-6 text-left font-body text-base font-semibold text-ink md:text-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink'
               >
                 {item.question}
                 <span
@@ -79,7 +79,7 @@ export function Accordion({ items, defaultOpen = 0, className }: Props) {
                   className='overflow-hidden'
                 >
                   <div className='flex max-w-[60ch] flex-col items-start gap-3 pb-6 md:pr-12'>
-                    <p className='font-body text-base text-ink/70 leading-[1.7]'>
+                    <p className='font-body text-base md:text-lg text-ink/70 leading-[1.7]'>
                       {item.answer}
                     </p>
                     {item.link && (

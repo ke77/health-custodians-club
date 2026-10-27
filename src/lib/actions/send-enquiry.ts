@@ -3,6 +3,7 @@
 import { hashedIp } from '@/lib/actions/request-meta'
 import { rateLimit } from '@/lib/actions/rate-limit'
 import { verifyTurnstile } from '@/lib/actions/turnstile'
+import { clubEmails } from '@/lib/config/contact'
 import { sendEmail } from '@/lib/email/resend'
 import { contactNotification } from '@/lib/email/templates/contact'
 import { createServiceClient } from '@/lib/supabase/service'
@@ -47,17 +48,14 @@ export async function sendEnquiry(input: unknown, token?: string): Promise<Enqui
     return { ok: false, reason: 'error' }
   }
 
-  const to = process.env.CONTACT_NOTIFY_EMAIL
-  if (to) {
-    try {
-      await sendEmail({
-        to,
-        email: contactNotification({ name, email, organisation: organisation || null, interest, message }),
-        replyTo: email,
-      })
-    } catch (err) {
-      console.error('enquiry email failed', err instanceof Error ? err.message : err)
-    }
+  try {
+    await sendEmail({
+      to: clubEmails.contact,
+      email: contactNotification({ name, email, organisation: organisation || null, interest, message }),
+      replyTo: email,
+    })
+  } catch (err) {
+    console.error('enquiry email failed', err instanceof Error ? err.message : err)
   }
 
   return { ok: true }

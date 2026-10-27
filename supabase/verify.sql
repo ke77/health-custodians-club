@@ -9,7 +9,7 @@ with checks as (
   join pg_namespace n on n.oid = c.relnamespace
   where n.nspname = 'public'
     and c.relname in ('admins','settings','applications','waitlist','inquiries','rate_limit_events','reference_counters',
-                      'people','regions','faqs','partners','posts')
+                      'people','regions','faqs','partners','posts','email_log')
 
   union all
   -- 2. the post kinds the editor offers exist in the enum

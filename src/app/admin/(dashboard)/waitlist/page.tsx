@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import { Download } from 'lucide-react'
+import { Button } from '@/components/ui/buttons'
+import { NotifyWaitlist } from '@/components/admin/waitlist/notify-waitlist'
 import { PageHeader } from '@/components/admin/page-header'
 import { requireAdmin } from '@/lib/auth/admin'
 import { listWaitlist } from '@/lib/data/admin/waitlist'
@@ -9,7 +11,7 @@ export const metadata: Metadata = { title: 'Waiting list' }
 
 export default async function WaitlistPage() {
   await requireAdmin()
-  const { groups, total } = await listWaitlist()
+  const { groups, total, current } = await listWaitlist()
 
   return (
     <>
@@ -28,18 +30,19 @@ export default async function WaitlistPage() {
         <div className='mt-10 flex flex-col gap-12'>
           {groups.map(({ cohort, entries }) => (
             <section key={cohort} aria-labelledby={`cohort-${cohort}`}>
-              <div className='flex items-center justify-between gap-4 border-b border-rule pb-3'>
+              <div className='flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-b border-rule pb-3'>
                 <h2 id={`cohort-${cohort}`} className='font-mono text-label uppercase text-muted'>
                   Cohort {cohort} · {entries.length}
                 </h2>
-                <a
-                  href={`/admin/waitlist/export?cohort=${encodeURIComponent(cohort)}`}
-                  download
-                  className='inline-flex items-center gap-2 rounded-xs text-small text-ink/80 underline decoration-ink/30 underline-offset-4 hover:text-ink hover:decoration-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal'
-                >
+                <div className='flex items-center gap-6'>
+                  {cohort === current && (
+                    <NotifyWaitlist cohort={cohort} waiting={entries.filter((e) => !e.notified_at).length} />
+                  )}
+                <Button variant='primary' href={`/admin/waitlist/export?cohort=${encodeURIComponent(cohort)}`} download className='px-5'>
                   <Download className='size-4' aria-hidden />
                   Export CSV
-                </a>
+                </Button>
+                </div>
               </div>
               <ul className='divide-y divide-rule'>
                 {entries.map((entry) => (

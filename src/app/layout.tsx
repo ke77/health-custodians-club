@@ -26,6 +26,8 @@ const ibmPlexMono = IBM_Plex_Mono({
 })
 
 export const metadata: Metadata = {
+  // relative URLs in metadata (link-preview images, canonical links) resolve against the live domain
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://healthcustodiansclub.com'),
   title: 'Health Custodians Club',
   description:
     'Health Custodians Club trains health students to close the gap between how people live and what they know about their health.',

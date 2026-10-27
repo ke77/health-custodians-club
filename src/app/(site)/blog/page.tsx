@@ -1,17 +1,24 @@
 import type { Metadata } from 'next'
+import { ComingSoon } from '@/components/layout/coming-soon'
+/*
+  BLOG-HIDDEN (1 of 4): imports for the post list. uncomment all of these lines to bring the blog back.
+
 import Image from 'next/image'
 import Link from 'next/link'
-import { ComingSoon } from '@/components/layout/coming-soon'
 import { Reveal } from '@/components/ui/reveal'
 import { getPublishedPosts } from '@/lib/data/posts'
 import type { PostSummary } from '@/lib/data/posts'
 import { formatDate } from '@/lib/utils/format'
 import { postKinds } from '@/lib/validation/admin/post'
+*/
 
 export const metadata: Metadata = {
   title: 'Blog',
   description: 'News, articles, training notes and outreach stories from the Health Custodians Club.',
 }
+
+/*
+  BLOG-HIDDEN (2 of 4): the post card. uncomment.
 
 const kindLabel = (value: string) => postKinds.find((k) => k.value === value)?.label ?? value
 
@@ -43,8 +50,13 @@ function PostCard({ post }: { post: PostSummary }) {
     </Link>
   )
 }
+*/
 
 export default async function BlogPage() {
+  /*
+    BLOG-HIDDEN (3 of 4): the original start of the page. uncomment these lines, and DELETE the temporary
+    "return <ComingSoon … />" block just below them.
+
   const posts = await getPublishedPosts()
 
   // nothing published yet: the coming-soon page stays until the first post goes live
@@ -57,6 +69,19 @@ export default async function BlogPage() {
       />
     )
   }
+  */
+
+  // TEMPORARY: always show coming soon, whatever is published. delete this return when restoring the blog
+  return (
+    <ComingSoon
+      label='Blog'
+      image='/hero-students.jpg'
+      blurb='Stories from our outreach, training notes and updates from the club will live here soon.'
+    />
+  )
+
+  /*
+    BLOG-HIDDEN (4 of 4): the post list. uncomment.
 
   return (
     <section>
@@ -78,4 +103,5 @@ export default async function BlogPage() {
       </div>
     </section>
   )
+  */
 }

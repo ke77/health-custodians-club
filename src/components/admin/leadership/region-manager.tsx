@@ -42,7 +42,7 @@ function RegionItem({ row }: { row: RegionRow }) {
       <Switch checked={headPublished} onChange={setHeadPublished} label='Show this head publicly' description='Needs a name to appear.' />
 
       <div className='flex flex-wrap items-center gap-4'>
-        <Button type='button' variant='dark' disabled={pending} onClick={save} className='px-6'>
+        <Button type='button' variant='primary' disabled={pending} onClick={save} className='px-6'>
           {pending ? 'Saving…' : 'Save'}
         </Button>
         <FormMessage result={result} />

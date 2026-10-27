@@ -4,6 +4,7 @@ import { Download } from 'lucide-react'
 import { FilterBar } from '@/components/admin/applications/filter-bar'
 import { PageHeader } from '@/components/admin/page-header'
 import { StatusLabel } from '@/components/admin/status-label'
+import { Button } from '@/components/ui/buttons'
 import { institutionOf, programmeOf } from '@/lib/admin/application-display'
 import { requireAdmin } from '@/lib/auth/admin'
 import { listApplications, listCohorts, pageSize } from '@/lib/data/admin/applications'
@@ -131,14 +132,10 @@ export default async function ApplicationsPage({ searchParams }: { searchParams:
         }
         actions={
           total > 0 && (
-            <a
-              href={`/admin/applications/export${qs ? `?${qs}` : ''}`}
-              download
-              className='inline-flex min-h-11 items-center gap-2 rounded-lg border border-rule px-5 font-body text-base font-medium text-ink/80 shadow-button hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal'
-            >
+            <Button variant='primary' href={`/admin/applications/export${qs ? `?${qs}` : ''}`} download className='px-5'>
               <Download className='size-4' aria-hidden />
               Export CSV{filtered ? ' (filtered)' : ''}
-            </a>
+            </Button>
           )
         }
       />

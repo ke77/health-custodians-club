@@ -18,7 +18,7 @@ export default async function ApplyPage() {
 
   return (
     <section className='bg-paper'>
-      <div className='container-site pt-16 pb-24 sm:pt-24 sm:pb-32'>
+      <div className='container-site pt-3 pb-24 sm:pt-11 sm:pb-32'>
         <header className='grid gap-6 pb-12 lg:grid-cols-[minmax(0,2fr)_minmax(0,5fr)] lg:gap-20 lg:pb-16'>
           <h1 className='heading-section text-ink lg:whitespace-nowrap'>Apply to join</h1>
           <div className='flex flex-col gap-4 lg:pt-3'>
@@ -48,7 +48,7 @@ export default async function ApplyPage() {
           </div>
         </header>
 
-        <div className='mt-12 lg:mt-16'>
+        <div className='mt-8 lg:mt-16'>
           {open ? (
             <ApplicationFormLoader />
           ) : (

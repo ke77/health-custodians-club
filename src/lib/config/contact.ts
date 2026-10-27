@@ -4,6 +4,19 @@
   socials: replace each '#' with the club's real link. an empty string hides that icon everywhere.
   phones and whatsapp are plain numbers with the country code, e.g. '+233 24 000 0000'; empty shows "To come".
 */
+/*
+  the club's three addresses (ImprovMX forwards each to the club Gmail), and what each one is for:
+  - contact: the public address on the contact page, and where messages from the contact form are reported
+  - admin:   notices about the dashboard itself (an admin added or removed)
+  - info:    everything else: new membership applications, and the address applicants see and reply to
+  they are not secrets, so they live here instead of in environment variables.
+*/
+export const clubEmails = {
+  contact: 'contact@healthcustodiansclub.com',
+  admin: 'admin@healthcustodiansclub.com',
+  info: 'info@healthcustodiansclub.com',
+} as const
+
 export type SocialPlatform = 'instagram' | 'facebook' | 'linkedin' | 'whatsapp'
 export type SocialLink = { platform: SocialPlatform; href: string }
 
@@ -15,7 +28,7 @@ export const contactDetails: {
   whatsapp: string[]
   socials: SocialLink[]
 } = {
-  email: 'healthcustodiansclub@gmail.com',
+  email: clubEmails.contact,
   // location: null,
   phones: [],
   whatsapp: [],

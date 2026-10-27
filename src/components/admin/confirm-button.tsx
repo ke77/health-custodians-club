@@ -71,7 +71,7 @@ export function ConfirmButton({ label, ariaLabel, title, body, confirmLabel, onC
               onClick={confirm}
               disabled={pending}
               className={cn(
-                'min-h-11 rounded-lg bg-ink/90 px-5 font-body text-base font-medium text-paper shadow-button hover:opacity-95 disabled:opacity-50',
+                'min-h-11 rounded-lg bg-primary px-5 font-body text-base font-medium text-ink shadow-button hover:opacity-90 disabled:opacity-50',
                 focus,
               )}
             >

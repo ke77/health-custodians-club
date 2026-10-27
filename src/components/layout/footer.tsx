@@ -68,7 +68,7 @@ export async function Footer() {
           <div className='grid grid-cols-1 gap-12 sm:grid-cols-3 sm:gap-x-8 md:gap-x-12 lg:gap-x-16 xl:gap-x-28'>
             {columns.map((col) => (
               <nav key={col.heading} className='flex flex-col gap-5'>
-                <p className='font-mono uppercase text-base text-ink'>
+                <p className='font-mono font-semibold uppercase text-base text-ink'>
                   {col.heading}
                 </p>
                 <ul className='flex flex-col gap-3'>

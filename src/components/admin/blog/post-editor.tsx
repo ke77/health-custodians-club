@@ -126,25 +126,25 @@ export function PostEditor({ post }: { post: Post }) {
         <div className='ml-auto flex flex-wrap items-center gap-3'>
           <FormMessage result={result} />
           <Button
-            variant='outline'
+            variant='secondary'
             disabled={pending}
             onClick={() => run(() => savePost(post.id, current()))}
-            className='border border-rule px-6'
+            className='px-6'
           >
             {pending ? 'Saving…' : 'Save'}
           </Button>
           {status === 'published' ? (
             <Button
-              variant='outline'
+              variant='secondary'
               disabled={pending}
               onClick={() => run(() => unpublishPost(post.id, current()), () => setStatus('draft'))}
-              className='border border-rule px-6'
+              className='px-6'
             >
               Unpublish
             </Button>
           ) : (
             <Button
-              variant='dark'
+              variant='primary'
               disabled={pending}
               onClick={() => run(() => publishPost(post.id, current()), () => setStatus('published'))}
               className='px-6'

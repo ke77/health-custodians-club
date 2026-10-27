@@ -40,7 +40,7 @@ export function InstallApp() {
 
   if (canPrompt) {
     return (
-      <Button variant='dark' onClick={promptInstall} className='px-6'>
+      <Button variant='primary' onClick={promptInstall} className='px-6'>
         Install the app
       </Button>
     )

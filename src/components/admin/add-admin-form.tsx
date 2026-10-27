@@ -46,7 +46,7 @@ export function AddAdminForm() {
         onChange={(e) => setName(e.target.value)}
       />
       <div className='flex flex-wrap items-center gap-4 sm:col-span-2'>
-        <Button type='submit' variant='dark' disabled={pending} className='px-6'>
+        <Button type='submit' variant='primary' disabled={pending} className='px-6'>
           {pending ? 'Adding…' : 'Add admin'}
         </Button>
         <FormMessage result={result} />

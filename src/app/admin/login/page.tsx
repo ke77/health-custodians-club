@@ -17,7 +17,7 @@ export default function LoginPage() {
   return (
     <main className='flex min-h-dvh flex-col bg-paper px-6'>
       <div className='py-4'>
-        <Logo href='/admin' label='Dashboard home' wordmark='HCC Dashboard' />
+        <Logo href='/admin' label='Dashboard home' wordmark='Dashboard' />
       </div>
       <div className='mx-auto flex w-full max-w-sm flex-1 flex-col justify-center pb-24'>
         <Suspense fallback={null}>

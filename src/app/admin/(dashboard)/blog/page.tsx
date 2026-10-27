@@ -29,7 +29,7 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
         description='Write, edit and publish posts for the main site. Drafts stay private until you publish them.'
         actions={
           <form action={createDraft}>
-            <Button type='submit' variant='dark' className='px-6'>
+            <Button type='submit' variant='primary' className='px-6'>
               New post
             </Button>
           </form>

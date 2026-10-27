@@ -3,17 +3,16 @@ import Link from 'next/link'
 import { cn } from '@/lib/utils/cn'
 
 /*
-  to switch on the real logo: drop the file in public/brand/, set LOGO_SRC (e.g. '/brand/logo.svg')
-  and LOGO_SIZE to the file's intrinsic size. the image then shows to the left of the wordmark text.
-  until then only the Newsreader wordmark renders.
+  the club's seal, the same file the main site's navbar uses. it shows to the left of the wordmark text.
+  set LOGO_SRC to null to go back to the text wordmark alone.
 */
-const LOGO_SRC: string | null = null
-const LOGO_SIZE = { width: 40, height: 40 }
+const LOGO_SRC: string | null = '/logo.png'
+const LOGO_SIZE = { width: 1000, height: 1000 }
 
 type Props = {
   href?: string
   label?: string
-  // the text shown beside the logo ('HCC' on the site, 'HCC Dashboard' in the admin)
+  // the text shown beside the logo ('Dashboard' in the admin)
   wordmark?: string
   onClick?: () => void
   className?: string

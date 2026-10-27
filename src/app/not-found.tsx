@@ -33,11 +33,11 @@ export default function NotFound() {
             from one of the places below.
           </p>
 
-          <div className='mt-10 flex flex-wrap gap-3 md:gap-4'>
-            <Button href='/' variant='dark' arrow className='px-8 md:px-9'>
+          <div className='mt-10 flex flex-wrap gap-2'>
+            <Button href='/' variant='primary' arrow className='px-8 md:px-9 py-4'>
               Back to home
             </Button>
-            <Button href='/contact' variant='outline' className='border border-rule px-8 md:px-9'>
+            <Button href='/contact' variant='link' className='px-8 md:px-9'>
               Tell us about it
             </Button>
           </div>

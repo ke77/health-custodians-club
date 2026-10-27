@@ -17,8 +17,9 @@ type Props = {
   cohorts: { current: string; all: string[] }
 }
 
+// the same grey field look as the apply and contact forms (ui/field.tsx), at a compact size for a filter row
 const control =
-  'min-h-11 w-full rounded-sm bg-sand px-3 font-body text-small text-ink outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal'
+  'min-h-11 w-full rounded-sm bg-gray-100/90 border-b border-b-transparent transition-[border-color] duration-300 ease-out motion-reduce:transition-none focus:border-b-ink/20 px-3 font-body text-small text-ink outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal'
 
 function Field({ id, label, children }: { id: string; label: string; children: ReactNode }) {
   return (

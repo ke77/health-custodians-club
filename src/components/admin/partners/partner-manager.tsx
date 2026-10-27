@@ -55,7 +55,7 @@ function PartnerRow({ partner, first, last }: { partner: Partner; first: boolean
       <Switch checked={published} onChange={setPublished} label='Published' />
 
       <div className='flex flex-wrap items-center gap-4'>
-        <Button type='button' variant='dark' disabled={pending} onClick={save} className='px-6'>
+        <Button type='button' variant='primary' disabled={pending} onClick={save} className='px-6'>
           {pending ? 'Saving…' : 'Save'}
         </Button>
         <ConfirmButton
@@ -90,7 +90,7 @@ export function PartnerManager({ partners }: { partners: Partner[] }) {
   return (
     <div>
       <div className='flex justify-end'>
-        <Button type='button' variant='outline' disabled={pending} onClick={add} className='border border-rule px-5'>
+        <Button type='button' variant='secondary' disabled={pending} onClick={add} className='px-5'>
           Add partner
         </Button>
       </div>

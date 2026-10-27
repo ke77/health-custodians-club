@@ -73,17 +73,17 @@ export function LoginForm() {
             onChange={(e) => setEmail(e.target.value)}
           />
           <div className='flex flex-col gap-3'>
-            <Button type='submit' variant='dark' disabled={pending} className='w-full'>
+            <Button type='submit' variant='primary' disabled={pending} className='w-full'>
               {pending ? 'Sending…' : 'Email me a sign-in code'}
             </Button>
             <Button
-              variant='outline'
+              variant='dark'
               disabled={pending}
               onClick={() => {
                 setResult(null)
                 setStage('password')
               }}
-              className='w-full border border-rule'
+              className='w-full'
             >
               Use my password
             </Button>
@@ -110,7 +110,7 @@ export function LoginForm() {
             onChange={(e) => setCode(e.target.value.replace(/\D/g, ''))}
             className='font-mono tracking-[0.4em]'
           />
-          <Button type='submit' variant='dark' disabled={pending || code.length !== 6} className='w-full'>
+          <Button type='submit' variant='primary' disabled={pending || code.length !== 6} className='w-full'>
             {pending ? 'Checking…' : 'Sign in'}
           </Button>
           <div className='mt-4 flex flex-wrap justify-between gap-3'>
@@ -146,7 +146,7 @@ export function LoginForm() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <Button type='submit' variant='dark' disabled={pending} className='w-full'>
+          <Button type='submit' variant='primary' disabled={pending} className='w-full'>
             {pending ? 'Signing in…' : 'Sign in'}
           </Button>
           <div className='mt-4 flex flex-wrap justify-between gap-3'>

@@ -1,11 +1,12 @@
 'use client'
 
 import { useEffect, useState, useSyncExternalStore } from 'react'
-import type { ReactNode } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { ArrowUpRight, LogOut, Menu, PanelLeft, PanelLeftClose, X } from 'lucide-react'
+import { ArrowUpRight, LogOut, PanelLeft, PanelLeftClose, X } from 'lucide-react'
 import { Logo } from '@/components/layout/logo'
+import { MenuIcon } from '@/components/layout/menu-icon'
 import { readyAdminNav } from '@/lib/config/admin-nav'
 import { signOut } from '@/lib/actions/admin/auth'
 import { cn } from '@/lib/utils/cn'
@@ -141,6 +142,13 @@ export function AdminShell({ account, badges, children }: Props) {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
   const [collapsed, toggleCollapsed] = useSidebarCollapsed()
+  // false until the first click, so the saved preference applies instantly on load and only a click animates
+  const [animate, setAnimate] = useState(false)
+
+  function toggle() {
+    setAnimate(true)
+    toggleCollapsed()
+  }
 
   useEffect(() => {
     if (!open) return
@@ -174,14 +182,14 @@ export function AdminShell({ account, badges, children }: Props) {
             {collapsed && (
               <button
                 type='button'
-                onClick={toggleCollapsed}
+                onClick={toggle}
                 aria-label='Show the menu'
-                className={cn('hidden size-9 items-center justify-center rounded-lg text-ink/70 hover:bg-ink/5 hover:text-ink lg:flex', focus)}
+                className={cn('hidden size-9 cursor-pointer items-center justify-center rounded-lg text-ink/70 hover:bg-ink/5 hover:text-ink lg:flex', focus)}
               >
                 <PanelLeft className='size-5' aria-hidden />
               </button>
             )}
-            <Logo href='/admin' label='Dashboard home' wordmark='HCC Dashboard' />
+            <Logo href='/admin' label='Dashboard home' wordmark='Dashboard' />
           </div>
 
           <div className='hidden items-center gap-5 lg:flex'>
@@ -199,7 +207,7 @@ export function AdminShell({ account, badges, children }: Props) {
             aria-controls='admin-menu'
             className={cn('flex size-11 items-center justify-end text-ink lg:hidden', focus)}
           >
-            <Menu className='size-6' aria-hidden />
+            <MenuIcon />
           </button>
         </div>
       </header>
@@ -213,7 +221,7 @@ export function AdminShell({ account, badges, children }: Props) {
           className='fixed inset-0 z-50 flex flex-col overflow-y-auto bg-paper px-6 pb-10 lg:hidden'
         >
           <div className='flex items-center justify-between py-3'>
-            <Logo href='/admin' label='Dashboard home' wordmark='HCC Dashboard' onClick={close} />
+            <Logo href='/admin' label='Dashboard home' wordmark='Dashboard' onClick={close} />
             <button
               type='button'
               onClick={close}
@@ -235,27 +243,37 @@ export function AdminShell({ account, badges, children }: Props) {
         </div>
       )}
 
-      <div className={cn('flex-1', collapsed ? 'lg:block' : 'lg:grid lg:grid-cols-[15rem_minmax(0,1fr)]')}>
-        {/* desktop sidebar (hidden when collapsed) */}
+      {/*
+        the sidebar column shrinks from 15rem to 0, which is what animates the collapse. it only animates after the
+        first click, so a saved "collapsed" preference does not replay the animation on every page load
+      */}
+      <div
+        className={cn(
+          'flex-1 lg:grid lg:grid-cols-[var(--sidebar-w)_minmax(0,1fr)]',
+          animate && 'lg:transition-[grid-template-columns] lg:duration-300 lg:ease-out motion-reduce:transition-none',
+        )}
+        style={{ '--sidebar-w': collapsed ? '0rem' : '15rem' } as CSSProperties}
+      >
+        {/* desktop sidebar. its content keeps a fixed width and is clipped as the column closes, so nothing squashes */}
         <aside
-          className={cn(
-            'hidden lg:sticky lg:top-[3.75rem] lg:h-[calc(100dvh-3.75rem)] lg:flex-col lg:overflow-y-auto lg:border-r lg:border-rule lg:px-4 lg:py-6',
-            collapsed ? 'lg:hidden' : 'lg:flex',
-          )}
+          inert={collapsed}
+          className='hidden lg:sticky lg:top-[3.75rem] lg:block lg:h-[calc(100dvh-3.75rem)] lg:overflow-hidden'
         >
-          <div className='mb-4 flex justify-end'>
-            <button
-              type='button'
-              onClick={toggleCollapsed}
-              aria-label='Collapse the menu'
-              className={cn('flex size-9 items-center justify-center rounded-lg text-ink/60 hover:bg-ink/5 hover:text-ink', focus)}
-            >
-              <PanelLeftClose className='size-5' aria-hidden />
-            </button>
+          <div className='h-full w-60 overflow-y-auto border-r border-rule px-4 py-6'>
+            <div className='mb-4 flex justify-end'>
+              <button
+                type='button'
+                onClick={toggle}
+                aria-label='Collapse the menu'
+                className={cn('flex size-9 cursor-pointer items-center justify-center rounded-lg text-ink/60 hover:bg-ink/5 hover:text-ink', focus)}
+              >
+                <PanelLeftClose className='size-5' aria-hidden />
+              </button>
+            </div>
+            <nav aria-label='Dashboard'>
+              <NavLinks pathname={pathname} badges={badges} />
+            </nav>
           </div>
-          <nav aria-label='Dashboard'>
-            <NavLinks pathname={pathname} badges={badges} />
-          </nav>
         </aside>
 
         <main id='admin-main' className='min-w-0'>

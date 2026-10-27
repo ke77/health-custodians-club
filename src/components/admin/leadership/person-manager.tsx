@@ -108,7 +108,7 @@ function PersonRow({ person, type, first, last }: { person: Person; type: Person
       <Switch checked={published} onChange={setPublished} label='Published' />
 
       <div className='flex flex-wrap items-center gap-4'>
-        <Button type='button' variant='dark' disabled={pending} onClick={save} className='px-6'>
+        <Button type='button' variant='primary' disabled={pending} onClick={save} className='px-6'>
           {pending ? 'Saving…' : 'Save'}
         </Button>
         <ConfirmButton
@@ -145,7 +145,7 @@ export function PersonManager({ type, people }: { type: PersonType; people: Pers
     <section>
       <div className='flex items-center justify-between gap-4'>
         <h2 className='font-display text-h3 text-ink'>{personTypeLabels[type].plural}</h2>
-        <Button type='button' variant='outline' disabled={pending} onClick={add} className='border border-rule px-5'>
+        <Button type='button' variant='secondary' disabled={pending} onClick={add} className='px-5'>
           Add {personTypeLabels[type].singular.toLowerCase()}
         </Button>
       </div>

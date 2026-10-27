@@ -10,6 +10,8 @@ type Props = {
   children: ReactNode
   variant?: Variant
   href?: string
+  // the link downloads a file (a CSV export), so it is a plain <a>: next/link would try to render it as a page
+  download?: boolean
   arrow?: boolean
   type?: 'button' | 'submit'
   disabled?: boolean
@@ -62,6 +64,7 @@ export function Button({
   children,
   variant = 'primary',
   href,
+  download,
   arrow,
   type = 'button',
   disabled,
@@ -79,9 +82,9 @@ export function Button({
   )
 
   // in-page anchors use a plain <a> so the browser scrolls to the section natively
-  if (href?.startsWith('#')) {
+  if (href && (href.startsWith('#') || download)) {
     return (
-      <a href={href} className={classes}>
+      <a href={href} download={download || undefined} className={classes}>
         {inner}
       </a>
     )

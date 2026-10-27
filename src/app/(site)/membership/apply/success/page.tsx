@@ -28,14 +28,13 @@ export default function SuccessPage({ searchParams }: { searchParams: Promise<{ 
     <section className='bg-paper'>
       <div className='container-site flex min-h-[70vh] flex-col justify-center py-24 sm:py-32'>
         <div className='max-w-[var(--container-prose)]'>
-          <p className='font-mono text-label uppercase text-muted'>Application received</p>
           <h1 className='mt-4 heading-section text-ink'>Thank you. Your application is in.</h1>
 
           <Suspense fallback={null}>
             <Reference search={searchParams} />
           </Suspense>
 
-          <div className='mt-8 flex flex-col gap-4 font-body text-base md:text-md text-ink/80 leading-[1.7]'>
+          <div className='mt-8 flex flex-col gap-4 font-body text-base md:text-lg text-ink/80 leading-[1.7]'>
             <p>
               Please keep your reference number. We will review applications and contact you by email, so check your
               inbox and spam folder.
@@ -46,7 +45,7 @@ export default function SuccessPage({ searchParams }: { searchParams: Promise<{ 
             </p>
           </div>
 
-          <div className='mt-10 flex flex-wrap gap-4'>
+          <div className='mt-10 flex flex-wrap gap-6'>
             <Button href='/' variant='primary' className='px-8 py-3.5 text-ink'>
               Back to home
             </Button>

@@ -12,7 +12,7 @@ const slides: HeroSlide[] = [
 
 export function Hero() {
   return (
-    <section className='relative flex min-h-[70vh] md:min-h-[85vh] flex-col justify-end sm:justify-initial bg-ink text-paper'>
+    <section data-hero className='relative flex min-h-[70vh] md:min-h-[85vh] flex-col justify-end sm:justify-initial bg-ink text-paper'>
       <HeroCarousel slides={slides} />
       {/*
         the hero overlay is the only gradient allowed (dark, linear; look from reference/screenshots/altermate-hero.png).

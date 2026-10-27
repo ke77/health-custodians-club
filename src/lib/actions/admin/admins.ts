@@ -5,6 +5,9 @@ import { adminLabel, requireAdmin } from '@/lib/auth/admin'
 import { createClient } from '@/lib/supabase/server'
 import { createServiceClient } from '@/lib/supabase/service'
 import { addAdminSchema, setPasswordSchema } from '@/lib/validation/admin/auth'
+import { clubEmails } from '@/lib/config/contact'
+import { sendEmail } from '@/lib/email/resend'
+import { adminAdded, adminRemoved } from '@/lib/email/templates/admin'
 
 export type ActionResult = { ok: true; message?: string } | { ok: false; message: string }
 
@@ -45,6 +48,14 @@ export async function addAdmin(input: { email: string; name: string }): Promise<
   }
 
   refresh()
+
+  // tell admin@ who was added. a failed email never undoes the change
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? '').replace(/\/$/, '')
+  await sendEmail({
+    to: clubEmails.admin,
+    email: adminAdded({ email, name: name || null, addedBy: adminLabel(me), dashboardUrl: `${siteUrl}/admin/settings/admins` }),
+  })
+
   return { ok: true, message: `${email} can now sign in.` }
 }
 
@@ -69,6 +80,7 @@ export async function removeAdmin(id: string): Promise<ActionResult> {
   }
 
   refresh()
+  await sendEmail({ to: clubEmails.admin, email: adminRemoved({ email: target.email, removedBy: adminLabel(me) }) })
   return { ok: true, message: `${target.email} has been removed.` }
 }
 

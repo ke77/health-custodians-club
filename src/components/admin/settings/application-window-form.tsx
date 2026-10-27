@@ -70,7 +70,7 @@ export function ApplicationWindowForm({ initial }: Props) {
       />
 
       <div className='flex flex-wrap items-center gap-4'>
-        <Button type='submit' variant='dark' disabled={pending} className='px-6'>
+        <Button type='submit' variant='primary' disabled={pending} className='px-6'>
           {pending ? 'Saving…' : 'Save'}
         </Button>
         <FormMessage result={result} />

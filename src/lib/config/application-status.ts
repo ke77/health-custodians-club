@@ -24,6 +24,17 @@ export function selectableStatuses(current?: ApplicationStatus) {
   return applicationStatuses.filter((s) => interviewStepEnabled || s.value !== 'interview' || s.value === current)
 }
 
+// the statuses that have an applicant email. the dashboard asks before sending one of these (templates/member-status.ts)
+export const emailedStatuses = ['accepted', 'rejected', 'waitlisted'] as const
+export type EmailedStatus = (typeof emailedStatuses)[number]
+
+export function isEmailedStatus(status: string): status is EmailedStatus {
+  return (emailedStatuses as readonly string[]).includes(status)
+}
+
+// the name stored in email_log for a status email
+export const statusTemplateName = (status: EmailedStatus) => `status_${status}`
+
 export function statusLabel(status: ApplicationStatus) {
   return applicationStatuses.find((s) => s.value === status)?.label ?? status
 }

@@ -1,6 +1,7 @@
 'use server'
 
 import { gradeScaleOf } from '@/lib/config/application'
+import { clubEmails } from '@/lib/config/contact'
 import { hashedIp } from '@/lib/actions/request-meta'
 import { rateLimit } from '@/lib/actions/rate-limit'
 import { verifyTurnstile } from '@/lib/actions/turnstile'
@@ -104,23 +105,21 @@ async function sendApplicationEmails(a: Application, reference: string) {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? ''
   try {
     await sendEmail({ to: a.email, email: applicationReceived({ name: a.fullName, reference, email: a.email }) })
-    const adminTo = process.env.ADMIN_NOTIFY_EMAIL
-    if (adminTo) {
-      await sendEmail({
-        to: adminTo,
-        email: adminNewApplication({
-          application: {
-            reference,
-            full_name: a.fullName,
-            programme: a.programme,
-            institution: a.institution === 'Other' ? a.institutionOther : a.institution,
-            level: Number(a.level),
-            current_region: a.currentRegion as Region,
-          },
-          dashboardUrl: `${siteUrl}/admin/applications`,
-        }),
-      })
-    }
+    // new applications are reported to info@
+    await sendEmail({
+      to: clubEmails.info,
+      email: adminNewApplication({
+        application: {
+          reference,
+          full_name: a.fullName,
+          programme: a.programme,
+          institution: a.institution === 'Other' ? a.institutionOther : a.institution,
+          level: Number(a.level),
+          current_region: a.currentRegion as Region,
+        },
+        dashboardUrl: `${siteUrl}/admin/applications`,
+      }),
+    })
   } catch (err) {
     // the application is saved; a mail problem must not surface as a failed submission
     console.error('application emails failed', err instanceof Error ? err.message : err)

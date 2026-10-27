@@ -1,7 +1,8 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useSyncExternalStore } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { ArrowRightToLine, X } from 'lucide-react'
 import { AnimatePresence, motion, stagger, useReducedMotion } from 'motion/react'
 import type { Variants } from 'motion/react'
@@ -9,6 +10,8 @@ import { Button } from '@/components/ui/buttons'
 // import { Logo } from '@/components/layout/logo'
 import { easeOut, menu } from '@/lib/config/motion'
 import { MoveRight } from 'lucide-react'
+import { MenuIcon } from '@/components/layout/menu-icon'
+import { cn } from '@/lib/utils/cn'
 import Image from 'next/image';
 
 const links = [
@@ -20,16 +23,6 @@ const links = [
   { href: '/blog', label: 'Blog' },
   // { href: '/partners', label: 'Partners' },
 ]
-
-function MenuIcon({ className = "w-6 h-6" }: { className?: string }) {
-  return (
-    <div className={`flex flex-col gap-1.5 items-end justify-center group cursor-pointer ${className}`}>
-      <span className="h-0.5 bg-ink/70 rounded-full w-6 transition-all duration-300"></span>
-      <span className="h-0.5 bg-ink/60 rounded-full w-4 transition-all duration-300 group-hover:w-5"></span>
-      <span className="h-0.5 bg-ink/60 rounded-full w-2.5 transition-all duration-300 group-hover:w-6"></span>
-    </div>
-  );
-}
 
 // the panel drops down like a curtain, then the links rise in one after another
 const panel: Variants = {
@@ -58,8 +51,35 @@ const item: Variants = {
   open: { opacity: 1, y: 0, transition: { duration: menu.duration, ease: easeOut } },
 }
 
+/*
+  whether the navbar should show its shadow: once the page has scrolled past the hero (the homepage marks its hero
+  with data-hero), or, on pages with no hero, as soon as it has scrolled a little. no shadow at the top of the page.
+*/
+function subscribeScroll(onChange: () => void) {
+  window.addEventListener('scroll', onChange, { passive: true })
+  window.addEventListener('resize', onChange)
+  return () => {
+    window.removeEventListener('scroll', onChange)
+    window.removeEventListener('resize', onChange)
+  }
+}
+
+function pastHero() {
+  const hero = document.querySelector('[data-hero]')
+  if (!hero) return window.scrollY > 8
+  const headerHeight = document.querySelector('[data-site-header]')?.getBoundingClientRect().height ?? 0
+  return hero.getBoundingClientRect().bottom <= headerHeight
+}
+
+// the home link only matches the home page; every other link also matches the pages under it (/blog/some-post)
+function isActive(pathname: string, href: string) {
+  return href === '/' ? pathname === '/' : pathname === href || pathname.startsWith(`${href}/`)
+}
+
 export function Navbar() {
+  const pathname = usePathname()
   const [open, setOpen] = useState(false)
+  const scrolled = useSyncExternalStore(subscribeScroll, pastHero, () => false)
   const reduceMotion = useReducedMotion()
 
   useEffect(() => {
@@ -77,7 +97,13 @@ export function Navbar() {
 
   return (
     <>
-    <header className='sticky top-0 z-30  bg-paper/95 backdrop-blur-sm'>
+    <header
+      data-site-header
+      className={cn(
+        'sticky top-0 z-30 bg-paper/95 backdrop-blur-xs transition-shadow duration-300 motion-reduce:transition-none',
+        scrolled ? 'shadow-md' : 'shadow-none',
+      )}
+    >
       <nav
         aria-label='Primary'
         className='container-site flex items-center justify-between py-4 md:py-2 lg:grid lg:grid-cols-3'
@@ -90,7 +116,12 @@ export function Navbar() {
             <li key={l.href}>
               <Link
                 href={l.href}
-                className='font-body text-base md:text-lg text-ink/80 transition-colors hover:text-primary/60 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-paper'
+                aria-current={isActive(pathname, l.href) ? 'page' : undefined}
+                className={cn(
+                  'font-body text-base md:text-lg transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-paper',
+                  // the current page is a lighter ink, nothing louder
+                  isActive(pathname, l.href) ? 'text-ink/50' : 'text-ink/80 hover:text-primary/60',
+                )}
               >
                 {l.label}
               </Link>
@@ -98,8 +129,8 @@ export function Navbar() {
           ))}
         </ul>
 
-        <div className='hidden lg:flex lg:justify-self-end'>
-          <Button variant='secondary' href='/membership/apply' className='rounded-lg text-base px-14 py-3.5'>
+        <div className='hidden items-center gap-6 lg:flex lg:justify-self-end'>
+          <Button variant='secondary' href='/membership/apply' className='rounded-lg text-base px-14 py-3'>
             Apply
           </Button>
         </div>
@@ -154,7 +185,11 @@ export function Navbar() {
                   <Link
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className='block border-b border-rule/50 py-4 font-display text-h2 text-ink hover:text-ink/60'
+                    aria-current={isActive(pathname, l.href) ? 'page' : undefined}
+                    className={cn(
+                      'block border-b border-rule/50 py-4 font-display text-h2 hover:text-ink/60',
+                      isActive(pathname, l.href) ? 'text-ink/50' : 'text-ink',
+                    )}
                   >
                     {l.label}
                   </Link>

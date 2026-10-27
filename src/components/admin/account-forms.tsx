@@ -31,7 +31,7 @@ export function NameForm({ initialName }: { initialName: string }) {
         onChange={(e) => setName(e.target.value)}
       />
       <div className='flex flex-wrap items-center gap-4'>
-        <Button type='submit' variant='dark' disabled={pending} className='px-6'>
+        <Button type='submit' variant='primary' disabled={pending} className='px-6'>
           {pending ? 'Saving…' : 'Save name'}
         </Button>
         <FormMessage result={result} />
@@ -79,7 +79,7 @@ export function PasswordForm() {
         onChange={(e) => setConfirm(e.target.value)}
       />
       <div className='flex flex-wrap items-center gap-4'>
-        <Button type='submit' variant='dark' disabled={pending} className='px-6'>
+        <Button type='submit' variant='primary' disabled={pending} className='px-6'>
           {pending ? 'Saving…' : 'Save password'}
         </Button>
         <FormMessage result={result} />

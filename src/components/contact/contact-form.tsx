@@ -131,7 +131,7 @@ export function ContactForm() {
       )}
 
       <div className='mt-2'>
-        <Button type='submit' variant='dark' disabled={status === 'sending'} className='w-full py-4'>
+        <Button type='submit' variant='secondary' disabled={status === 'sending'} className='w-full py-4 space-x-1.5'>
           {status === 'sending' ? (
             'Sending…'
           ) : (

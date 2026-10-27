@@ -17,7 +17,7 @@ const pad = (n: number) => String(n).padStart(2, '0')
 function Folio({ current, total, size }: { current: number; total: number; size: 'lg' | 'sm' }) {
   return (
     <p className='flex items-baseline gap-2' aria-hidden>
-      <span className={cn('font-display leading-none text-ink tabular-nums', size === 'lg' ? 'text-display' : 'text-h1')}>
+      <span className={cn('font-display leading-none text-ink tabular-nums', size === 'lg' ? 'text-display' : 'text-h2')}>
         {pad(current + 1)}
       </span>
       <span className='font-mono text-label tabular-nums text-muted'>/ {pad(total)}</span>
@@ -29,7 +29,7 @@ function Folio({ current, total, size }: { current: number; total: number; size:
 export function ProgressRail({ steps, current, reached, onGo }: Props) {
   return (
     <nav aria-label='Application progress' className='hidden lg:block'>
-      <Folio current={current} total={steps.length} size='lg' />
+      {/*<Folio current={current} total={steps.length} size='lg' />*/}
       <ol className='mt-10 flex flex-col border-l border-rule'>
         {steps.map((s, i) => {
           const isCurrent = i === current
@@ -84,8 +84,8 @@ export function ProgressRail({ steps, current, reached, onGo }: Props) {
 export function ProgressBar({ steps, current }: Pick<Props, 'steps' | 'current'>) {
   return (
     <div className='lg:hidden'>
-      <div className='flex items-end justify-between gap-4'>
-        <Folio current={current} total={steps.length} size='sm' />
+      <div className='flex items-end justify-end gap-4'>
+        {/*<Folio current={current} total={steps.length} size='sm' />*/}
         <p className='pb-1 text-right font-mono text-label uppercase text-muted'>
           Step {current + 1} of {steps.length}
         </p>

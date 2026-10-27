@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useSyncExternalStore } from 'react'
+import { Suspense, useEffect, useState, useSyncExternalStore } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { ArrowRightToLine, X } from 'lucide-react'
@@ -76,8 +76,46 @@ function isActive(pathname: string, href: string) {
   return href === '/' ? pathname === '/' : pathname === href || pathname.startsWith(`${href}/`)
 }
 
-export function Navbar() {
+type NavLinkProps = {
+  href: string
+  label: string
+  // classes every state shares, then the extra classes for the current page and for every other page
+  base: string
+  active: string
+  inactive: string
+  onClick?: () => void
+}
+
+function CurrentAwareLink({ href, label, base, active, inactive, onClick }: NavLinkProps) {
   const pathname = usePathname()
+  const current = isActive(pathname, href)
+  return (
+    <Link href={href} onClick={onClick} aria-current={current ? 'page' : undefined} className={cn(base, current ? active : inactive)}>
+      {label}
+    </Link>
+  )
+}
+
+/*
+  a nav link that knows if it is the current page. the current path is only known at request time on dynamic routes
+  (/blog/[slug]), so reading it has to sit inside a Suspense boundary or the whole layout cannot be prerendered.
+  until the path is known the link shows in its normal, inactive style.
+*/
+function NavLink(props: NavLinkProps) {
+  return (
+    <Suspense
+      fallback={
+        <Link href={props.href} onClick={props.onClick} className={cn(props.base, props.inactive)}>
+          {props.label}
+        </Link>
+      }
+    >
+      <CurrentAwareLink {...props} />
+    </Suspense>
+  )
+}
+
+export function Navbar() {
   const [open, setOpen] = useState(false)
   const scrolled = useSyncExternalStore(subscribeScroll, pastHero, () => false)
   const reduceMotion = useReducedMotion()
@@ -114,17 +152,14 @@ export function Navbar() {
         <ul className='hidden items-center gap-8 lg:flex lg:justify-self-center'>
           {links.map((l) => (
             <li key={l.href}>
-              <Link
+              {/* the current page is a lighter ink, nothing louder */}
+              <NavLink
                 href={l.href}
-                aria-current={isActive(pathname, l.href) ? 'page' : undefined}
-                className={cn(
-                  'font-body text-base md:text-lg transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-paper',
-                  // the current page is a lighter ink, nothing louder
-                  isActive(pathname, l.href) ? 'text-ink/50' : 'text-ink/80 hover:text-primary/60',
-                )}
-              >
-                {l.label}
-              </Link>
+                label={l.label}
+                base='font-body text-base md:text-lg transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-paper'
+                active='text-ink/50'
+                inactive='text-ink/80 hover:text-primary/60'
+              />
             </li>
           ))}
         </ul>
@@ -182,17 +217,14 @@ export function Navbar() {
             <nav aria-label='Mobile' className='container-site flex flex-1 flex-col gap-2 pt-11'>
               {links.map((l) => (
                 <motion.div key={l.href} variants={reduceMotion ? undefined : item}>
-                  <Link
+                  <NavLink
                     href={l.href}
+                    label={l.label}
                     onClick={() => setOpen(false)}
-                    aria-current={isActive(pathname, l.href) ? 'page' : undefined}
-                    className={cn(
-                      'block border-b border-rule/50 py-4 font-display text-h2 hover:text-ink/60',
-                      isActive(pathname, l.href) ? 'text-ink/50' : 'text-ink',
-                    )}
-                  >
-                    {l.label}
-                  </Link>
+                    base='block border-b border-rule/50 py-4 font-display text-h2 hover:text-ink/60'
+                    active='text-ink/50'
+                    inactive='text-ink'
+                  />
                 </motion.div>
               ))}
               <motion.div variants={reduceMotion ? undefined : item} className='pt-16 flex justify-center'>
